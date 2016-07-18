@@ -1,0 +1,56 @@
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  QPLIB-2.4.tex
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Solvers}\label{subsec:solver}
+
+We now provide a succinct list of the solvers we have tested, using the approaches described in \S \ref{sec:algo}. In Table \ref{t:solvers}, we mark with ``I'' a pair (solver, problem) if the solver accepts the problem in input but it is an incomplete solver for the problem, with ``A'' if it is asymptotically complete, with ``C'' if it is complete, and leave it blank if the solver won't accept the problem in input.
+
+{\bf The table has to be checked, as I've extrapolated from the text but I'm not 100\% sure. Also, ``?''s have to be removed.}
+
+
+\begin{table}
+{
+ \centering                
+ \scriptsize                
+ \setlength{\tabcolsep}{3pt}                
+% \renewcommand \arraystretch{1}                
+                
+\begin{tabular}{lccccccc}
+\toprule  
+                 & CGL & QGL & CGC & QGQ & CCC & QCQ \\
+\hline
+{\sc Antigone}    &  C  &  C  &  C  &  C  &  C  &  C  \\
+{\sc Baron}       &  C  &  C  &  C  &  C  &  C  &  C  \\
+{\sc Couenne}     &  C  &  C  &  C  &  C  &  C  &  C  \\
+{\sc KNitro}      &  C  &  I  &  C  &  I  &  C  &  A  \\
+{\sc lindo api}   &  C  &  C  &  C  &  C  &  C  &  C  \\
+{\sc SCIP}        &  C  &  C  &  C  &  C  &  C  &  C  \\
+{\sc oqnlp}       &  A  &  A  &  A  &  A  &  C  &  A  \\
+{\sc AlphaECP}    &  C  &  I  &  C  &  I  &  C  &  I  \\
+{\sc BonMin}      &  C  &  I  &  C  &  I  &  C  &  I  \\
+{\sc DICOpt}      &  C  &  I  &  C  &  I  &  C  &  I  \\
+{\sc sBB}         &  C  &  I  &  C  &  I  &  C  &  I  \\
+{\sc ConOpt}      &     &     &     &     &  C  &  I  \\
+{\sc IpOpt}       &     &     &     &     &  C  &  I  \\
+{\sc lgo}         &     &     &     &     &  C? &  A  \\  %try it out
+{\sc Minos}       &     &     &     &     &  C  &  I  \\
+{\sc msnlp}       &     &     &     &     &  C  &  A  \\
+{\sc SnOpt}       &     &     &     &     &  C  &  I  \\
+{\sc XPress}      &  C  &     &  C  &     &  C  &  ?  \\ %try it out
+{\sc Gurobi}      &  C  &     &  C  &     &  C  &  ?  \\ %try it out
+{\sc CPLEX}       &  C  &  C  &  C  &     &  C  &  I? \\ %try it out
+{\sc mosek}       &  C  &     &  C  &     &  C  &     \\
+\hline
+\end{tabular}                 
+\caption{Families of QP problems that can be tackled each solver} \label{t:solvers}             
+} 
+
+\end{table}              
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  End QPLIB-2.4.tex
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,0 +1,112 @@
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  QPLIB-2.2.tex
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Classification}\label{sec:classification}
+
+Despite the apparent simplicity of the definition given in \S \ref{subsec:notation}, Quadratic Programming instances can be of several rather different ``types'' in practice, depending on the fine details of the data. In particular, many algorithmic approaches can only be applied to QP when the data of the problem has specific properties. A taxonomy of QP instances should therefore strive to identify the set of properties that an instance should have in order to apply the most relevant computational methods. However, the sheer number of different existing approaches, and the fact that new ones are proposed, makes it hard to provide a taxonomy that is both simple and covers all possible special cases. This is why, in this paper, we propose an approach that aims at finding a good balance between simplicity and coverage of the main families of computational methods.
+
+% -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+\subsubsection{Classification}\label{ssec:taxonomy}
+
+Our taxonomy is based on a three-fields code of the form ``\textit{FVC}'', where \textit{F} indicates the objective function, \textit{V} the variables, and \textit{C} the constraints of the problem. The fields can be given the following values:
+%
+\begin{itemize}
+ \item objective function: (L)inear, (D)iagonal convex quadratic, (C)onvex quadra-tic, nonconvex (Q)uadratic;
+ %
+ \item variables: (C)ontinuous only, (B)inary only, (M)ixed binary and continuous, (I)nteger only, (G)eneral (all threee types);
+ %
+ \item constraints: (N)one, (B)ox, (L)inear, (C)onvex quadratic, nonconvex (Q)ua-dratic.
+\end{itemize}
+%
+The wildcard ``*'' will be used to indicate any possible choice, and lists of the form ``\{X, Y, Z\}'' will indicate that the value of the given field can freely attain any of the specified values.
+
+The ordering of the values in the previous lists is not irrelevant; in general, problems become ``harder'' when going from left to right. More specifically, for the \textit{F} and \textit{C} fields the order is that of \emph{strict} containment between problem classes: for instance, Linear objective functions are strictly contained in Diagonal convex quadratic ones (by just allowing the diagonal elements to be all-zero), which are strictly contained into general Convex quadratic ones (by allowing the off-diagonal elements to be all-zero), which in turn are strictly contained into general nonconvex Quadratic ones (by allowing any symmetric $Q^0$, hence possibly SDP ones as well). The only field for which the containment relationship is not a total order is \textit{V}, for which only the partial orderings
+\[
+ \mbox{C} \subset \mbox{M} \subset \mbox{G}
+ \qquad,\qquad
+ \mbox{B} \subset \mbox{M} \subset \mbox{G}
+ \qquad,\qquad
+ \mbox{B} \subset \mbox{I} \subset \mbox{G}
+\]
+hold. In the following discussion we will repeatedly exploit this by assuming that, unless otherwise mentioned, when a method can be applied to a given problem, it can be applied as well to all simpler problems where the value of each field is arbitrarily replaced with a value denoting a less general class.
+
+% -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+\subsubsection{Examples and reformulations}\label{ssec:reform}
+
+We will now provide a first general discussion about the different problem classes that our proposed taxonomy defines. Some of them are actually ``too simple'' to make sense in our context. For instance, D*B problems have only diagonal quadratic (hence separable) objective function and bound constraints; as such, they read
+\[
+ \textstyle
+ \min \; \Big\{ \,
+ \sum_{j \in \Mcn} \big( \, Q^0_j x_j^2 + L^0_j x_j \, \big) \;:\;
+ l_j \leq x_j \leq u_j \quad j \in \Mcn \;\;,\;\;
+ x_j \in \mathbb{Z} \quad j \in \Mcz \, \Big\}
+ \;\; .
+\]
+Hence, their solution only requires the independent minimization of a convex quadratic univariate function in each single variable $x_j$ over a box constraint and possibly integrality requirements: this can be attained trivially in $O(1)$ by closed-form formul{\ae}, projection and rounding arguments. \emph{A fortiori}, the even simpler cases L*B, D*N and L*N (the latter obviously unbounded unless $L^0 = 0$) will not be discussed here. Similarly, CCB (and, a fortiori, CCN) are immediately solved by linear algebra techniques, and therefore are of no interest in this context. On the other end of the spectrum, in general QP is a hard problem. Actually, LIQ---linear objective function and quadratic constraints in integer variables with no finite bounds, i.e. 
+\[
+ \textstyle
+ \min \; \Big\{ \, L^0 x \;:\;
+ x^\top Q^i x + L^i x \leq C^i \quad i \in \Mcm \;\;,\;\;
+ x_j \in \mathbb{Z} \quad j \in \Mcn \, \Big\}
+ \;\; ,
+\]
+is not only $\mathcal{NP}$-hard, but downright undecidable \cite{jeroslow}. Hence so are the ``harder'' \{C,Q\}IQ.
+
+\smallskip
+It is important to note that the relationships between the different classes can be somehow blurred because reformulation techniques may allow to move one instance from one class to the other. The example in the introduction, for instance, says that *M*---instances with only binary and continuous variables---can be recast as *CQ: nonconvex quadratic constraints can always take the place of binary variables. Actually, this is also true for *G* as long as $\Mcu = \emptyset$, as bounded general integer variables can be represented by binary ones.
+
+Another relevant reformulation trick concerns the fact that, as soon as quadratic constraints are allowed, then a linear objective function can be assumed w.l.o.g.. Indeed, any Q** (C*C) problem can always be rewritten as
+%
+\begin{align*}	
+ \min \;\;
+ & x^0 \\
+ %
+ & x^\top Q^0 x + L^0 x \leq x^0 & \\ 
+ %
+ & x^\top Q^i x + L^i x \leq C^i & i \in \Mcm \\ 
+ %
+ & l_j \leq x_j \leq u_j & j \in \Mcn  \\
+ %
+ & x_j \in \mathbb{Z} & j \in \Mcz
+\end{align*}
+%
+i.e., a L*Q (L*C). Hence, it is clear that quadratic constraints are, in a well-defined sense, the most general situation (cf.~also the result above about hardness of LIQ).
+
+When a $Q^i$ is positive semidefinite (SDP), i.e., the corresponding constraint/objective function is convex, general quadratic constraints are in fact equivalent to diagonal ones. In fact, every SDP matrix can be factorized as $Q^i = L^i (L^i)^\top$, e.g.~by the (incomplete) Cholesky factorization, $f^i(x) = x^\top Q^i x = \sum_{j \in \Mcn} z^2_jz$ where $z = x^\top L^i$. Hence, one could think that D** problems need not be distinguished from C** ones; however, this is true only for ``complicated'' constraints, but not for ``simple'' ones, because the above reformulation technique introduces linear constraints. Indeed, while C*L (and, a fortiori, C*\{C,Q\}) can always be brought to D*L (D*\{C,Q\}), using the same technique C*B becomes D*L, which is significantly different from D*B. In practice, a diagonal convex objective function under linear constraints is found in many applications ({\bf citations?}), so that D*L still makes sense to distinguish the case where the objective function is ``naturally'' separable from that where separability is artificially introduced, although this is in theory always possible. Conversely, there is usually little gain in distinguishing between **C problems and ``**D'' ones where the constraints are restricted to be diagonal, as there are much fewer cases where this naturally occurs ({\bf to the best of my knowledge}). This is why we did not include a ``D'' option for the constraints.
+
+% -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
+\subsubsection{QP classes}\label{ssec:classes}
+
+The proposed taxonomy can then be used to describe the main classes of QP according to the type of algorithms that can be applied for their solution:
+%
+\begin{itemize}
+ \item \emph{Linear Programs} LCL and \emph{Mixed-Integer Linear Programs} LGL have been subject of an enormous amount of research and have their well-established instance libraries \cite{Koch2011}, so they won't be explicitly addressed here.
+ %
+ \item \emph{Convex Continuous Quadratic Programs} CCC can be solved in polynomial time by Interior-Point techniques; the simpler CCL can also be solved by means of ``simplex-like'' techniques ({\bf citations?}). Actually, a slightly larger class of problems can be solved with Interior-Point methods: those that can be represented by Second-Order Cone Programs. When written as QPs the corresponding $Q^i$ may not be positive semidefinite, but still the problems can be efficiently solved. Of course, these problems can still require considerable time, like LCL, when the size of the instance grows. In this sense, like in the linear case, a significant divide is from solvers that need all the data of QP to work, and those that are ``matrix-free'', i.e., only require the solution of simple operations (typically, matrix-vector products) with the data of the problem to work ({\bf citations?}). While in our library we have never exploited such a characteristic, which is not suitable to the use of standard modeling tools, this may be relevant for the solution of very-large-scale CIC.
+ %
+ \item \emph{Nonconvex Continuous Quadratic Programs} QCQ are instead in general $\mathcal{NP}$-hard, even if the constraints are very specific (QCB) and only one eigenvalue of $Q^0$ is negative \cite{Hemmecke2010}. They therefore require enumerative techniques like the spatial Branch\&Bound ({\bf citations?}), to be solved to optimality. Of course, local approaches 
+are available that are able to
+% are available  that can be able to 
+efficiently provide local optima (or at least saddle points) of the CQC, but providing global guarantees about the quality of the obtained solutions is challenging. In our library we have specifically focussed on  \emph{exact} solution of the instances.
+  %
+ \item \emph{Convex Integer Quadratic Programs} CGC are in general $\mathcal{NP}$-hard, and therefore require enumerative techniques to be solved. However, convexity of the objective function and constraints implies that efficient techniques (see CCC) can be used at least to solve the continuous relaxation. The general view is that CGC are not, all other things being equal, 
+% not 
+ substantially more difficult than LGL to solve, especially if the objective function and/or the constraints have specific properties (e.g., DGL, CGL). Often integer variables are in fact binary ones, so several CCC models are C\{B,M\}C ones. In practice binary variables are considered to lead to somewhat easier problems than general integer ones (cf.~the cited result about hardness of unbounded integer quadratic programs), and several algorithmic techniques have been specifically developed for this special case. However, the general approaches for CBC are basically the same as for CGC, so there is seldom the need to distinguish between the two classes as far as solvability is concerned, although matters can be different regarding actual solution cost. Programs with only binary variables CBC can be easier than mixed-binary or integer ones C\{M,I\}C because some techniques are specifically known for the binary-only case, cf.~the next point ({\bf citations?}). Absence of continuous variables, even in the presence of integer ones CIC, can also lead to specific techniques ({\bf citations??}).  
+  %
+  \item \emph{Nonconvex Binary Quadratic Programs} QB\{B, N, L\} obviously are $\mathcal{NP}$-hard. However, the special nature of binary variables combined with quadratic forms allows for quite specific techniques to be developed, among which is the reformulation of the problem as a LBL. Also, many well-known combinatorial problems can be naturally reformulated as problems of this class, and therefore a considerable number of results have been obtained by exploiting specific properties of the set of constraints ({\bf some citations? some specific problem to mention apart from Max-Cut?}).
+  %
+  \item \emph{Nononvex Integer Quadratic Programs} QGQ is the more general, and therefore is the most general, class. Due to the lack of convexity even when integrality requirements are removed, solution methods must typically combine several algorithmic ideas, such as enumeration (distinguishing the role of integral variables from that of continuous ones involved into nonconvex terms) and techniques (e.g., outer approximation, SDP relaxation, \ldots) that allow to efficiently compute bounds. As in the convex case, QBQ, QMQ, and QIQ can benefit from more specific properties of the variables ({\bf citations?}).
+\end{itemize}
+%
+This description is purposely coarse; each of these classes can be subdivided into several other ones on the grounds of more detailed information about structures present in their constraints/objective function. These can have a significant algorithmic impact, and therefore can be of interest to researchers. Common structures are, e.g., network flow or knapsack-type linear constraints, semi-continuous variables, or the fact that a nonconvex quadratic objective function/constraint can be reformulated as a second-order cone (hence, convex) one. It would be rather hard to collect a comprehensive list of all types of structures that may be of interest of some researcher, since these are as varied as the different possible approaches for specialized sub-classes of QP. For this reason we do not attempt such a more refined classification, and limit ourselves to the coarser one described in this paragraph.
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  End QPLIB-2.2.tex
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

@@ -1,0 +1,325 @@
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  QPLIB.tex
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\newif\ifMPC
+\global\MPCtrue
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\ifMPC
+ \documentclass[smallextended]{svjour3}
+ \smartqed
+ \journalname{Mathematical Programming Computation} 
+\else
+ \documentclass[12pt,A4wide]{article}
+\fi
+
+\usepackage{url}
+\usepackage{secdot}
+\usepackage{color}
+\usepackage{booktabs}
+\usepackage{amsmath,amsfonts,amssymb}
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{multirow}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% page size
+
+\ifMPC
+\else
+ \setlength{\textwidth}{16 cm}
+ \setlength{\topmargin}{0 cm}
+ \setlength{\headsep}{0 cm}
+ \setlength{\textheight}{24 cm}
+ \setlength{\evensidemargin}{0cm}
+ \setlength{\oddsidemargin}{0cm}
+\fi
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\def\NN{\mathbb{N}}
+\def\RR{\mathbb{R}}
+\def\Mcq{\mathcal{Q}}
+\def\Mcl{\mathcal{L}}
+\def\Mcm{\mathcal{M}}
+\def\Mcn{\mathcal{N}}
+\def\Mcb{\mathcal{B}}
+\def\Mcr{\mathcal{R}}
+\def\Mcu{\mathcal{U}}
+\def\Mcx{\mathcal{X}}
+\def\Mcz{\mathcal{Z}}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+% Theorem-like environment definitions
+
+\ifMPC
+\else
+\newtheorem{theorem}{Theorem}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}{Remark}
+
+\newenvironment{example}{\begin{EX}\rm}{\end{EX}}
+
+\newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
+%\renewenvironment{proof}{{\bfseries Proof}}{\qed}
+
+\def\remark{\stepcounter{theorem}\par{\bf Remark}.
+\ignorespaces}
+\def\endremark{ \vbox{\hrule\hbox{%
+    \vrule height1.3ex\hskip0.8ex\vrule}\hrule
+   }\par}
+
+\newenvironment{keywords}{\vspace{0.4in}\begin{quote}\small \em
+{\bf Keywords\/}:}{\end{quote}}
+\fi
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\begin{document}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\title{QPLIB: a Library of a Quadratic Programming Instances}
+
+\ifMPC
+\titlerunning{QPLIB}
+\fi
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\ifMPC
+\author{Fabio Furini \and
+        Emiliano Traversi \and
+        Alper Atamturk \and
+        Pietro Belotti \and
+        Pierre Bonami \and 
+        Sourour Elloumi \and
+        Antonio Frangioni \and 
+        Ambros Gleixner \and
+        Nick Gould \and 
+        Leo Liberti \and
+        Andrea Lodi \and
+        Ruth Misener \and
+        Hans Mittelmann \and
+        Nick Sahinidis \and 
+        Frederic Roupin \and 
+        Stefan Vigerske \and 
+        Angelika Wiegele
+        }
+
+\institute{Fabio Furini \at
+           LAMSADE, Universit{\'e} Paris Dauphine, 75775 Paris, France,
+           \email{fabio.furini@dauphine.fr}
+%
+\and       
+           Emiliano Traversi \at
+           LIPN, Universit{\'e} de Paris 13, 93430 Villetaneuse, France.
+           \email{emiliano.traversi@lipn.fr}
+%
+\and       Alper Atamturk \at
+%
+\and       Pietro Belotti \at
+%
+\and       Pierre Bonami \at 
+%
+\and       Sourour Elloumi \at
+%
+\and       Antonio Frangioni \at
+           Dipartimento di Informatica, Universit\`a di Pisa,
+           Largo B. Pontecorvo 2, 56127 Pisa, Italy,
+           \email{frangio@di.unipi.it}
+%
+\and       Ambros Gleixner \at
+           Zuse Institute Berlin, Takustr. 7, 14195 Berlin, Germany. 
+           \email{gleixner@zib.de}
+%
+\and       Nick Gould \at 
+%
+\and       Leo Liberti \at
+           CNRS LIX, Ecole Polytechnique, 91128 Palaiseau, France.
+           \email{liberti@lix.polytechnique.fr}
+%
+\and       Andrea Lodi \at
+           Ecole Polytechnique de Montréal, Canada.               \email{andrea.lodi@polymtl.ca}
+%
+\and       Ruth Misener \at
+%
+\and       Hans Mittelmann \at
+           School of Mathematical and Statistical Sciences, Arizona State University,      Tempe, AZ 85287-1804, U.S.A.
+\email{mittelmann@asu.edu}
+%
+\and       Nick Sahinidis \at 
+%
+\and       Frederic Roupin \at 
+%
+\and       Stefan Vigerske \at 
+           GAMS Software GmbH, P.O. Box 40 59,50216 Frechen, Germany
+           \email{stefan@gams.com}
+%
+\and       Angelika Wiegele \at
+           }
+
+\else
+
+\author{Fabio Furini\\
+        LAMSADE, Universit{\'e} Paris Dauphine, 75775 Paris, France\\
+        {\tt fabio.furini@dauphine.fr}
+%
+\and   
+        Emiliano Traversi\\
+        LIPN, Universit{\'e} de Paris 13, 93430 Villetaneuse, France\\
+        {\tt emiliano.traversi@lipn.fr}
+%
+\and    Alper Atamturk\\
+%
+\and    Pietro Belotti\\
+%
+\and    Pierre Bonami\\
+%
+\and    Sourour Elloumi\\
+%
+\and    Antonio Frangioni\\
+        Dipartimento di Informatica, Universit\`a di Pisa\\
+        Largo B. Pontecorvo 2, 56127 Pisa, Italy\\
+        {\tt frangio@di.unipi.it}
+%
+\and    Ambros Gleixner\\
+%
+\and    Nick Gould\\
+%
+\and    Leo Liberti\\
+        CNRS LIX, Ecole Polytechnique, 91128 Palaiseau, France\\
+        {\tt liberti@lix.polytechnique.fr}
+%
+\and    Andrea Lodi\\
+%
+\and    Ruth Misener\\
+%
+\and    Hans Mittelmann\\
+%
+\and    Nick Sahinidis\\
+%
+\and    Frederic Roupin\\
+%
+\and    Stefan Vigerske\\
+%
+\and    Angelika Wiegele
+        }
+\fi
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\ifMPC
+ \date{Received: date / Accepted: date}
+\else
+ \date{}
+\fi
+
+\maketitle
+
+\begin{abstract}
+ This paper describes a new instance library for Quadratic Programming (QP). QP is a very ``varied'' class, comprising sub-classes of problems ranging from trivial to indecidable. Correspondingly, solution methods for QP are very diverse, ranging from entirely combinatorial ones to completely continuous ones, to many where both aspects are fundamental. Selecting a set of instances of QP that is at the same time not overwhelmingly numerous and significant for the many different interested communities is therefore challenging. In order to help our selection process we propose a simple taxonomy for QP instances. We then briefly survey the field of QP, giving an overview of theory, methods and solvers. Finally we describe how the library was put together, and how the final results look.
+\end{abstract}
+
+\ifMPC
+ \keywords{Instance Library, Quadratic Programming}
+
+ \subclass{90C06 \and 90C25}
+\else
+ \begin{keywords}
+  Instance Library, Quadratic Programming
+ \end{keywords}
+\fi
+
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\input{QPLIB-1.0.tex}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\input{QPLIB-2.1.tex}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\input{QPLIB-2.2.tex}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\input{QPLIB-2.3.tex}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\input{QPLIB-2.4.tex}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\input{QPLIB-3.tex}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\input{QPLIB-4.tex}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\input{conclusion.tex}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\section{Acknowledgements}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\bibliography{biblio}
+
+\ifMPC
+ \bibliographystyle{spmpsci}
+\else
+ \bibliographystyle{plain}
+\fi
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\appendix
+
+\input{Appendix.tex}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+\end{document}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  End QPLIB.tex
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

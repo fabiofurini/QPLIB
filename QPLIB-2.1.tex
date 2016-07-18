@@ -1,0 +1,57 @@
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  QPLIB-2.1.tex
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\section{Quadratic Programming in a nutshell}\label{sec:QPbasic}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Notation}\label{subsec:notation}
+
+In mathematical optimization, a Quadratic Program (QP) is an optimization problem in which either the objective function or some of the constraints are quadratic functions. More specifically, the problem has the form
+%
+\begin{align*}	
+ \min \;\;
+ & x^\top Q^0 x + L^0 x \\
+ %
+ & x^\top Q^i x + L^i x \leq C^i & i \in \Mcm \\ 
+ %
+ & l_j \leq x_j \leq u_j & j \in \Mcn  \\
+ %
+ & x_j \in \mathbb{Z} & j \in \Mcz
+\end{align*}
+%
+where:
+%
+\begin{itemize}
+ \item $\Mcn = \{ 1, \ldots, n \}$ is the set of (indices) of variables, and $\Mcm = \{ 1, \ldots, m \}$ is the set of (indices) of constraints;
+ %
+ \item $x = [x_j]_{j = 1}^n \in \RR^n$ is a finite vector of real variables;
+ %
+ \item $Q^i$ for $i \in \{ 0 \} \cup \Mcm$ are symmetric $n \times n$ real matrices: because one is always only interested in the value of quadratic functions of the type $x^\top Q^i x$, symmetry can be assumed without loss of generality by just replacing both $Q^i_{hk}$ and $Q^i_{kh}$ with their average $(Q^i_{hk} + Q^i_{kh}) / 2$;
+ %
+ \item $L^i$ and $C^i$ for $i \in \{ 0 \} \cup \Mcm$ are, respectively, real $n$-vectors and real constants;
+ %
+ \item $-\infty \leq l_j < u_j \leq \infty$ are the (extended) real upper and lower bounds on each variable $x_j$ for $j \in \Mcn$, assumed different because otherwise the variable is fixed;
+ %
+ \item $\Mcm = \Mcq \cup \Mcl$ where $Q^i = 0$ for all $i \in \Mcl$ (i.e., these are the linear constraints, as opposed to the truly quadratic ones);
+ %
+ \item the variables in $\Mcz \subseteq \Mcm$ are restricted to only attain integer values.
+\end{itemize}
+%
+Due to the presence of integral requirements on the variables, this class of problems is often referred to as Mixed-Integer Quadratic Program (MIQP). It will be sometimes useful to refer to the (sub)set $\Mcb =  \{ \, i \in \Mcz : l_j = 0 , u_j = 1 \, \} \subseteq \Mcz$ of the binary variables, and to $\Mcr = \Mcn \setminus \Mcz$ as the set of continuous ones. Similarly, it will be sometimes useful to distinguish the (sub)set $\Mcx = \{ \, j : l_j > -\infty \lor u_j < \infty \, \}$ of the box-constrained variables from $\Mcu = \Mcn \setminus \Mcx$ of the unconstrained ones (in the sense that finite bounds are not explicitly provided in the data of the problem, although they may be implied by the other constraints).
+
+The relative flexibility offered by quadratic functions, as opposed e.g.~to linear ones, allows several reformulation techniques to be applicable to this family of problems in order to emphasize different properties of the various components. Some of these reformulation techniques will be commented later on; here we remark that, for instance, integrality requirements, 
+in particular in the form of binary variables could always be ``hidden'' 
+by introducing (non convex) quadratic constraints utilizing the celebrated relationship
+%in particular under the form of binary variables, could always be ``hidden'' under the presence of (nonconvex) quadratic constraints due to the celebrated relationship 
+$x_j \in \{0, 1\} \iff x_j^2 = x_j$. Therefore, when discussing these problems an effort has to be made to distinguish between features that come from the original model, and those that can be introduced by reformulation techniques in order to extract (and algorithmically exploit) specific properties.
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%  End QPLIB-2.1.tex
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
