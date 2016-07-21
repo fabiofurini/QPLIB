@@ -12,7 +12,7 @@
 \ifMPC
  \documentclass[smallextended]{svjour3}
  \smartqed
- \journalname{Mathematical Programming Computation} 
+ \journalname{Mathematical Programming Computation}
 \else
  \documentclass[12pt,A4wide]{article}
 \fi
@@ -26,6 +26,10 @@
 \usepackage{amsmath}
 \usepackage{multirow}
 \usepackage{todonotes}
+
+\usepackage{longtable}
+\usepackage{enumitem}
+\usepackage{calc}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 % page size
@@ -104,18 +108,18 @@
         Emiliano Traversi \and
         Alper Atamturk \and
         Pietro Belotti \and
-        Pierre Bonami \and 
+        Pierre Bonami \and
         Sourour Elloumi \and
-        Antonio Frangioni \and 
+        Antonio Frangioni \and
         Ambros Gleixner \and
-        Nick Gould \and 
+        Nick Gould \and
         Leo Liberti \and
         Andrea Lodi \and
         Ruth Misener \and
         Hans Mittelmann \and
-        Nick Sahinidis \and 
-        Frederic Roupin \and 
-        Stefan Vigerske \and 
+        Nick Sahinidis \and
+        Frederic Roupin \and
+        Stefan Vigerske \and
         Angelika Wiegele
         }
 
@@ -123,7 +127,7 @@
            LAMSADE, Universit{\'e} Paris Dauphine, 75775 Paris, France,
            \email{fabio.furini@dauphine.fr}
 %
-\and       
+\and
            Emiliano Traversi \at
            LIPN, Universit{\'e} de Paris 13, 93430 Villetaneuse, France.
            \email{emiliano.traversi@lipn.fr}
@@ -132,7 +136,7 @@
 %
 \and       Pietro Belotti \at
 %
-\and       Pierre Bonami \at 
+\and       Pierre Bonami \at
 %
 \and       Sourour Elloumi \at
 %
@@ -142,10 +146,13 @@
            \email{frangio@di.unipi.it}
 %
 \and       Ambros Gleixner \at
-           Zuse Institute Berlin, Takustr. 7, 14195 Berlin, Germany. 
+           Zuse Institute Berlin, Takustr. 7, 14195 Berlin, Germany.
            \email{gleixner@zib.de}
 %
-\and       Nick Gould \at 
+\and       Nick Gould \at
+           STFC-Rutherford Appleton Laboratory, Chilton, Oxfordshire OX11 0QX,
+           England.
+           \email{nick.gould@stfc.ac.uk}
 %
 \and       Leo Liberti \at
            CNRS LIX, Ecole Polytechnique, 91128 Palaiseau, France.
@@ -160,11 +167,11 @@
            School of Mathematical and Statistical Sciences, Arizona State University,      Tempe, AZ 85287-1804, U.S.A.
 \email{mittelmann@asu.edu}
 %
-\and       Nick Sahinidis \at 
+\and       Nick Sahinidis \at
 %
-\and       Frederic Roupin \at 
+\and       Frederic Roupin \at
 %
-\and       Stefan Vigerske \at 
+\and       Stefan Vigerske \at
            GAMS Software GmbH, P.O. Box 40 59,50216 Frechen, Germany
            \email{stefan@gams.com}
 %
@@ -177,7 +184,7 @@
         LAMSADE, Universit{\'e} Paris Dauphine, 75775 Paris, France\\
         {\tt fabio.furini@dauphine.fr}
 %
-\and   
+\and
         Emiliano Traversi\\
         LIPN, Universit{\'e} de Paris 13, 93430 Villetaneuse, France\\
         {\tt emiliano.traversi@lipn.fr}
@@ -231,8 +238,8 @@
 \maketitle
 
 \begin{abstract}
- This paper describes a new instance library for Quadratic Programming (QP). QP is a very ``varied'' class, comprising sub-classes of problems ranging from trivial to undecidable. Solution methods for QP are very diverse, ranging from entirely combinatorial ones to completely continuous ones, including many for which both aspects are fundamental. Selecting a set of instances of QP that is at the same time not overwhelmingly difficult and sufficiently challenging for the many different interested communities is therefore important. 
- %In order to help our selection process 
+ This paper describes a new instance library for Quadratic Programming (QP). QP is a very ``varied'' class, comprising sub-classes of problems ranging from trivial to undecidable. Solution methods for QP are very diverse, ranging from entirely combinatorial ones to completely continuous ones, including many for which both aspects are fundamental. Selecting a set of instances of QP that is at the same time not overwhelmingly difficult and sufficiently challenging for the many different interested communities is therefore important.
+ %In order to help our selection process
  We propose a simple taxonomy for QP instances that leads to a systematic problem selection mechanism. We then briefly survey the field of QP, giving an overview of theory, methods and solvers. Finally we describe how the library was put together, and detail its final contents.
 \end{abstract}
 
@@ -315,6 +322,10 @@
 \appendix
 
 \input{Appendix.tex}
+
+%  QPLIB format. Move to main text?
+
+\input{format.tex}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

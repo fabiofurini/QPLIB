@@ -1,1 +1,281 @@
 \section{The file format}\label{sec:format}
+
+\newcommand{\vect}[1]{\left(\begin{array}{c}#1\end{array}\right)}
+\newcommand{\mat}[2]{\left(\begin{array}{#1}#2\end{array}\right)}
+\newcommand{\arr}[2]{\begin{array}{#1}#2\end{array}}
+\newcommand{\mininx}[1]{ {\renewcommand{\arraystretch}{0.8}
+                     \begin{array}[t]{c}
+                     \mbox{minimize} \vspace*{-1mm} \\
+                     \mbox{ $\scriptstyle x \in \smallRe^n #1 $ }
+                     \end{array} \;} }
+\newcommand{\s}[1]{^{\mbox{\protect\tiny #1}}}
+\newcommand{\sfrac}[2]{{\scriptstyle \frac{#1}{#2}}}
+\newcommand{\half}{\sfrac{1}{2}}
+\newcommand{\smallRe}
+     {\mbox{\raisebox{-0.8pt}{\footnotesize I\hskip -1.5pt R\hskip -0.5pt}}}
+\newcommand{\tim}[1]{\;\; \mbox{#1} \;\;}
+\newcommand{\st}{\mbox{subject to}\;\;}
+\newcommand{\lbox}[1]{\parbox[t]{105mm}{#1}\vspace*{1mm}}
+
+The QPLIB format is designed to cope with a variety of
+linear and quadratic programs. We distinguish, in particular,
+linear programs (LP)
+\begin{align*}
+ \mininx{} & l^T x + f \\
+ \st & c\s{L} \leq A x \leq c\s{U} \tim{and} x\s{L} \leq x \leq x\s{U}, \\
+\intertext{linear programs with quadratic constraints (LPQC)}
+ \mininx{} & l^T x + f \\
+ \st & c\s{L} \leq A x + \half  [x,Q\s{C},x] \leq c\s{U}
+     \tim{and} x\s{L} \leq x \leq x\s{U}, \\
+\intertext{bound-constrained quadratic programs (BQP)}
+ \mininx{} & \half x^T Q x + l^T x + f \\
+ \st & x\s{L} \leq x \leq x\s{U}, \\
+\intertext{quadratic programs (QP)}
+ \mininx{} & \half x^T Q x + l^T x + f \\
+ \st & c\s{L} \leq A x \leq c\s{U} \tim{and} x\s{L} \leq x \leq x\s{U}, \\
+\intertext{and quadratic program with quadratic constraints (QPQC)}
+ \mininx{} & \half x^T Q x + l^T x + f \\
+ \st & c\s{L} \leq A x + \half [x,Q\s{C},x] \leq c\s{U}
+     \tim{and} x\s{L} \leq x \leq x\s{U},
+\end{align*}
+where $Q\s{C}$ is the diagonal matrix with blocks $Q\s{C}_k$, $k=1,\ldots,m$,
+$Q$ and the $Q\s{C}_k$ are symmetric $n$ by $n$ Hessian matrices,
+$A$ is a rectangular $m$ by $n$ constraint matrix,
+$l$, $x\s{L}$, $x\s{U}$, $c\s{L}$, $c\s{U}$
+are vectors of appropriate sizes and $f$ is a scalar; the notation
+$[ x, Q\s{C},x]$ denotes the vector whose $k$-th component is
+$x^T Q\s{C}_k x$.
+In addition, all or a subset of the variables $x$ may be required to be
+integer, while further restrictions (such as a variable being binary)
+may be imposed via explicit constraints.
+
+The QPLIB format is defined in Table~\ref{tab-qplib-format}.
+The data is in free format (blanks separate values), but must occur in
+the order given here. Any blank lines, or lines starting with any of the
+characters !, \% or \# are ignored. Each term in the first column of
+Table~\ref{tab-qplib-format} denotes a required value. Any strings beyond
+those required on a given line will be regarded as comments and ignored.
+Real values may either by in decimal or exponential formats; for the latter,
+the exponent may be preceded by either the character {\tt D} or {\tt E},
+e.g. {\tt 12.56D+2} or {\tt 12.56E+2}.
+
+\vspace*{2mm}
+
+%\vspace*{-10mm}
+%{\tiny
+%\LTcapwidth=16.17cm
+\begin{longtable}{|llr|}
+\caption{\label{tab-qplib-format}{The QPLIB file format: refer to the notes
+after the table for more details.}}\\
+\hline
+data & description & note \\
+\hline
+\endfirsthead
+\caption{The QPLIB file format (continued)}\\
+\hline
+data & description & note \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+%\begin{tabular}{|llr|}
+%\hline
+name & problem name (character string) & \\
+type & problem type (character string) & [1] \\
+\hline
+$n$  & number of variables (integer) & \\
+$m$  & number of general linear constraints (integer) & [2] \\
+\hline
+$n\s{Q}$ & number of nonzeros  (integer) in lower triangle of $Q$  & [3] \\
+$i$\; $j$\; $Q_{i,j}$ & \lbox{row and column indices (integers) and value (real)
+for each nonzero entry of $Q$, if $n\s{Q} > 0$, one triple on each line} & \\
+\hline
+$l_d$ & default value (real) for entries in $l$ & \\
+$n\s{l}$ & number of non-default entries (integer) in $l$ & \\
+$i$\; $l_i$ & \lbox{index (integer) and value (real) for each non-default
+term in $l$, if $n\s{l} > 0$, one pair per line} & \\
+\hline
+$f$ & value (real) of f & \\ \hline
+$n\s{Q${}_c$}$ & number of nonzeros (integer) in lower triangle of
+$Q\s{C}$  & [2,4] \\
+$k$\; $i$\; $j$\; $Q\s{C}_{k,i,j}$
+& \lbox{constraint, row and column indices (integers) and value (real) for
+ each entry of $Q\s{C}$, if $n\s{Q${}_c$} > 0$, one quadruple on each line} & \\
+\hline
+$n\s{A}$ & number of nonzeros  (integer) in $A$                     & [2] \\
+$i$\; $j$\; $A_{i,j}$ & \lbox{row and column indices (integers) and value (real)
+for each nonzero
+entry of $A$, if $n\s{A} > 0$, one triple on each line} & \\
+\hline
+$\infty$ & \lbox{value (real) for infinity for constraint or variable
+bounds---any bound greater than or equal to this in, absolute value,
+is infinite} & \\
+\hline
+$c\s{L}_d$ & default value (real) for entries in $c\s{L}$            & [2] \\
+$n^{c\s{L}}$ & number of non-default entries (integer) in $c\s{L}$    & [2] \\
+$i$\;\ $c\s{L}_i$ & \lbox{index (integer) and value (real) for each non-default
+term
+in $c\s{L}$, if $n^{c\s{L}} > 0$, one pair per line}        & [2] \\
+\hline
+$c\s{U}_d$ & default value (real) for entries in $c\s{U}$            & [2] \\
+$n^{c\s{U}}$ & number of non-default entries (integer) in $c\s{U}$    & [2] \\
+$i$\;\ $c\s{U}_i$ & \lbox{index (integer) and value (real) for each non-default
+term
+in $c\s{U}$, if $n^{c\s{U}} > 0$, one pair per line}        & [2] \\
+\hline
+$x\s{L}_d$ & default value (real) for entries in $x\s{L}$            &     \\
+$n^{x\s{L}}$ & number of non-default entries (integer) in $x\s{L}$    &     \\
+$i$\;\ $x\s{L}_i$ & \lbox{index (integer) and value (real) for each non-default
+term in $x\s{L}$, if $n^{x\s{L}} > 0$, one pair per line} & \\
+\hline
+$x\s{U}_d$ & default value (real) for entries in $x\s{U}$            &     \\
+$n^{x\s{U}}$ & number of non-default entries (integer) in $x\s{U}$    &     \\
+$i$\;\ $x\s{U}_i$ & \lbox{index (integer) and value (real) for each non-default
+term in $x\s{U}$, if $n^{x\s{U}} > 0$, one pair per line} & \\
+\hline
+$v_d$ & \lbox{default variable type  (integer, 0 for continuous variables,
+ 1 for integer variables)} & [5] \\
+$n^v$ & number of non-default variables (integer)  & [5] \\
+$i$\; $v_i$ & \lbox{index  and type (integers) for each non-default
+variable type, if  $n^v > 0$, one pair per line} & [5] \\
+\hline
+$x\s{0}_d$ & \lbox{default value (real) for the components of the starting
+point  $x^0$ for the  variables $x$} & \\
+$n^{x^0}$ & number of non-default starting entries (integer) in $x$ & \\
+$i$\; $x_i^0$ & \lbox{index (integer) and value (real) for each non-default
+starting value in $x^0$, if $n^{x^0} > 0$, one pair per line} &  \\
+\hline
+$y\s{0}_d$ & \lbox{default value (real) for the components of the starting
+point $y^0$ for the Lagrange multipliers $y$ for the general
+constraints} &  [2] \\
+$n^{y^0}$ & number of non-default starting entries  (integer) in $y$ &  [2] \\
+$i$\; $y_i^0$ & \lbox{index (integer) and value (real) for each non-default
+starting value in $y^0$, if $n^{y^0} > 0$, one pair per line} &  [2] \\
+\hline
+$z\s{0}_d$ & \lbox{default value (real) for the components of the starting
+point $z^0$ for the dual variables $z$ for the simple bound constraints} & \\
+$n^{z^0}$ & number of non-default starting entries (integer) in $z$ & \\
+$i$\; $z_i^0$ & \lbox{index (integer) and value (real) for each
+non-default starting value in $z^0$, if $n^{z^0} > 0$, one pair per line} &  \\
+\hline
+$n^x_d$ & \lbox{number of non-default names (integer) of variables---default
+for variable $i$ is the character string representing the numerical
+value $i$} &  \\
+$i$\; $x_i$ & \lbox{index (integer) and name (character string)
+for each non-default variable name, if $n^x_d > 0$,  one pair per line} & \\
+\hline
+$n^c_d$ & \lbox{number of non-default names (integer) of general
+constraints---default for constraint $i$ is the character string representing
+the numerical value $i$} &  \\
+$i$\; $c_i$ & \lbox{index  (integer) and name (character string) for each
+non-default constraint name, if $n^c_d > 0$,  one pair per line} & \\
+\hline
+\end{longtable}
+%}
+
+%\end{tabular}
+
+\renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\texttt{#1}}
+
+\begin{description}
+\item [{[1]}]
+The problem type is represented by a character string as one of the following:
+\begin{description}
+\item For continuous problems (i.e., all variables are continuous):
+\begin{description}[leftmargin=!,labelwidth=\widthof{\ttfamily SMILQPC}]
+\item [LP]      a linear program,
+\item [LPQC]    a linear program with quadratic constraints,
+\item [BQP]     a bound-constrained quadratic program,
+\item [QP]      a quadratic program, and
+\item [QPQC]    a quadratic program with quadratic constraints.
+\end{description}
+\item For integer problems (i.e., all variables are integer valued):
+\begin{description}[leftmargin=!,labelwidth=\widthof{\ttfamily SMILQPC}]
+\item [ILP]     an integer linear program,
+\item [ILPQC]   an integer linear program with quadratic constraints,
+\item [IBQP]    an integer bound-constrained quadratic program,
+\item [IQP]     an integer quadratic program, and
+\item [IQPQC]   an integer quadratic program with quadratic constraints.
+\end{description}
+\item For mixed-integer problems (i.e., there is a mix of continuous and
+integer variables):
+\begin{description}[leftmargin=!,labelwidth=\widthof{\ttfamily SMILQPC}]
+\item [MILP]    a mixed-integer linear program,
+\item [MILPQC]  a mixed-integer linear program with quadratic constraints,
+\item [MIBQP]   a mixed-integer bound-constrained quadratic program,
+\item [MIQP]    a mixed-integer quadratic program, and
+\item [MIQPQC]  a mixed-integer quadratic program with quadratic constraints.
+\end{description}
+\end{description}
+
+
+\item [{[2]}]
+for bound-constrained QPs, these sections are omitted.
+\item [{[3]}]
+for linear program with quadratic constraints, this section is omitted.
+\item [{[4]}]
+for problems without quadratic constraints, this section is omitted.
+\item [{[5]}]
+for purely-continuous or purely-integer problems, this section is omitted.
+\end{description}
+
+As a simple example, consider the mixed-integer QP
+\[\arr{l}{\mininx{} x_1^2 + x_2^2 + x_3^2 - x_1 x_2 - x_2 x_3
+  - 0.2 x_1  -0.4 x_2 - 0.2 x_3 \\
+\st 1 \leq x_1 + x_2, \; 1 \leq x_1 + x_3, \; 0 \leq x_1 \leq 1,
+\; 0 \leq x_2 \leq 2, \; \mbox{and binary} \; x_3.}
+\]
+This may then be represent in QPLIB format as follows:
+
+{\small
+\begin{verbatim}
+! ---------------
+! example problem
+! ---------------
+MIPBAND   # problem name
+MIQP      # problem is a mixed-integer quadratic program
+3         # variables
+2         # general linear constraints
+5         # nonzeros in lower triangle of Q
+1 1 2.0   5 lines of row & column index & value of nonzeros in lower triangle Q
+2 1 -1.0  |
+2 2 2.0   |
+3 2 -1.0  |
+3 3 2.0   |
+-0.2      default value for entries in l
+1         # non default entries in l
+2 -0.4    1 lines of index & value of non-default values in l
+0.0       value of f
+4         # nonzeros in A
+1 1 1.0   4 lines of row & column index & value of nonzeros in A
+1 2 1.0   |
+2 1 1.0   |
+2 3 1.0   |
+1.0E+20   infinity
+1.0       default value for entries in c^L
+0         # non default entries in c^L
+1.0E+20   default value for entries in c^U
+0         # non default entries in c^U
+0.0       default value for entries in x^L
+0         # non default entries in x^L
+1.0       default value for entries in x^U
+1         # non default entries in x^U
+2 2.0     1 line of non-default indices and values in x^U
+0         default variable type is continuous
+1         # non default variable types
+3 1       variable 3 is integer
+1.0       default value for initial values for x
+0         # non default entries in x
+0.0       default value for initial values for y
+0         # non default entries in y
+0.0       default value for initial values for z
+0         # non default entries in z
+0         # non default names for variables
+0         # non default names for constraints
+\end{verbatim}
+}
+
+
+

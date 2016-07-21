@@ -28,9 +28,9 @@ In addition to spontaneous contribution we scanned the other known libraries of 
  \item {\tt GAMS Library} \url{http://www.gamsworld.org/performance/performlib.htm}
 \end{itemize}
 %
-Other QP instances were found in libraries devoted to specific optimization problems that can be modeled as QP, such as Max-Cut, the Quadratic Assignment Problem, Portfolio Optimization problems and several others; for reason of space we refrain from listing all these sources.  
+Other QP instances were found in libraries devoted to specific optimization problems that can be modeled as QP, such as Max-Cut, the Quadratic Assignment Problem, Portfolio Optimization problems and several others; for reason of space we refrain from listing all these sources.
 
-At the end of this process we had gathered more than eight thousand instances. Three fourths of them contained discrete variables, while the remaining ones contained only continuous variables.  
+At the end of this process we had gathered more than eight thousand instances. Three fourths of them contained discrete variables, while the remaining ones contained only continuous variables.
 
 \begin{center}
 \begin{table}[]
@@ -46,16 +46,16 @@ First Filter  & $\Downarrow$  &  & \\
  & $\approx$ 3000 Discr. Inst.  & $\Downarrow$ & \\
 Second Filter & $\Downarrow$  &  & \\
  & 600 Discr. Inst.  & 250  Cont. inst. & \\
-\end{tabular}  
-%\begin{center}\end{center} 
+\end{tabular}
+%\begin{center}\end{center}
 \caption{Instance filter steps} \label{tab:filters}
 \end{table}
 \end{center}
 
-\paragraph{First Instances Filter.} As already mentioned an important characteristic of an instances is its computational difficulty, i.e., the CPU time needed by a complete solver (cf.~\S \ref{sec:algo}) to solve the instance to global optimality. Accordingly, for each of the gathered instance we run the solvers in {\tt GAMS} (see Table \ref{}) able to solve it to global optimality. The number of solvers depends on the category of the instances under consideration. Then in order to reduce the number of instances we performed a first filter based on a relative measure of computational difficulty, i.e., we discarded all ``easy'' instances which are solved by at least 30\% of the complete solvers within a time limit of 30 seconds. Thanks to this first filter we obtained what we call the {\it filtered test bed}.    
+\paragraph{First Instances Filter.} As already mentioned an important characteristic of an instances is its computational difficulty, i.e., the CPU time needed by a complete solver (cf.~\S \ref{sec:algo}) to solve the instance to global optimality. Accordingly, for each of the gathered instance we run the solvers in {\tt GAMS} (see Table \ref{}) able to solve it to global optimality. The number of solvers depends on the category of the instances under consideration. Then in order to reduce the number of instances we performed a first filter based on a relative measure of computational difficulty, i.e., we discarded all ``easy'' instances which are solved by at least 30\% of the complete solvers within a time limit of 30 seconds. Thanks to this first filter we obtained what we call the {\it filtered test bed}.
 
 
-%In Table \ref{tab:initialSet}, we report the number of instances in the filtered set subdivided according to the classification proposed in Section \ref{sec:classification}. We present in the table two different options for the field {\it Objective Functions}, i.e., Quadratic and Convex; three different options for the field {\it Variables}, i.e., Binary, Continuous and General and three different options for the field {\it Constraints}, i.e., Linear, Quadratic and Convex. The other categories of instances were not represented in the initial test bed. In particular the gathered a large number of Quadratic Binary Linear (QBL), Quadratic Continuous Quadratic (QCQ) and Quadratic General Quadratic (QGQ) instances, i.e., 1791 instances, 1957 instances and 2524 instances respectively. We gathered 901 Convex General Convex (CGC) instances. We gathered relatively few Quadratic Binary Quadratic (QBQ), Convex Continuous Convex (CCC) and Convex Mixed Convex (CMC) instances, i.e., 175 instances, 195 instances and 201 instances respectively. Finally we gathered only 17 Quadratic Mixed Linear (QML) instances.  
+%In Table \ref{tab:initialSet}, we report the number of instances in the filtered set subdivided according to the classification proposed in Section \ref{sec:classification}. We present in the table two different options for the field {\it Objective Functions}, i.e., Quadratic and Convex; three different options for the field {\it Variables}, i.e., Binary, Continuous and General and three different options for the field {\it Constraints}, i.e., Linear, Quadratic and Convex. The other categories of instances were not represented in the initial test bed. In particular the gathered a large number of Quadratic Binary Linear (QBL), Quadratic Continuous Quadratic (QCQ) and Quadratic General Quadratic (QGQ) instances, i.e., 1791 instances, 1957 instances and 2524 instances respectively. We gathered 901 Convex General Convex (CGC) instances. We gathered relatively few Quadratic Binary Quadratic (QBQ), Convex Continuous Convex (CCC) and Convex Mixed Convex (CMC) instances, i.e., 175 instances, 195 instances and 201 instances respectively. Finally we gathered only 17 Quadratic Mixed Linear (QML) instances.
 
 \bigskip
 The characteristics of the instances in the final library are presented in Table \ref{tab:FinalSet-D} for \emph{discrete} instances (*\{B,M,I,G\}*) and in Table \ref{tab:FinalSet-C} for \emph{continuous} ones (*C*).
@@ -107,9 +107,9 @@ Obj. Fun. & Variables & Constraints & \#\\
 Total     &         &           & 600 \\
 %
 \bottomrule
-\end{tabular}  
+\end{tabular}
 \label{tab:FinalSet-D}
-\caption{Classification of the final set of discrete instances} 
+\caption{Classification of the final set of discrete instances}
 \end{table}
 
 
@@ -138,40 +138,43 @@ Obj. Fun. & Constraints & \#\\
 Total                    &           & 250 \\
 %
 \bottomrule
-\end{tabular}  
+\end{tabular}
 \label{tab:FinalSet-C}
-\caption{Classification of the final set of continuous instances} 
+\caption{Classification of the final set of continuous instances}
 \end{table}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Instance Format}\label{subsec:format}
 \framebox{TASK X : write }
-In the call for instances no specific formats were imposed 
-%we did not impose a specific format 
-for the submissions. 
+In the call for instances no specific formats were imposed
+%we did not impose a specific format
+for the submissions.
 %In this phase we also eliminated multiples copies of the same instance.
 To evaluate the instances we decided, for practical reasons, to use GAMS as common platform for all the experiments involving commercial solvers.
 For this reason, we decided to translate all instances into the \texttt{.gms} gams format.
  In a preliminary phase, all the instances received were divided according to their format and subsequently translated.
 In Sect.
-%~\ref{subsec:CP_convex} 
-the tools used 
+%~\ref{subsec:CP_convex}
+the tools used
 to translate an instance from a given format to the \texttt{.gms} format
-%to translate an instance from and to a given format to the \texttt{.gms} format 
+%to translate an instance from and to a given format to the \texttt{.gms} format
 are described more in detail.\\
 
-As second format, we introduced 
-a specific format \texttt{.qplib}. This new format is capable to describe all the instances of the library in a sparse form. 
-In comparison to a more \emph{high level} format like \texttt{.gms}, the new format presents two advantages:  
+In addition, we have introduced
+a specific format \texttt{.qplib}. This new format is capable of describing
+all the instances of the library in a sparse form.
+In comparison to a more \emph{high level} format like \texttt{.gms}, the new
+format presents two advantages:
 it is easier to read by a self-made parser and it produces smaller files.
-\textcolor{red}{ToDo: describe \texttt{.qplib} format. Maybe in an appendix?}  
+See Appendix~\label{sec:format} for details.
+%\textcolor{red}{ToDo: describe \texttt{.qplib} format. Maybe in an appendix?}
 
 % is lighter in terms of sie
-%  significantly 
-%less memory 
-%in comparison and 
+%  significantly
+%less memory
+%in comparison and
 
-% for this reason we used the \texttt{.gms} format as one of the format of the library. %checked if one instance was present copies of the same instance, potentially written in different formats 
+% for this reason we used the \texttt{.gms} format as one of the format of the library. %checked if one instance was present copies of the same instance, potentially written in different formats
 
 
 
@@ -188,8 +191,8 @@ For each instance of the starting set, the following features have been collecte
 \item Objective function characteristics:
 \begin{itemize}
 \item Type of objective function:  Linear, Convex or Quadratic.
-\item Density of the objective function, i.e. the percentage of nonzero entries of $Q_0$. 
-\item Percentage of negative eigenvalues of $Q_0$.  
+\item Density of the objective function, i.e. the percentage of nonzero entries of $Q_0$.
+\item Percentage of negative eigenvalues of $Q_0$.
 \end{itemize}
 \item Variables characteristics:
 \begin{itemize}
@@ -200,11 +203,11 @@ For each instance of the starting set, the following features have been collecte
 \item Constraints characteristics:
 \begin{itemize}
 \item Number of Linear, Convex and Quadratic constraints.
-\item Density of the constraints, i.e. the percentage of nonzero entries of the coefficients of the Linear, Continuous and Quadratic constraints. 
+\item Density of the constraints, i.e. the percentage of nonzero entries of the coefficients of the Linear, Continuous and Quadratic constraints.
 \end{itemize}
 \end{itemize}
 
-The mentioned features 
+The mentioned features
 \begin{itemize}
 \item constraint-types: big-M constraints? box-constraints? combinatorial constraints? linear network?
 \item nonconvex: whether they can be turned into cones through appropriate decomposition
@@ -247,7 +250,7 @@ Solver-dependent characteristics:
 
 
 
- 
+
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
