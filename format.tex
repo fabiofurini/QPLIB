@@ -38,6 +38,7 @@ linear programs (LP)
  \st & c\s{L} \leq A x + \half [x,Q\s{C},x] \leq c\s{U}
      \tim{and} x\s{L} \leq x \leq x\s{U},
 \end{align*}
+\todo[inline]{\small Stefan: Are LPQC and QPQC frequently used abbreviations? If a linear program has quadratic constraints, how can it then still be a linear program? I am more familiar with the abbreviations QCP instead of LPQC and QCQP instead of QPQC. I further think that one could skip QCP and consider them as part of QCQP.}
 where $Q\s{C}$ is the diagonal matrix with blocks $Q\s{C}_k$, $k=1,\ldots,m$,
 $Q$ and the $Q\s{C}_k$ are symmetric $n$ by $n$ Hessian matrices,
 $A$ is a rectangular $m$ by $n$ constraint matrix,
@@ -175,6 +176,18 @@ non-default constraint name, if $n^c_d > 0$,  one pair per line} & \\
 \end{longtable}
 %}
 
+\todo[inline]{\small Stefan: I would suggest to make it simpler, even though that
+would reduce flexibility. Always fix the default value for coefficients to 0
+(otherwise, how you parse this? First initialize a n x n matrix with the non-zero
+default and then overwrite with the given entries, which may then be zero?)
+and have no default bounds for variables. If you then also adapt the suggestion
+to use a constraint sense ($\leq$,$\geq$,$=$) and a right-hand-side instead of
+a left- and right-hand-side, then there is also no need to specify a value for infinity.
+This would leave out ranged constraints - but are they really used? One could
+do it like CPLEX and have an extra constraint sense for ranges and an extra
+section to specify the range.}
+
+
 %\end{tabular}
 
 \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\texttt{#1}}
@@ -208,6 +221,11 @@ integer variables):
 \item [MIQP]    a mixed-integer quadratic program, and
 \item [MIQPQC]  a mixed-integer quadratic program with quadratic constraints.
 \end{description}
+\todo[inline]{\small Stefan: I agree that leaving out information on
+numerical properties of the matrices and vectors (convexity, etc.) is good here.
+Such properties may also depend on tolerances, etc.
+As above, I would suggest to eliminate LPQC and rename QPQC into QCP.
+Having a string for ``unspecified'' may be nice, too, or one just uses MIQCQP in this case.}
 \end{description}
 
 
