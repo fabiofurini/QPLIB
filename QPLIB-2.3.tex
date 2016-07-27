@@ -36,7 +36,7 @@ Incomplete methods are usually realized as local search algorithms, asymptotical
 % -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 \subsubsection{Incomplete methods}\label{s:incomplete}
 
-Local search methods typically require as an input a solution $x'$ and attempt to improve it---either towards feasibility, or towards optimality, or both---using only information that is available in a neighborhood of $x'$. In general, local search methods are incomplete. As remarked above, however, local search methods deployed on a convex problem behave like complete methods, possibly via devices that that allow to find a feasible starting solution if there is one (the so-called ``phase 0'').
+Local search methods typically require as an input a solution $x'$ and attempt to improve it---either towards feasibility, or towards optimality, or both---using only information that is available in a neighborhood of $x'$. In general, local search methods are incomplete. As remarked above, however, local search methods deployed on a convex problem behave like complete methods, possibly via devices that that allow one to find a feasible starting solution if there is one (the so-called ``phase 0'').
 
 Most local search methods for *C* are iterative in nature, and need a feasible starting point $x^0$ as input. The ($k+1$)-st iterate is obtained as $x^{k+1} = x^k + \alpha_k d^k$, where $\alpha_k$ (a scalar) is the {\it step length}, and $d^k$ (a vector) is the {\it search direction}, e.g.~belonging to a tangent manifold and having a negative directional derivative at $x^k$, in order to improving optimality while reducing infeasibility. Local search methods for *I* are also iterative, but since defining a useful notion of descent direction is harder in presence of integer variables, $d^k$ and $\alpha_k$ are usually computed in different ways, depending on the application at hand. 
 
@@ -124,7 +124,7 @@ The solvers in Table \ref{t:solvers} BB type methods are:
  %
 \item {\sc CPLEX}, which implements a complete BB algorithm for QGL;
 %
- \item {\sc KNitro\_bb}, {\sc BonMin}, {\sc sBB}, {\sc XPress}, {\sc GuRoBi}, which implement complete BB algorithms for CGC. {\bf how about {\sc mosek}?}
+ \item {\sc Knitro\_bb}, {\sc BonMin}, {\sc sBB}, {\sc Xpress}, {\sc Gurobi}, and {\sc Mosek} which implement complete BB algorithms for CGC.}
 \end{itemize}
 %
 We remark that the latter category can be used as incomplete solvers for QGQ. We also remark that CPLEX can currently only target problems with linear constraints when the objective function is nonconvex \cite{bliek}.
