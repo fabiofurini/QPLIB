@@ -52,7 +52,7 @@ Second Filter & $\Downarrow$  &  & \\
 \end{table}
 \end{center}
 
-\paragraph{First Instances Filter.} As already mentioned an important characteristic of an instances is its computational difficulty, i.e., the CPU time needed by a complete solver (cf.~\S \ref{sec:algo}) to solve the instance to global optimality. Accordingly, for each of the gathered instance we run the solvers in {\tt GAMS} (see Table \ref{}) able to solve it to global optimality. The number of solvers depends on the category of the instances under consideration. Then in order to reduce the number of instances we performed a first filter based on a relative measure of computational difficulty, i.e., we discarded all ``easy'' instances which are solved by at least 30\% of the complete solvers within a time limit of 30 seconds. Thanks to this first filter we obtained what we call the {\it filtered test bed}.
+\paragraph{First Instances Filter.} As already mentioned an important characteristic of an instances is its computational difficulty, i.e., the CPU time needed by a complete solver (cf.~\S \ref{sec:algo}) to solve the instance to global optimality. Accordingly, for each of the gathered instance we run the solvers in {\tt Gams} (see Table \ref{}) able to solve it to global optimality. The number of solvers depends on the category of the instances under consideration. Then in order to reduce the number of instances we performed a first filter based on a relative measure of computational difficulty, i.e., we discarded all ``easy'' instances which are solved by at least 30\% of the complete solvers within a time limit of 30 seconds. Thanks to this first filter we obtained what we call the {\it filtered test bed}.
 
 
 %In Table \ref{tab:initialSet}, we report the number of instances in the filtered set subdivided according to the classification proposed in Section \ref{sec:classification}. We present in the table two different options for the field {\it Objective Functions}, i.e., Quadratic and Convex; three different options for the field {\it Variables}, i.e., Binary, Continuous and General and three different options for the field {\it Constraints}, i.e., Linear, Quadratic and Convex. The other categories of instances were not represented in the initial test bed. In particular the gathered a large number of Quadratic Binary Linear (QBL), Quadratic Continuous Quadratic (QCQ) and Quadratic General Quadratic (QGQ) instances, i.e., 1791 instances, 1957 instances and 2524 instances respectively. We gathered 901 Convex General Convex (CGC) instances. We gathered relatively few Quadratic Binary Quadratic (QBQ), Convex Continuous Convex (CCC) and Convex Mixed Convex (CMC) instances, i.e., 175 instances, 195 instances and 201 instances respectively. Finally we gathered only 17 Quadratic Mixed Linear (QML) instances.
@@ -150,8 +150,8 @@ In the call for instances no specific formats were imposed
 %we did not impose a specific format
 for the submissions.
 %In this phase we also eliminated multiples copies of the same instance.
-To evaluate the instances we decided, for practical reasons, to use GAMS as common platform for all the experiments involving commercial solvers.
-For this reason, we decided to translate all instances into the \texttt{.gms} gams format.
+To evaluate the instances we decided, for practical reasons, to use Gams as common platform for all the experiments involving commercial solvers.
+For this reason, we decided to translate all instances into the \texttt{.gms} Gams format.
  In a preliminary phase, all the instances received were divided according to their format and subsequently translated.
 In Sect.
 %~\ref{subsec:CP_convex}
