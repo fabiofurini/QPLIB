@@ -202,14 +202,14 @@ journal = {Mathematical Programming},
 volume  = 39, number = 1, pages = {93-116}, year = 1987}
 
 @article{ChenGui13:coap,
-author = {P. Chen amd C. Gui},
+author = {P. Chen and C. Gui},
 title  = {Linear convergence analysis of the use of gradient projection
           methods on total variation problems},
 journal = {Computational Optimization and Applications},
 volume = 54, number = 2, pages = {283-315}, year = 1987}
 
 @article{GoulOrbaToin15:coap,
-author = {N. I. M. Gould and and D. Orban and {\relax Ph}. L. Toint},
+author = {N. I. M. Gould and D. Orban and {\relax Ph}. L. Toint},
 title  = {{CUTE}st : a Constrained and Unconstrained Testing Environment with
           safe threads for mathematical optimization},
 journal = {Computational Optimization and Applications},
@@ -241,5 +241,71 @@ year="2012",
 publisher="Springer US",
 address="Boston, MA",
 pages="201--218"
+}
+
+@Article{Kochenberger2014,
+author="Kochenberger, Gary
+and Hao, Jin-Kao
+and Glover, Fred
+and Lewis, Mark
+and L{\"u}, Zhipeng
+and Wang, Haibo
+and Wang, Yang",
+title="The unconstrained binary quadratic programming problem: a survey",
+journal="Journal of Combinatorial Optimization",
+year="2014",
+volume="28",
+number="1",
+pages="58--81",
+OPTabstract="In recent years the unconstrained binary quadratic program (UBQP) has grown in importance in the field of combinatorial optimization due to its application potential and its computational challenge. Research on UBQP has generated a wide range of solution techniques for this basic model that encompasses a rich collection of problem types. In this paper we survey the literature on this important model, providing an overview of the applications and solution methods.",
+issn="1573-2886",
+OPTdoi="10.1007/s10878-014-9734-0",
+OPTurl="http://dx.doi.org/10.1007/s10878-014-9734-0",
+OPTnote="reference for applications of binary QPs"
+}
+
+@Article{Rendl2008,
+author="Rendl, Franz
+and Rinaldi, Giovanni
+and Wiegele, Angelika",
+title="Solving Max-Cut to optimality by intersecting semidefinite and polyhedral relaxations",
+journal="Mathematical Programming",
+year="2008",
+volume="121",
+number="2",
+pages="307--335",
+OPTabstract="We present a method for finding exact solutions of Max-Cut, the problem of finding a cut of maximum weight in a weighted graph. We use a Branch-and-Bound setting that applies a dynamic version of the bundle method as bounding procedure. This approach uses Lagrangian duality to obtain a ``nearly optimal'' solution of the basic semidefinite Max-Cut relaxation, strengthened by triangle inequalities. The expensive part of our bounding procedure is solving the basic semidefinite relaxation of the Max-Cut problem, which has to be done several times during the bounding process. We review other solution approaches and compare the numerical results with our method. We also extend our experiments to instances of unconstrained quadratic 0--1 optimization and to instances of the graph equipartition problem. The experiments show that our method nearly always outperforms all other approaches. In particular, for dense graphs, where linear programming-based methods fail, our method performs very well. Exact solutions are obtained in a reasonable time for any instance of size up to n = 100, independent of the density. For some problems of special structure we can solve even larger problem classes. We could prove optimality for several problems of the literature where, to the best of our knowledge, no other method is able to do so.",
+issn="1436-4646",
+OPTdoi="10.1007/s10107-008-0235-8",
+OPTurl="http://dx.doi.org/10.1007/s10107-008-0235-8",
+OPTnote="reference for survey of methods for solving max-cut and unconstrained binary quadratic problems"
+}
+
+
+
+
+@Article{Buchheim2013,
+author="Buchheim, Christoph
+and Wiegele, Angelika",
+title="Semidefinite relaxations for non-convex quadratic mixed-integer programming",
+journal="Mathematical Programming",
+year="2013",
+volume="141",
+number="1",
+pages="435--452",
+OPTabstract="We present semidefinite relaxations for unconstrained non-convex quadratic mixed-integer optimization problems. These relaxations yield tight bounds and are computationally easy to solve for medium-sized instances, even if some of the variables are integer and unbounded. In this case, the problem contains an infinite number of linear constraints; these constraints are separated dynamically. We use this approach as a bounding routine in an SDP-based branch-and-bound framework. In case of a convex objective function, the new SDP bound improves the bound given by the continuous relaxation of the problem. Numerical experiments show that our algorithm performs well on various types of non-convex instances.",
+issn="1436-4646",
+OPTdoi="10.1007/s10107-012-0534-y",
+OPTurl="http://dx.doi.org/10.1007/s10107-012-0534-y"
+}
+
+@Article{Dong2016,
+  author =       {Dong, Hongbo},
+  title =        {Relaxing nonconvex quadratic functions by multiple adaptive diagonal perturbations},
+  journal =      {SIAM Journal on Optimization},
+  number =        {to appear},
+  note =         {arXiv:1403.5317 [math.OC]},
+  url =          {http://arxiv.org/abs/1403.5317},
+  year =         2016
 }
 
