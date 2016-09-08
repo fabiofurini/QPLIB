@@ -23,9 +23,98 @@ A consequence of our focus is that this paper is \emph{not} concerned about the 
 
 Optimization problems with quadratic constraints and/or objective function (QP) have been the subject of a considerable amount of research over the last 60 years. At least some of the rationale for this interest is likely due to the fact that they are the ``least-nonlinear nonlinear problems''. Hence, in particular for the convex case, tools and techniques that have been honed during decades of research for Linear Programming (LP), typically with integrality constraints (MILP), can often be extended to the quadratic case with at least less effort than what would be required for tackling general Non Linear Programming (NLP) problems, without or with integrality constraints (MINLP). This has indeed happened over and over again with different algorithmic techniques, such as Interior Point methods, active-set methods (of which the simplex method is a prototypical example), enumeration methods, cut-generation techniques, reformulation techniques, and many others ({\bf citations?}). Similarly, nonconvex continuous QP are perhaps the ``simplest'' class of problems that require features like spatial enumeration techniques to be solved. Hence, they are both the natural basis for the development of general techniques for nonconvex NLP, and a very specific class so that specialized approaches can be developed \cite{Dur2010,Burer2012}.
 
-On the other hand, (MI)QP is, in some sense, a considerably more expressive class than (MI)LP. Quadratic expressions are found, either naturally or after appropriate reformulations, in very many practical problems (\cite{Kochenberger2014}, {\bf citations?}). In general, any continuous function can be approximated with arbitrary accuracy (over a compact set) by a polynomial of arbitrary degree; in turn, every polynomial can be broken down to a system of quadratic expressions. Hence, (MI)QP is, in some sense, roughly as expressive as the whole of (MI)NLP. Of course this is, in principle, true for (MI)LP as well, but at the cost of much larger and much more complex formulations ({\bf citations?}). Hence, for many applications QP may represent the ``sweet spot'' between the effectiveness, but lower expressive power, of (MI)LP and the higher expressive power, but much higher computational cost, of (MI)NLP.
+On the other hand, (MI)QP is, in some sense, a considerably more expressive class than (MI)LP. Quadratic expressions are found, either naturally or after appropriate reformulations, in very many practical problems \cite{Kochenberger2014}. We survey several of these applications in Table \ref{tbl:application}. In general, any continuous function can be approximated with arbitrary accuracy (over a compact set) by a polynomial of arbitrary degree; in turn, every polynomial can be broken down to a system of quadratic expressions. Hence, (MI)QP is, in some sense, roughly as expressive as the whole of (MI)NLP. Of course this is, in principle, true for (MI)LP as well, but at the cost of much larger and much more complex formulations ({\bf citations?}). Hence, for many applications QP may represent the ``sweet spot'' between the effectiveness, but lower expressive power, of (MI)LP and the higher expressive power, but much higher computational cost, of (MI)NLP.
 
-\ldots
+\begin{center}
+\begin{longtable}{ lcl }
+%
+\caption{Application Domains of (MI)QP}\label{tbl:application} \\
+%
+\toprule
+Problem & Discrete? & Contributions \\
+\midrule
+\endfirsthead
+%
+\multicolumn{3}{l}{\emph{Table \ref{tbl:application} (Application Domains of (MI)QP) continued}} \\
+\toprule
+Problem & Discrete? & Contributions \\
+\midrule
+\endhead
+%
+\midrule 
+\multicolumn{3}{l}{\multirow{1}{\textwidth}{$^{\ddagger}$Applications with many manuscripts cite reviews and recent works \\[-12pt] \phantom{hi} \hfill \emph{continued}}} \\ \\
+\endfoot
+%
+\bottomrule 
+\multicolumn{3}{l}{\multirow{1}{\textwidth}{$^{\ddagger}$Applications with many manuscripts cite reviews and recent works. $^{\star}$TSP $\equiv$ Traveling Salesman Problem}} \\ \\ \\
+\endlastfoot
+%
+\multicolumn{3}{l}{{\bf Classical Problems that can be formulated as MIQP}} \\[1pt]
+%
+\multirow{1}{.55\textwidth}{Quadratic Assignment Problem (QAP)$^{\ddagger}$} & \checkmark & \cite{anstreicher:2003,loiola-etal:2007} \\ \cmidrule(rl){2-3}
+%
+Max-Cut & \checkmark & \cite{Rendl2008} \\ \cmidrule(rl){2-3}
+%
+Maximum clique$^{\ddagger}$ & \checkmark & \cite{bomze-etal:1999} \\
+\midrule
+%
+\multicolumn{3}{l}{{\bf Computational chemistry \& Molecular biology}} \\[1pt]
+%
+Zeolites && \cite{gounaris-etal:2013} \\
+%
+\midrule
+%
+\multicolumn{3}{l}{{\bf Computational geometry}} \\[1pt]
+%
+\multirow{1}{.55\textwidth}{Layout design} & \checkmark & \cite{anjos-liers:2012,castillo-etal:2005,dorneich-sahinidis:1995} \\ \cmidrule(rl){2-3}
+%
+\multirow{1}{.55\textwidth}{Maximizing polygon dimensions} && \cite{audet-etal:2011,audet-etal:2007,Audet-etal:2009,audet-etal:2002,Audet-Ninin:2013} \\ \cmidrule(rl){2-3}
+%
+Packing circles$^{\ddagger}$ && \cite{hifi-mhallah:2009,szabo-etal:2005} \\ \cmidrule(rl){2-3}
+%
+Nesting polygons && \cite{kallrath:2009,rebennack-etal:2009} \\ \cmidrule(rl){2-3}
+%
+Cutting ellipses && \cite{kallrath-rebennack:2013} \\ %\cmidrule(rl){2-3}
+%Nonconvex shapes \\
+\midrule
+%
+\multirow{1}{.55\textwidth}{{\bf Finance:} Portfolio selection optimization} && \multirow{1}{.25\textwidth}{\cite{deng-etal:2013,kallrath:2003,lin-etal:2005,maranas-etal:1997,parpas-rustem:2006,rios-sahinidis:2010}} \\ 
+%
+\midrule
+%
+\multicolumn{3}{l}{{\bf Process Networks}} \\[1pt]
+%
+%\multicolumn{3}{l}{Process networks optimisation problems typically involve two} \\
+%
+\multirow{1}{.55\textwidth}{Crude oil scheduling} & \checkmark & \cite{li-etal:2007,li-etal:2011,li-etal:2012,mouret-etal:2009,mouret-etal:2011} \\ \cmidrule(rl){2-3}
+%
+\multirow{1}{.55\textwidth}{Data reconciliation} & \checkmark & \cite{ruiz-grossmann:2011} \\ \cmidrule(rl){2-3}
+%
+\multirow{1}{.55\textwidth}{Multi-commodity flow} & \checkmark & \cite{tadayon-smith:2013} \\ \cmidrule(rl){2-3}
+%
+\multirow{1}{.55\textwidth}{Multi-period blending} & \checkmark & \cite{kolodziej-etal:2013:jogo,kolodziej-etal:2013} \\ \cmidrule(rl){2-3}
+%
+\multirow{1}{.55\textwidth}{Natural gas networks} & \checkmark & \cite{hasan-etal:2011,li-etal:2011-aiche_journal,li-etal:2011-jogo} \\ \cmidrule(rl){2-3}
+%
+Pooling$^{\ddagger}$ & \checkmark & \multirow{1}{.25\textwidth}{\cite{Alfaki-Haugland:2013,Castillo-etal:2013,dambrosio-etal:2011pooling,Faria-Bagajewicz:2012,misener-floudas:2009,misener-floudas:2010-genpooling,Papageorgiou-etal:2012,pham-etal:2009,ruiz-etal:2013,visweswaran:2009}} \\ \\ \cmidrule(rl){2-3}
+%
+\multirow{1}{.55\textwidth}{Open-pit mine scheduling} & \checkmark & \cite{bley-etal:2012} \\ \cmidrule(rl){2-3}
+%
+Reverse osmosis & \checkmark & \cite{saif-etal:2008} \\ \cmidrule(rl){2-3}
+%
+Supply chain & \checkmark & \cite{nyberg-etal:2012} \\ \cmidrule(rl){2-3}
+%
+Water networks$^{\ddagger}$ & \checkmark & \multirow{1}{.25\textwidth}{\cite{ahmetovic-grossmann:2010,bagajewicz:2000,bragalli-etal:2011,castro-teles:2013,geissler-etal:2013,gleixner-etal:2012,jezowski-2010,khor-etal:2014,ponceortega-etal:2010,teles-etal:2012}} \\ \\
+%
+\midrule
+%
+\multicolumn{3}{l}{{\bf Robotics}} \\[1pt]
+%
+\multirow{1}{.55\textwidth}{TSP$^{\star}$ with Neighborhoods} & \checkmark & \cite{gentilini-etal:2013} \\
+%
+\end{longtable}
+\end{center}
+
 
 The structure of this paper is the following. In \S~\ref{sec:QPbasic} we review the basic notions about QP. In particular, \S~\ref{subsec:notation} sets out the notation, \S~\ref{sec:classification} proposes a---to the best of our knowledge, new---taxonomy of QP that helps us in discussing the (very) different classes of QPs, \S~\ref{sec:algo} very briefly reviews the solution methods for QP upon which the solvers we have employed are based, and \S~\ref{subsec:solver} describes the solvers. Then, \S~\ref{sec:lib} describes the process used to obtain the library and its results; the software tools that we have used, and that are freely released together with the library, are discussed in \S~\ref{subsec:tools}. Some conclusions are drawn in \S~\ref{sec:conclusions}, after which in the Appendix a complete description of all the instances of the library is provided.
 
