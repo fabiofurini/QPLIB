@@ -72,41 +72,55 @@ The characteristics of the instances in the final library are presented in Table
 Obj. Fun. & Variables & Constraints & \#\\
 \cmidrule(lr){1-4}
 %
-\multirow{7}*{Linear}
-          & Binary  & Quadratic &  71 \\
+\multirow{5}*{Linear}
+          & \multirow{1}*{Binary}
+%                    & None      &   \\
+%          &         & Linear    &  \\
+                    & Quadratic &   9 \\[1.2 ex]
           & \multirow{2}*{Mixed}
-                    & Convex    &   5 \\
-          &         & Quadratic & 277 \\
-%          & \multirow{2}*{Integer}
-%                    & Convex    &  15 \\
-%          &         & Quadratic &   5 \\
-          & \multirow{2}*{General}
-                    & Convex    &  22 \\
-          &         & Quadratic &   8 \\
+                    & Convex    &   2\\[1.2 ex]
+          &         & Quadratic &    118\\[1.2 ex]
+          & \multirow{1}*{Integer}
+%                    & Linear    &    \\
+                   & Quadratic &    2\\[1.2 ex]
+          & \multirow{1}*{General}
+%                    & Linear    &    \\
+                   & Quadratic &    3\\[1.2 ex]
+%\multirow{5}*{Linear}
+%          & Binary  & Quadratic &   9\\
+%          & \multirow{2}*{Mixed}
+%                    & Convex    &   2\\
+%          &         & Quadratic &  118\\
+%%          & \multirow{2}*{Integer}
+%%                    & Convex    &  15 \\
+%%          &         & Quadratic &   5 \\
+%          & {General} & Quadratic &   3 \\
 %\hline
 \\
-\multirow{4}*{Convex}
-          & Binary  & Linear    &  12 \\
+\multirow{3}*{Convex}
+          & Binary  & Linear    &  2 \\[1.2 ex]
           & \multirow{2}*{Mixed}
-                    & Linear    &  37 \\
-          &         & Quadratic &   3 \\
-          & General & Linear    &   1 \\
+                    & Linear    &   13\\[1.2 ex]
+          &         & Quadratic &    1\\[1.2 ex]
+%          & General & Linear    &    \\
 %\hline
 \\
 \multirow{7}*{Quadratic}
           & \multirow{3}*{Binary}
-                    & None      &  29 \\
-          &         & Linear    & 180 \\
-%          &         & Quadratic &   8 \\
+                    & None      &   23\\[1.2 ex]
+          &         & Linear    &  59\\[1.2 ex]
+          &         & Quadratic &   5 \\[1.2 ex]
           & \multirow{2}*{Mixed}
-                    & Linear    &  12 \\
-          &         & Quadratic &   9 \\
-          & Integer & Linear    &   2 \\
-          & \multirow{2}*{General}
-                    & Linear    &   1 \\
-          &         & Quadratic &   2 \\
+                    & Linear    &   10\\[1.2 ex]
+          &         & Quadratic &    1\\[1.2 ex]
+%          & Integer & Linear    &    \\
+          & \multirow{1}*{Integer}
+                    & Linear    &    2\\[1.2 ex]
+          & \multirow{1}*{General}
+                    & Quadratic    &    1\\[1.2 ex]
+%          &         & Quadratic &    \\
 \hline
-Total     &         &           & 600 \\
+Total     &         &           & 251\\
 %
 \bottomrule
 \end{tabular}
@@ -125,19 +139,19 @@ Total     &         &           & 600 \\
 Obj. Fun. & Constraints & \#\\
 \cmidrule(lr){1-3}
 %
-\multirow{2}*{Linear}    & Convex    &  14 \\
-                         & Quadratic &  71 \\
-\multirow{3}*{Convex}    & None      &   6 \\
-                         & Box       &   6 \\
-                         & Linear    &  50 \\
-                         & Convex    &   3 \\
-                         & Quadratic &   6 \\
-\multirow{3}*{Quadratic} & Box       &   8 \\
-                         & Linear    &  19 \\
-                         & Convex    &  27 \\
-                         & Quadratic &  40 \\
+\multirow{2}*{Linear}    & Convex    &   11\\[1.2 ex]
+                         & Quadratic &   50\\[1.2 ex]
+\multirow{3}*{Convex}    
+                         & Box       &   3 \\[1.2 ex]
+                         & Linear    &   12\\[1.2 ex]
+                         & Convex    &    2\\[1.2 ex]
+                         & Quadratic &    5\\[1.2 ex]
+\multirow{3}*{Quadratic} 
+                         & Linear    &   5\\[1.2 ex]
+                         & Convex    &   11\\[1.2 ex]
+                         & Quadratic &   17\\[1.2 ex]
 \hline
-Total                    &           & 250 \\
+Total                    &           & 116 \\
 %
 \bottomrule
 \end{tabular}
