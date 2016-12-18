@@ -143,67 +143,60 @@ filters described in the the next paragraph.
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Instance Selection}\label{subsec:selection}
 
-The first goal of the library is to represent the largest possible majority of
-the different categories of QP problems.
-The second goal of the library is to gather ``challenging'' instances,
-i.e., instances which can not be easily solved by  state-of-the-art
-solvers.
-The third goal is to include in each of the categories a set of well
-diversified instances.
-Finally, the fourth goal is to obtain a library whose set of instances
-is neither too small either too large, to preserve statistical
-relevance while at the same time being computationally manageable.
-
+During the development of the library, a discussion ensued about what
+the expected gols that we wanted to achieve. The following four goals
+where finally identified:
+%
+\begin{enumerate}
+ \item represent as much as possible all the different categories of QP
+       problems;
+ %
+ \item gather ``challenging'' instances, i.e., ones which can not be easily
+       solved by  state-of-the-art solvers;
+ %
+ \item include for each of the categories a set of well-diversified
+       instances;
+ %
+ \item obtain a set of instances which is neither too small, so as to
+       preserve statistical relevance, nor too large so as to being
+       computationally manageable.
+\end{enumerate
+%
 To achieve the aforementioned goals, we performed the following two
-filters applied in cascade.
-
+filters, applied in cascade.
+%
 \begin{itemize}
-
-\item \emph{First Instances Filter.}\\
-The first filter is design to drastically reduce the number of
-instances by eliminating the ``easy'' ones. An empirical measure way
-of testing the hardness of an instance is the CPU time needed by a
-complete solver (cf.~\S \ref{sec:algo}) to solve the instance to
-global optimality.
-%n this step, we decided to use the broadest set of solvers able to tackle the different categories of quadratic problems.\\
-Accordingly, for each of the gathered instance, we run the solvers in
-{\tt Gams} (see Table \ref{t:solvers}) able to solve it to global optimality.
-The number of solvers depends on the category of the instances under
-consideration.
-We then filtered according to a relative measure of computational
-difficulty, i.e., we discarded all instances that are solved by at
-least 30\% of the complete solvers within a time limit of 30 seconds.
-
-\item \emph{Second Instances Filter.}\\
-The goal of the second filter is to eliminate instances that are similar.
-%We used the instance features presented in
-%Section~\ref{subsec:feature} and the CPU solving time obtained in the
-%first filter to guide this second step. \\
-We carefully analysed the instances and we grouped them accordingly to
-similar features. To reduce the size of the test-bed
-while keeping the representativeness of the library,   we kept for
-each only few instances.
-Finally in order to have a deeper insight on the computational hardness of the
-instances, we performed a second round of tests on the filtered set of
-instances.  We used a general purpose solver able to tackle all QP categories and we set a time limit of 120 seconds. 
-All the instances which have been solved to
-proven optimality within this time limit have been discarded.
+ \item \emph{First Instances Filter.}\\
+       The first filter was designed to drastically reduce the number of
+       instances by eliminating the ``easy'' ones. An empirical measure
+       for the hardness of an instance is the CPU time needed by a
+       complete solver (cf.~\S \ref{sec:algo}) to solve it to
+       global optimality. Accordingly, for each of the gathered instance we
+       ran the complete solvers in {\tt Gams} (cf.~Table \ref{t:solvers})
+       capable of solving it, whose number depends on the category of the
+       instance under consideration. We then filtered according to a relative
+       measure of computational difficulty, i.e., we discarded all instances
+       that are solved by at least 30\% of the complete solvers within a time
+       limit of 30 seconds.
+ %
+ \item \emph{Second Instances Filter.}\\
+       The goal of the second filter was to eliminate ``similar'' instances.
+       We carefully analysed the instances one by one, and we clustered them
+       according to their features; for each cluster we kept only a few
+       representatives. Finally, in order to only keep computationally
+       challenging instances we ran a general purpose solver able to tackle
+       all QP categories with a time limit of 120 seconds; all the instances
+       which have been solved to proven optimality within this time limit were
+       discarded.
 \end{itemize}
+%
 In Table~\ref{tab:filters} we summarize the two filter steps, which
-allows us to identify the final set of $251$ discrete instances and
+allowed us to identify the final set of $251$ discrete instances and
 $116$ continuous instances.
-
-
-
-
-
-
-
 
 \begin{center}
 \begin{table}[]
  \centering
-
  \setlength{\tabcolsep}{5pt}
 %  \arraystretch{1}
 \begin{tabular}{cccc}
@@ -220,6 +213,27 @@ Second Filter & $\Downarrow$  & $\Downarrow$  & \\
 \caption{Instance filter steps} \label{tab:filters}
 \end{table}
 \end{center}
+
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+\subsection{Analysis of the final set of instances}\label{subsec:final set}
+
+In this section we analyse the feature of the instances selected to be
+part of library.
+The characteristics of the instances in the final library are
+presented in Table \ref{tab:DD} for \emph{discrete} instances
+(*\{B,M,I,G\}*) and in Table \ref{tab:CC} for
+\emph{continuous} ones (*C*).
+For each category, the Tables report in column $\#$ the corresponding
+number of instances.
+The final set well respects the original distribution of the gathered
+instances among the different categories.
+It is worth noticing that the classical discrete categories (such as
+(L,M,Q) or (Q,B,L)) are well represented by $118$ and $59$  instances
+respectively. On the other side, the classical continuous categories
+(such as (L,C,Q) and (QCQ)) are also well represented by $50$ and $17$
+ instances respectively.
+Moreover, the library covers a large majority of all possible
+categories of instances.
 
 
 \begin{center}
@@ -331,26 +345,10 @@ Total                    &           & 116 \\
 
 
 
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\subsection{Analysis of the final set of instances}\label{subsec:final set}
 
-In this section we analyse the feature of the instances selected to be
-part of library.
-The characteristics of the instances in the final library are
-presented in Table \ref{tab:DD} for \emph{discrete} instances
-(*\{B,M,I,G\}*) and in Table \ref{tab:CC} for
-\emph{continuous} ones (*C*).
-For each category, the Tables report in column $\#$ the corresponding
-number of instances.
-The final set well respects the original distribution of the gathered
-instances among the different categories.
-It is worth noticing that the classical discrete categories (such as
-(L,M,Q) or (Q,B,L)) are well represented by $118$ and $59$  instances
-respectively. On the other side, the classical continuous categories
-(such as (L,C,Q) and (QCQ)) are also well represented by $50$ and $17$
- instances respectively.
-Moreover, the library covers a large majority of all possible
-categories of instances.
+
+
+
 
 To graphically represent the library we report some
 graphical representations of the instance main features.
