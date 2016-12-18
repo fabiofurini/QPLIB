@@ -183,11 +183,13 @@ filters, applied in cascade.
        The goal of the second filter was to eliminate ``similar'' instances.
        We carefully analysed the instances one by one, and we clustered them
        according to their features; for each cluster we kept only a few
-       representatives. Finally, in order to only keep computationally
-       challenging instances we ran a general purpose solver able to tackle
-       all QP categories with a time limit of 120 seconds; all the instances
-       which have been solved to proven optimality within this time limit were
-       discarded.
+       representatives. {\bf Comment: we may want to be a tad more specific
+       about what ``features'' exactly meant there}. Finally, in order to only
+       keep computationally challenging instances we ran a general purpose solver
+       able to tackle all QP categories with a time limit of 120 seconds; all the
+       instances which have been solved to proven optimality within this time limit
+       were discarded. {\bf Comment: this might actually be best characterized as
+       a third filter.}
 \end{itemize}
 %
 In Table~\ref{tab:filters} we summarize the two filter steps, which
@@ -217,24 +219,17 @@ Second Filter & $\Downarrow$  & $\Downarrow$  & \\
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Analysis of the final set of instances}\label{subsec:final set}
 
-In this section we analyse the feature of the instances selected to be
-part of library.
-The characteristics of the instances in the final library are
-presented in Table \ref{tab:DD} for \emph{discrete} instances
-(*\{B,M,I,G\}*) and in Table \ref{tab:CC} for
-\emph{continuous} ones (*C*).
-For each category, the Tables report in column $\#$ the corresponding
-number of instances.
-The final set well respects the original distribution of the gathered
-instances among the different categories.
-It is worth noticing that the classical discrete categories (such as
-(L,M,Q) or (Q,B,L)) are well represented by $118$ and $59$  instances
-respectively. On the other side, the classical continuous categories
-(such as (L,C,Q) and (QCQ)) are also well represented by $50$ and $17$
- instances respectively.
-Moreover, the library covers a large majority of all possible
-categories of instances.
-
+We now analyse the features of the instances selected to be part of the
+library. The characteristics of the instances are presented in Table
+\ref{tab:DD} for \emph{discrete} instances (*\{B,M,I,G\}*) and in Table
+\ref{tab:CC} for \emph{continuous} ones (*C*). For each category, the Tables
+report in column $\#$ the corresponding number of instances. It can be seen
+that the final set well respects the original distribution of the gathered
+instances among the different categories. Indeed, the discrete categories
+(LMQ) or (QBL) are well represented by $118$ and $59$ instances,
+respectively. Similarly, the continuous categories (LCQ) and (QCQ) are well
+represented by $50$ and $17$ instances, respectively. Moreover, the library
+actually covers the large majority of all possible categories of instances.
 
 \begin{center}
 \begin{table}
@@ -306,7 +301,8 @@ Total     &         &           & 251\\
 %
 \bottomrule
 \end{tabular}
-\caption{Classification of the final set of discrete instances}\label{tab:DD}
+\caption{Classification of the final set of discrete instances}
+\label{tab:DD}
 \end{table}
 \end{center}
 
@@ -339,74 +335,20 @@ Total                    &           & 116 \\
 %
 \bottomrule
 \end{tabular}
-\caption{Classification of the final set of continuous instances}\label{tab:CC}
+\caption{Classification of the final set of continuous instances}
+\label{tab:CC}
 \end{table}
 \end{center}
 
-
-
-
-
-
-
-
-To graphically represent the library we report some
-graphical representations of the instance main features.
-
-In Figure~\ref{fig:distribution} we represent 
-on the horizontal (resp. vertical) axis the number of variables (resp.
-constrains). Both axis are in logarithmic scale.
-The ``$+$'' points represent  the continuous instances, while the 
-``$\times$'' points represent the discrete instances. The figure shows that
-the library contains instances of different size in terms of variables
-and constraints. The number of constraints goes from few units up to
-one hundred thousands constraints, while the number of variables goes
-up to almost forty-five thousands.
-
-In Figures~\ref{fig:pic_var_small}~\ref{fig:pic_var_medium}~\ref{fig:pic_var_large},
-for each instances we report the total number of variables with a
-``$+$'' point and  the total number of discrete variables with a
-``$\times$'' point (i.e. binary and integer variables). The instances are
-sorted accordingly to the total number of variables and, for reason of
-readability, we splitted the figure into three sub figures. The first one hundred
-instances are presented in Figures~\ref{fig:pic_var_small},
-then the second two hundred instances are presented in
-Figure~\ref{fig:pic_var_medium} and finally, the remaining $67$
-instances are presented in Figure~\ref{fig:pic_var_large}.
-From the picture we evince that for all instance dimensions it is
-possible to find discrete instances with different percentages of
-continuous variables and purely continuous ones.
-
-
-
-In Figures~\ref{fig:pic_constr_small}~\ref{fig:pic_constr_medium}~\ref{fig:pic_constr_big},
-for each instances we report the total number of constraints with a
-``$+$'' point and the total number of quadratic (either convex of non
-convex) constraints with a ``$\times$'' point. The instances are sorted
-accordingly to the total number of constraints  and divided in the
-same manner as for Figures~\ref{fig:pic_var_small}~\ref{fig:pic_var_medium}~\ref{fig:pic_var_large}.
-Also in this case, we can see that for all sizes it is possible to
-find instances with only linear constraints and instances with
-different percentage of linear and quadratic constraints.
-
-In Figures~\ref{fig:pic_density} and~\ref{fig:pic_neg_eig},  we
-focused on the instances with a quadratic objective function.
-In Figures~\ref{fig:pic_density} we plot the density of the $Q^0$
-matrix and we sort the instance according to it. We observe that the
-majority of the instances have either a low or high density. However,
-also intermediate values are present. It is worth noticing that around 60 instances have a 
-density less that 5\% (see the Appendix for further details). 
-In Figures~\ref{fig:pic_neg_eig} we present  the percentage of
-negative eigenvalues and we sort the instance according to it. As
-expected, a vast majority of the instances have $50\% $ of negative
-eigenvalues. In addition, around $40$ instances are convex (i.e. $0\%$
-of negative eigenvalues) but also instances of high or low percentages
-of negative eigenvalues are present in the library.
-
-
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
+We now report some graphs that help in illustrating the main features
+of the instences. In Figure~\ref{fig:distribution} we plot the number
+of variables (horizontal axis) versus the number of constrains
+(vertical axis), both in logarithmic scale. Continuous instances are
+marked with ``$+$'', and discrete ones with ``$\times$''. The figure shows
+that the library contains a quite diverse set of instances of different in
+terms of number of variables and constraints. The number of constraints goes
+from few units up to one hundred thousands constraints, while the number of
+variables goes up to almost forty-five thousands.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}\centering
@@ -414,6 +356,21 @@ of negative eigenvalues are present in the library.
   \caption{Distribution of variables and constrains  of the qplib
 instances \label{fig:1}}
 \end{figure}
+
+Figure~\ref{fig:pic_var_small}, Figure~\ref{fig:pic_var_medium} and
+Figure~\ref{fig:pic_var_large} describe how discrete and continuous
+variables are distributed within the instances. The instances are
+sorted accordingly to the total number of variables and, for reason of
+readability, the graph is splitted in the three figures:
+Figure~\ref{fig:pic_var_small} describes the 100 smaller instances,
+Figure~\ref{fig:pic_var_medium} the 200 medium ones, and
+Figure~\ref{fig:pic_var_large} the 67 largest ones. For each instance
+we report the total number of variables with a ``$+$'', and the total
+number of discrete variables (binary or general integer) with a
+``$\times$''. The pictures clearly show that instances with different
+percentages of integer and continuous variables are present in the
+library, and well distributed across the whole spectrum of variable
+sizes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}\centering
@@ -431,6 +388,23 @@ instances \label{fig:1}}
   \caption{Number of variables (c) \label{fig:pic_var_large}}
 \end{figure}
 
+Similarly, Figures~\ref{fig:pic_constr_small}, Figure~\ref{fig:pic_constr_medium}
+and Figure~\ref{fig:pic_constr_big} describe how linear and quadratic
+constraints are distributed within the instances. The instances are sorted
+accordingly to the total number of constraints and divided in the
+same manner as for Figures~\ref{fig:pic_var_small}--\ref{fig:pic_var_large}.
+For each instances we report the total number of constraints with a ``$+$''
+and the total number of (either convex of nonconvex) quadratic constraints
+with a ``$\times$''. Also in this case, different percentages of linear and
+quadratic constraints are present and well-distributed across the spectrum
+of constraint sizes, although both medium- and large-size instances show a
+prevalence of lower percentages of quadratic constraints. In particular,
+from Figure~\ref{fig:pic_constr_big} we learn that while the maximum number
+of linear constraints exceeds 100000, the maximum number of quadratic
+constraints tops up at around 10000. This is, however, reasonable, considering
+how quadratic constraints can, in general, be expected to be much more
+computationally challenging than linear ones, especially if nonconvex.
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}\centering
   \includegraphics[width=0.85\textwidth]{pic_constr_small.png}
@@ -446,47 +420,36 @@ instances \label{fig:1}}
   \includegraphics[width=0.85\textwidth]{pic_constr_big.png}
   \caption{Number of constraints (c) \label{fig:pic_constr_big}}
 \end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-%\begin{figure}\centering
-%  \includegraphics[width=0.85\textwidth]{pic_quad_vs_convex_constr.png}
-%  \caption{Number of quadratic constraints (convex and non-convex)
-%\label{fig:pic_quad_vs_convex_constr}}
-%\end{figure}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-
-%\begin{figure}\centering
-%  \includegraphics[width=0.85\textwidth]{pic_fuffa.png}
-%  \caption{...\label{fig:9}}
-%\end{figure}
-
-\begin{figure}\centering
-  \includegraphics[width=0.85\textwidth]{pic_density.png}
-  \caption{Density \label{fig:pic_density}}
-\end{figure}
+Speaking of nonconvexity, Figure~\ref{fig:pic_neg_eig} focuses on
+the instances with a quadratic objective function, ordered by the
+the percentage of negative eigenvalues (vertical axis). Although
+almost all percentages are represented, the instances are mostly
+clustered around two values. About 25\% of the instances are convex,
+i.e., they have 0\% of negative eigenvalues. Among the others, a vast
+majority have around 50\% of negative eigenvalues. However, instances
+with high or low percentages of negative eigenvalues are present.
 
 \begin{figure}\centering
   \includegraphics[width=0.85\textwidth]{pic_neg_eig.png}
   \caption{Negative eigenvalues \label{fig:pic_neg_eig}}
 \end{figure}
 
+Similarly, Figure~\ref{fig:pic_density} shows the instances with a
+quadratic objective function sorted according to the density of the
+$Q^0$ matrix (vertical axis). The majority of the instances have either
+a very low or a rather high density: indeed, about 30\% of the instances
+have density smaller that 5\%, and about 30\% of the instances have
+density larger that 50\%. However, also intermediate values are present. 
 
+\begin{figure}\centering
+  \includegraphics[width=0.85\textwidth]{pic_density.png}
+  \caption{Density \label{fig:pic_density}}
+\end{figure}
 
-
-
-
-
-
-
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-
-
-
-
-
-
-
+{\bf Nothing about convexity of constraints? A graph plotting the
+number of convex quadratic constraints vs the total number of quadratic
+constraints?}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
