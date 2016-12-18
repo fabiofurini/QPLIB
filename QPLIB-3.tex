@@ -5,76 +5,76 @@
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \section{Library Construction}\label{sec:lib}
 
-
-
-
-In this section we present all the steps performed in order to build
-the new library. In \S \ref{subsec:instColl}, we describe the set of gathered
-instances. In \S \ref{subsec:selection}
-we present the features used to classified the instances and 
-we discuss the issues concerning the format of the instances. Finally in \S \ref{subsec:final set}, we describe the selection process
-used to filter the instances and we graphically present the main features of selected instances.
+In this section we present all the steps performed in order to build the
+new library. In \S \ref{subsec:instColl}, we describe the set of gathered
+instances. In \S \ref{subsec:selection} we present the features used to
+classify the instances and we discuss the issues concerning the format of
+the instances. Finally, in \S \ref{subsec:final set}, we describe the
+selection process used to filter the instances and we graphically present
+the main features of the selected instances.
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Instance Collection}\label{subsec:instColl}
 
 In this section we describe the procedure we adopted to gather the
 instances. In January $2014$, we issued an online call for instances
-using the principal international mailing lists.
-In particular, we addressed the mailing lists of the mathematical
+using the main international mailing lists of the mathematical
 optimization and numerical analysis communities, reaching in this way
 the largest possible set of interested researchers and practitioners.
 The call remained open for 10 months, during which we received a large
-number of contributions of different natures. The instances
-we gathered come from theoretical studies and from real-world
+number of contributions of different nature. The instances we gathered
+come both from theoretical studies as well as from real-world
 applications.
 
 In addition to spontaneous contribution we analysed the other generic
 libraries of instances available  on internet and containing QP
-instances. Namely, we cite here the libraries from which we gathered instances:
-
+instances. Namely, the libraries from which we gathered instances are
+%
 \begin{itemize}
- \item {\tt BARON Library}
-\url{http://www.minlp.com/nlp-and-minlp-test-problems}
- \item {\tt CUTEst Library}
-\url{https://ccpforge.cse.rl.ac.uk/gf/project/cutest/wiki}
- \item {\tt GAMS Library}
-\url{http://www.gamsworld.org/performance/performlib.htm}
- \item {\tt MacMINLP} \url{https://wiki.mcs.anl.gov/leyffer/index.php/MacMINLP}
- \item {\tt Meszaros} \url{http://www.doc.ic.ac.uk/~im/00README.QP}
- \item {\tt MINLP} \url{http://www.gamsworld.org/minlp/minlplib.htm}
- \item {\tt POLIP} \url{http://polip.zib.de/pipformat.php}
+ \item the {\tt BARON} library
+ \url{http://www.minlp.com/nlp-and-minlp-test-problems};
+%
+\item the {\tt CUTEst} library
+ \url{https://ccpforge.cse.rl.ac.uk/gf/project/cutest/wiki};
+%
+\item the {\tt GAMS} library
+ \url{http://www.gamsworld.org/performance/performlib.htm};
+%
+\item the {\tt MacMINLP} library
+ \url{https://wiki.mcs.anl.gov/leyffer/index.php/MacMINLP};
+%
+\item the {\tt Meszaros} library
+ \url{http://www.doc.ic.ac.uk/~im/00README.QP};
+%
+\item the {\tt MINLP} library
+ \url{http://www.gamsworld.org/minlp/minlplib.htm};
+%
+\item the {\tt POLIP} library
+ \url{http://polip.zib.de/pipformat.php}.
 \end{itemize}
 
 Other quadratic instances were found in online libraries devoted to
-specific QP problems as
-Max-Cut, Quadratic Assignment, Portfolio Optimization and several
-others.
+specific QP problems as Max-Cut, Quadratic Assignment, Portfolio
+Optimization, and several others.
 
 At the end of this process we gathered more than eight thousand
 instances. Three fourths of them contained discrete variables, while
-the remaining ones contained only continuous variables.
-%
-More in details, we gathered a large number of Quadratic Binary Linear
-(QBL), Quadratic Continuous Quadratic (QCQ) and Quadratic General
-Quadratic (QGQ) instances, i.e., $\approx 1800$ instances, $\approx
-2000$ instances and $\approx 2500$ instances respectively.
-We gathered $\approx 1000$ Convex General Convex (CGC) instances. We
-gathered relatively few Quadratic Binary Quadratic (QBQ), Convex
+the remaining ones contained only continuous variables. More in details,
+we gathered $\approx 1800$ Quadratic Binary Linear (QBL) instances,
+$\approx 2000$ Quadratic Continuous Quadratic (QCQ) instances, and
+and $\approx 2500$ Quadratic General Quadratic (QGQ) instances. W
+also gathered $\approx 1000$ Convex General Convex (CGC) instances. We
+gathered relatively fewer Quadratic Binary Quadratic (QBQ), Convex
 Continuous Convex (CCC) and Convex Mixed Convex (CMC) instances, i.e.,
 $\approx 150$ instances, $\approx 200$ instances and $\approx 200$
-instances respectively. Finally we gathered only $17$ Quadratic Mixed
-Linear (QML) instances.
+instances respectively. Finally, we gathered only $17$ Quadratic Mixed
+Linear (QML) instances. In the call for instances, no specific formats
+requirements were imposed for the submissions.
 
-In the call for instances no specific formats were imposed
-%we did not impose a specific format
-for the submissions.
-%In this phase we also eliminated multiples copies of the same instance.
 To evaluate the instances we decided, for practical reasons, to use
-Gams as common platform for all the experiments involving commercial and non-commercial
-solvers.
-For this reason, we decided to translate all instances into the
-Gams format (\texttt{.gms}). 
+Gams as common platform for all the experiments involving commercial and
+non-commercial solvers. For this reason, we decided to translate all
+instances into the Gams format (\texttt{.gms}). 
 % In a preliminary phase, all the instances received were divided
 %according to their format and subsequently translated.
 %In \S~\ref{subsec:tools}
@@ -84,70 +84,63 @@ Gams format (\texttt{.gms}).
 %%to translate an instance from and to a given format to the
 %\texttt{.gms} format
 %are described in more detail.\\
-
-In addition, we have introduced
-a specific format called \texttt{.qplib}. This new format is capable of describing
-all the instances of the library in a sparse form.
+%
+In addition, we have introduced a new, specific \texttt{.qplib} format. This
+new is capable of describing all the instances of the library in a sparse form.
 In comparison to a more \emph{high level} format like \texttt{.gms}, the new
-format presents two advantages:
-it is easier to read by a self-made parser and it produces smaller files.
-See the Appendix~\label{sec:format} for more details.
-%\textcolor{red}{ToDo: describe \texttt{.qplib} format. Maybe in an appendix?}
-
-% is lighter in terms of sie
-%  significantly
-%less memory
-%in comparison and
-
-% for this reason we used the \texttt{.gms} format as one of the format of the library. %checked if one instance was present copies of the same instance, potentially written in different formats
-
-
+format presents two advantages: it is easier to read by a self-made parser and
+it produces smaller files. See the Appendix~\label{sec:format} for more details.
 
 %\subsection{Instance Features}\label{subsec:feature}
 
-For each instance of the starting set, we collected important 
-characteristics which allowed us to classify the instances into the
-QP categories described in Section~\ref{sec:QPbasic}.
-
-
-As far as the variable types are concerned, we collected the following information:
+For each instance of the starting set, we collected important characteristics
+which allowed us to classify the instances into the QP categories described in
+Section~\ref{sec:QPbasic}. As far as the variable types are concerned, we
+collected the following information:
+%
 \begin{itemize}
-\item number of binary variables, % (\emph{\# bin}),
-\item number of integer variables, % (\emph{\# int}),
-\item number of continuous variables. % (\emph{\# cont}).
+ \item number of binary variables; % (\emph{\# bin}),
+ %
+ \item number of integer variables; % (\emph{\# int}),
+ %
+ \item number of continuous variables. % (\emph{\# cont}).
 \end{itemize}
-
-In case at least one binary or integer variable is present, then the
-instance is categorized as a \emph{discrete} instance, on the other
-hand, in case only continuous variables are presents, the instance is
-categorized as a \emph{continuous} instance.
-
-As fas as the objective function is concerned, we gathered the
-following information:
+%
+In case at least one binary or integer variable is present, then the instance is
+categorized as \emph{discrete}, otherwise it is categorized as \emph{continuous}.
+As fas as the objective function is concerned, we gathered the following
+information:
+%
 \begin{itemize}
-\item percentage of negative eigenvalues of the $Q^0$ matrix,  % (\emph{\% neg eig}),
-\item density of the $Q^0$ matrix . %(\emph{\% dens}).
+ \item percentage of negative eigenvalues of the $Q^0$ matrix;
+       % (\emph{\% neg eig}),
+ %
+ \item density of the $Q^0$ matrix (number of nonzero entries over the total
+       number). %(\emph{\% dens}).
 \end{itemize}
- The number of negative eigenvalues of $Q^0$ allows us to
-identify the specific objective function type, i.e., in presence of at
-least one negative eigenvalue the objective function is non convex.
-The density of $Q^0$ is defined as the
-number of nonzero entries  over the total number.
-
-As far as the constraint types are concerned, we collected the following information:
+%
+The number of negative eigenvalues of $Q^0$ allows us to identify the
+objective function type, as in presence of at least one negative eigenvalue
+the objective function is non convex. Finally, as far as the constraint types
+are concerned, we collected the following information:
+%
 \begin{itemize}
-\item number of linear constraints, % (\emph{\# lin}),
-\item number of quadratic constraints, % (\emph{\# quad}),
-\item number of convex constraints, % (\emph{\# conv}),
-\item number of box constraints. %(\emph{\# box}).
+ \item number of linear constraints, % (\emph{\# lin}),
+ %
+ \item number of quadratic constraints, % (\emph{\# quad}),
+ %
+ \item number of convex constraints, % (\emph{\# conv}),
+ %
+ \item number of box constraints. %(\emph{\# box}).
 \end{itemize}
-A constraint is considered quadratic if it contain a quadratic term.
-Among the quadratic constraints, the one with only non negative
-eigenvalues are classified as convex constraints.
+%
+A constraint is considered quadratic if it contains at least one nonzero in
+the quadratic term. Among the quadratic constraints, the ones with only
+non-negative eigenvalues are classified as convex constraints. All this
+information allowed us to analyze the gathered instances and to perform the
+filters described in the the next paragraph.
 
-This information allowed us to analyze the gathered instances and to perform the filters described in the the next paragraph.
-
-
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Instance Selection}\label{subsec:selection}
 
 The first goal of the library is to represent the largest possible majority of
@@ -338,9 +331,9 @@ Total                    &           & 116 \\
 
 
 
-
-
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Analysis of the final set of instances}\label{subsec:final set}
+
 In this section we analyse the feature of the instances selected to be
 part of library.
 The characteristics of the instances in the final library are
