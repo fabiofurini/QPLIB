@@ -17,38 +17,69 @@
 \newcommand{\st}{\mbox{subject to}\;\;}
 \newcommand{\lbox}[1]{\parbox[t]{105mm}{#1}\vspace*{1mm}}
 
-The QPLIB format is designed to cope with a variety of
-linear and quadratic programs. We distinguish, in particular,
-linear programs (LP)
-\begin{align*}
- \mininx{} & l^T x + f \\
- \st & c\s{L} \leq A x \leq c\s{U} \tim{and} x\s{L} \leq x \leq x\s{U}, \\
-\intertext{linear programs with quadratic constraints (LPQC)}
- \mininx{} & l^T x + f \\
- \st & c\s{L} \leq A x + \half  [x,Q\s{C},x] \leq c\s{U}
-     \tim{and} x\s{L} \leq x \leq x\s{U}, \\
-\intertext{bound-constrained quadratic programs (BQP)}
- \mininx{} & \half x^T Q x + l^T x + f \\
- \st & x\s{L} \leq x \leq x\s{U}, \\
-\intertext{quadratic programs (QP)}
- \mininx{} & \half x^T Q x + l^T x + f \\
- \st & c\s{L} \leq A x \leq c\s{U} \tim{and} x\s{L} \leq x \leq x\s{U}, \\
-\intertext{and quadratic program with quadratic constraints (QPQC)}
- \mininx{} & \half x^T Q x + l^T x + f \\
- \st & c\s{L} \leq A x + \half [x,Q\s{C},x] \leq c\s{U}
-     \tim{and} x\s{L} \leq x \leq x\s{U},
+Following the notation of Section~\ref{sec:QPbasic}, a generic Quadratic Program (QP) can be written as follows:
+%
+\begin{align*}	
+ \min \;\;
+ & x^\top Q^0 x + b^0 x + f \\
+ %
+ & c^i_l \leq x^\top Q^i x + b^i x \leq c^i_u & i \in \Mcm \\ 
+ %
+ & l_j \leq x_j \leq u_j & j \in \Mcn  \\
+ %
+ & x_j \in \mathbb{Z} & j \in \Mcz
 \end{align*}
-\todo[inline]{\small Stefan: Are LPQC and QPQC frequently used abbreviations? If a linear program has quadratic constraints, how can it then still be a linear program? I am more familiar with the abbreviations QCP instead of LPQC and QCQP instead of QPQC. I further think that one could skip QCP and consider them as part of QCQP.}
-where $Q\s{C}$ is the diagonal matrix with blocks $Q\s{C}_k$, $k=1,\ldots,m$,
-$Q$ and the $Q\s{C}_k$ are symmetric $n$ by $n$ Hessian matrices,
-$A$ is a rectangular $m$ by $n$ constraint matrix,
-$l$, $x\s{L}$, $x\s{U}$, $c\s{L}$, $c\s{U}$
-are vectors of appropriate sizes and $f$ is a scalar; the notation
-$[ x, Q\s{C},x]$ denotes the vector whose $k$-th component is
-$x^T Q\s{C}_k x$.
-In addition, all or a subset of the variables $x$ may be required to be
-integer, while further restrictions (such as a variable being binary)
-may be imposed via explicit constraints.
+
+where:
+
+\begin{itemize}
+ \item $\Mcn = \{ 1, \ldots, n \}$ is the set of (indices) of variables, and $\Mcm = \{ 1, \ldots, m \}$ is the set of (indices) of constraints;
+ %
+ \item $x = [x_j]_{j = 1}^n \in \RR^n$ is a finite vector of real variables;
+ %
+ \item $Q^i$ for $i \in \{ 0 \} \cup \Mcm$ are symmetric $n \times n$ real matrices;
+ %
+ \item $b^i$, $c^i_l$, $c^i_u$ for $i \in \{ 0 \} \cup \Mcm$ and $f$ are, respectively, real $n$-vectors, real constants, real constants and real constant;
+ %
+ \item $-\infty \leq l_j \leq u_j \leq \infty$ are the (extended) real upper and lower bounds on each variable $x_j$ for $j \in \Mcn$;
+ %
+ \item $\Mcm = \Mcq \cup \Mcl$ where $Q^i = 0$ for all $i \in \Mcl$;
+ %
+ \item the variables in $\Mcz \subseteq \Mcm$ are restricted to only attain integer values.
+\end{itemize}
+
+%Accordingly, the QPLIB format is designed to cope with a variety of linear and quadratic programs. 
+%We distinguish, in particular,
+%linear programs (LP)
+%\begin{align*}
+% \mininx{} & l^T x + f \\
+% \st & c\s{L} \leq A x \leq c\s{U} \tim{and} x\s{L} \leq x \leq x\s{U}, \\
+%\intertext{linear programs with quadratic constraints (LPQC)}
+% \mininx{} & l^T x + f \\
+% \st & c\s{L} \leq A x + \half  [x,Q\s{C},x] \leq c\s{U}
+%     \tim{and} x\s{L} \leq x \leq x\s{U}, \\
+%\intertext{bound-constrained quadratic programs (BQP)}
+% \mininx{} & \half x^T Q x + l^T x + f \\
+% \st & x\s{L} \leq x \leq x\s{U}, \\
+%\intertext{quadratic programs (QP)}
+% \mininx{} & \half x^T Q x + l^T x + f \\
+% \st & c\s{L} \leq A x \leq c\s{U} \tim{and} x\s{L} \leq x \leq x\s{U}, \\
+%\intertext{and quadratic program with quadratic constraints (QPQC)}
+% \mininx{} & \half x^T Q x + l^T x + f \\
+% \st & c\s{L} \leq A x + \half [x,Q\s{C},x] \leq c\s{U}
+%     \tim{and} x\s{L} \leq x \leq x\s{U},
+%\end{align*}
+%\todo[inline]{\small Stefan: Are LPQC and QPQC frequently used abbreviations? If a linear program has quadratic constraints, how can it then still be a linear program? I am more familiar with the abbreviations QCP instead of LPQC and QCQP instead of QPQC. I further think that one could skip QCP and consider them as part of QCQP.}
+%where $Q\s{C}$ is the diagonal matrix with blocks $Q\s{C}_k$, $k=1,\ldots,m$,
+%$Q$ and the $Q\s{C}_k$ are symmetric $n$ by $n$ Hessian matrices,
+%$A$ is a rectangular $m$ by $n$ constraint matrix,
+%$l$, $x\s{L}$, $x\s{U}$, $c\s{L}$, $c\s{U}$
+%are vectors of appropriate sizes and $f$ is a scalar; the notation
+%$[ x, Q\s{C},x]$ denotes the vector whose $k$-th component is
+%$x^T Q\s{C}_k x$.
+%In addition, all or a subset of the variables $x$ may be required to be
+%integer, while further restrictions (such as a variable being binary)
+%may be imposed via explicit constraints.
 
 The QPLIB format is defined in Table~\ref{tab-qplib-format}.
 The data is in free format (blanks separate values), but must occur in
@@ -87,54 +118,56 @@ name & problem name (character string) & \\
 type & problem type (character string) & [1] \\
 \hline
 $n$  & number of variables (integer) & \\
-$m$  & number of general linear constraints (integer) & [2] \\
+$m$  & number of constraints (integer) & [2] \\
 \hline
-$n\s{Q}$ & number of nonzeros  (integer) in lower triangle of $Q$  & [3] \\
-$i$\; $j$\; $Q_{i,j}$ & \lbox{row and column indices (integers) and value (real)
-for each nonzero entry of $Q$, if $n\s{Q} > 0$, one triple on each line} & \\
+$n^{Q^0}$ & number of nonzeros  (integer) in lower triangle of $Q^0$  & [3] \\
+$h$\; $k$\; $Q_{hk}^0$ & \lbox{row and column indices (integers) and value (real)
+for each nonzero entry of $Q^0$, if $n^{Q^0} > 0$, one triple on each line} & \\
 \hline
-$l_d$ & default value (real) for entries in $l$ & \\
-$n\s{l}$ & number of non-default entries (integer) in $l$ & \\
-$i$\; $l_i$ & \lbox{index (integer) and value (real) for each non-default
-term in $l$, if $n\s{l} > 0$, one pair per line} & \\
+$b^0_d$ & default value (real) for entries in $b^0$ & \\
+$n^{b^0}$ & number of non-default entries (integer) in $b^0$ & \\
+$j$\; $b^0_j$ & \lbox{index (integer) and value (real) for each non-default
+term in $b^0$, if $n^{b^0} > 0$, one pair per line} & \\
 \hline
-$f$ & value (real) of f & \\ \hline
-$n\s{Q${}_c$}$ & number of nonzeros (integer) in lower triangle of
-$Q\s{C}$  & [2,4] \\
-$k$\; $i$\; $j$\; $Q\s{C}_{k,i,j}$
+$f$ & constant part of the objective function & \\ \hline
+$n^{Q^i}$ & number of nonzeros (integer) in lower triangle of
+$Q^i$  & [2,4] \\
+$i$\; $h$\; $k$\; $Q^{i}_{hk}$
 & \lbox{constraint, row and column indices (integers) and value (real) for
- each entry of $Q\s{C}$, if $n\s{Q${}_c$} > 0$, one quadruple on each line} & \\
+ each entry of $Q^{i}$, if $n^{Q^i}$, one quadruple on each line} & \\
 \hline
-$n\s{A}$ & number of nonzeros  (integer) in $A$                     & [2] \\
-$i$\; $j$\; $A_{i,j}$ & \lbox{row and column indices (integers) and value (real)
+$n^{b}$ & number of nonzeros  (integer) in $b^i$, $i \in \Mcm$                     & [2] \\
+$i$\; $j$\; $b^i_{j}$ & \lbox{row and column indices (integers) and value (real)
 for each nonzero
-entry of $A$, if $n\s{A} > 0$, one triple on each line} & \\
+entry of $b^i$, if $n^{b} > 0$, one triple on each line} & \\
 \hline
 $\infty$ & \lbox{value (real) for infinity for constraint or variable
 bounds---any bound greater than or equal to this in, absolute value,
 is infinite} & \\
 \hline
-$c\s{L}_d$ & default value (real) for entries in $c\s{L}$            & [2] \\
-$n^{c\s{L}}$ & number of non-default entries (integer) in $c\s{L}$    & [2] \\
-$i$\;\ $c\s{L}_i$ & \lbox{index (integer) and value (real) for each non-default
+$c_{l,d}$ & default value (real) for entries in $c_{l}$            & [2] \\
+$n^{c_{l,d}}$ & number of non-default entries (integer) in $c_{l}$    & [2] \\
+$i$\;\ $c^i_{l}$ & \lbox{index (integer) and value (real) for each non-default
 term
-in $c\s{L}$, if $n^{c\s{L}} > 0$, one pair per line}        & [2] \\
+in $c_{l,d}$, if $n^{c_{l,d}} > 0$, one pair per line}        & [2] \\
 \hline
-$c\s{U}_d$ & default value (real) for entries in $c\s{U}$            & [2] \\
-$n^{c\s{U}}$ & number of non-default entries (integer) in $c\s{U}$    & [2] \\
-$i$\;\ $c\s{U}_i$ & \lbox{index (integer) and value (real) for each non-default
+$c_{u,d}$ & default value (real) for entries in $c_{u}$            & [2] \\
+$n^{c_{u,d}}$ & number of non-default entries (integer) in $c_{u}$    & [2] \\
+$i$\;\ $c^i_{u}$ & \lbox{index (integer) and value (real) for each non-default
 term
-in $c\s{U}$, if $n^{c\s{U}} > 0$, one pair per line}        & [2] \\
+in $c_{u,d}$, if $n^{c_{u,d}} > 0$, one pair per line}        & \\
 \hline
-$x\s{L}_d$ & default value (real) for entries in $x\s{L}$            &     \\
-$n^{x\s{L}}$ & number of non-default entries (integer) in $x\s{L}$    &     \\
-$i$\;\ $x\s{L}_i$ & \lbox{index (integer) and value (real) for each non-default
-term in $x\s{L}$, if $n^{x\s{L}} > 0$, one pair per line} & \\
+$l_{d}$ & default value (real) for entries in $l$            & \\
+$n^{l_{d}}$ & number of non-default entries (integer) in $l$    &  \\
+$i$\;\ $l_{i}$ & \lbox{index (integer) and value (real) for each non-default
+term
+in $l$, if $n^{l_{d}}> 0$, one pair per line}        &  \\
 \hline
-$x\s{U}_d$ & default value (real) for entries in $x\s{U}$            &     \\
-$n^{x\s{U}}$ & number of non-default entries (integer) in $x\s{U}$    &     \\
-$i$\;\ $x\s{U}_i$ & \lbox{index (integer) and value (real) for each non-default
-term in $x\s{U}$, if $n^{x\s{U}} > 0$, one pair per line} & \\
+$u_{d}$ & default value (real) for entries in $u$            & \\
+$n^{u_{d}}$ & number of non-default entries (integer) in $u$    &  \\
+$i$\;\ $u_{i}$ & \lbox{index (integer) and value (real) for each non-default
+term
+in $u$, if $n^{u_{d}}> 0$, one pair per line}        &  \\
 \hline
 $v_d$ & \lbox{default variable type  (integer, 0 for continuous variables,
  1 for integer variables)} & [5] \\
@@ -164,13 +197,13 @@ non-default starting value in $z^0$, if $n^{z^0} > 0$, one pair per line} &  \\
 $n^x_d$ & \lbox{number of non-default names (integer) of variables---default
 for variable $i$ is the character string representing the numerical
 value $i$} &  \\
-$i$\; $x_i$ & \lbox{index (integer) and name (character string)
+$j$\; ${\tt var\_name}_j$ & \lbox{index (integer) and name (character string)
 for each non-default variable name, if $n^x_d > 0$,  one pair per line} & \\
 \hline
 $n^c_d$ & \lbox{number of non-default names (integer) of general
 constraints---default for constraint $i$ is the character string representing
 the numerical value $i$} &  \\
-$i$\; $c_i$ & \lbox{index  (integer) and name (character string) for each
+$i$\; ${\tt cons\_name}_i$ & \lbox{index  (integer) and name (character string) for each
 non-default constraint name, if $n^c_d > 0$,  one pair per line} & \\
 \hline
 \end{longtable}
@@ -194,6 +227,9 @@ section to specify the range.}
 
 \begin{description}
 \item [{[1]}]
+\todo[inline]{\small Fabio and Emiliano: we think that, if possible, we should follow the classification proposed in Section 2.}
+
+
 The problem type is represented by a character string as one of the following:
 \begin{description}
 \item For continuous problems (i.e., all variables are continuous):
@@ -240,7 +276,7 @@ for purely-continuous or purely-integer problems, this section is omitted.
 \end{description}
 
 As a simple example, consider the mixed-integer QP
-\[\arr{l}{\mininx{} x_1^2 + x_2^2 + x_3^2 - x_1 x_2 - x_2 x_3
+\[\arr{l}{\min_{x \in \smallRe^3} x_1^2 + x_2^2 + x_3^2 - x_1 x_2 - x_2 x_3
   - 0.2 x_1  -0.4 x_2 - 0.2 x_3 \\
 \st 1 \leq x_1 + x_2, \; 1 \leq x_1 + x_3, \; 0 \leq x_1 \leq 1,
 \; 0 \leq x_2 \leq 2, \; \mbox{and binary} \; x_3.}
@@ -256,31 +292,31 @@ MIPBAND   # problem name
 MIQP      # problem is a mixed-integer quadratic program
 3         # variables
 2         # general linear constraints
-5         # nonzeros in lower triangle of Q
-1 1 2.0   5 lines of row & column index & value of nonzeros in lower triangle Q
+5         # nonzeros in lower triangle of Q^0
+1 1 2.0   5 lines of row & column index & value of nonzeros in lower triangle Q^0
 2 1 -1.0  |
 2 2 2.0   |
 3 2 -1.0  |
 3 3 2.0   |
--0.2      default value for entries in l
-1         # non default entries in l
-2 -0.4    1 lines of index & value of non-default values in l
+-0.2      default value for entries in b_0
+1         # non default entries in b_0
+2 -0.4    1 lines of index & value of non-default values in b_0
 0.0       value of f
-4         # nonzeros in A
-1 1 1.0   4 lines of row & column index & value of nonzeros in A
+4         # nonzeros in vectors b^i (i =0,...,m)
+1 1 1.0   4 lines of row & column index & value of nonzeros in b^i (i =0,...,m)
 1 2 1.0   |
 2 1 1.0   |
 2 3 1.0   |
 1.0E+20   infinity
-1.0       default value for entries in c^L
-0         # non default entries in c^L
-1.0E+20   default value for entries in c^U
-0         # non default entries in c^U
-0.0       default value for entries in x^L
-0         # non default entries in x^L
-1.0       default value for entries in x^U
-1         # non default entries in x^U
-2 2.0     1 line of non-default indices and values in x^U
+1.0       default value for entries in c_l
+0         # non default entries in c_l
+1.0E+20   default value for entries in c_u
+0         # non default entries in c_u
+0.0       default value for entries in l
+0         # non default entries in l
+1.0       default value for entries in u
+1         # non default entries in u
+2 2.0     1 line of non-default indices and values in u
 0         default variable type is continuous
 1         # non default variable types
 3 1       variable 3 is integer
