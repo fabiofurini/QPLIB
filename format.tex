@@ -19,11 +19,11 @@
 
 Following the notation of Section~\ref{sec:QPbasic}, a generic Quadratic Program (QP) can be written as follows:
 %
-\begin{align*}	
+\begin{align*}
  \min \;\;
  & x^\top Q^0 x + b^0 x + f \\
  %
- & c^i_l \leq x^\top Q^i x + b^i x \leq c^i_u & i \in \Mcm \\ 
+ & c^i_l \leq x^\top Q^i x + b^i x \leq c^i_u & i \in \Mcm \\
  %
  & l_j \leq x_j \leq u_j & j \in \Mcn  \\
  %
@@ -48,7 +48,7 @@ where:
  \item the variables in $\Mcz \subseteq \Mcm$ are restricted to only attain integer values.
 \end{itemize}
 
-%Accordingly, the QPLIB format is designed to cope with a variety of linear and quadratic programs. 
+%Accordingly, the QPLIB format is designed to cope with a variety of linear and quadratic programs.
 %We distinguish, in particular,
 %linear programs (LP)
 %\begin{align*}
@@ -116,6 +116,7 @@ data & description & note \\
 %\hline
 name & problem name (character string) & \\
 type & problem type (character string) & [1] \\
+sense & one of the words minimize or maximize (character string, case irrelevant) & \\
 \hline
 $n$  & number of variables (integer) & \\
 $m$  & number of constraints (integer) & [2] \\
@@ -290,6 +291,7 @@ This may then be represent in QPLIB format as follows:
 ! ---------------
 MIPBAND   # problem name
 MIQP      # problem is a mixed-integer quadratic program
+Minimize  # minimize the objective function
 3         # variables
 2         # general linear constraints
 5         # nonzeros in lower triangle of Q^0
