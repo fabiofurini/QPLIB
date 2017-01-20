@@ -124,7 +124,7 @@ BB algorithms are exponential time in the worst case, and their exponential beha
 The solvers in Table \ref{t:solvers} BB type methods are:
 %
 \begin{itemize}
- \item {\sc Antigone}, {\sc Baron}, {\sc Couenne}, {\sc Lindo}, {\sc LindoGlobal}, {\sc SCIP}, {\sc lgo\_bb}, which implement complete BB algorithms for QGQ;
+ \item {\sc Antigone}, {\sc Baron}, {\sc Couenne}, {\sc Lindo API}, {\sc SCIP}, which implement complete BB algorithms for QGQ;
  %
 \item {\sc CPLEX}, which implements a complete BB algorithm for QGL;
 %
@@ -132,6 +132,8 @@ The solvers in Table \ref{t:solvers} BB type methods are:
 \end{itemize}
 %
 We remark that the latter category can be used as incomplete solvers for QGQ. We also remark that CPLEX can currently only target problems with linear constraints when the objective function is nonconvex \cite{bliek}.
+
+\todo[inline]{{\sc lgo\_bb} was in the listing above, but is it a complete solver for any class?}
 
 \paragraph{Cutting plane approaches}.
 %
