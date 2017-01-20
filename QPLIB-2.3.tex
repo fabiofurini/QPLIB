@@ -44,12 +44,12 @@ The solvers in Table \ref{t:solvers} which implement incomplete methods for cont
 %All of these solvers implement essentially three types of local search methods for continuous NLPs:
 \todo{sequential linear programming, sequential quadratic programming, trust-region}
 \begin{itemize}
- \item active set methods ({\sc ConOpt}, {\sc Minos}, {\sc SnOpt}) \cite{Dost09};
+ \item active set methods ({\sc ConOpt}, {\sc Minos}, {\sc SnOpt}, {\sc KNitro}) \cite{Dost09};
  %
  \item interior point methods ({\sc IpOpt}, {\sc KNitro}) \cite{Wright97};
  %
  \item projected gradient methods \cite{CalaMore87:mp,ChenGui13:coap}.
-\end{itemize} \todo{doesn't Knitro additionally implement an active set or SQP algorithm?}
+\end{itemize}
 %
 Active set and interior point methods have been defined for *C* but also for general (continuous) NLPs. In fact, all of the solvers named above target this larger problem class.
 
@@ -70,12 +70,12 @@ These approaches are similar to active-set methods in that at each iteration the
 
 Asymptotically complete methods do not usually require a starting point, and, if given sufficient time (infinite in the worst case) will identify a globally optimal solution with probability one. Most often, these methods are meta-heuristics, involving an element of random choice, which exploit a given (heuristic) local search procedure.
 
-The solvers in Table \ref{t:solvers} which implement asymptotically complete methods are {\sc oqnlp}, {\sc msnlp} and certain sub-solvers of {\sc lgo}. Specifically, we consider the following methods:
+The solvers in Table \ref{t:solvers} which implement asymptotically complete methods are {\sc oqnlp}, {\sc msnlp}, {\sc knitro}, and certain sub-solvers of {\sc lgo}. Specifically, we consider the following methods:
 %
 \begin{itemize}
  \item global adaptive random search ({\sc lgo\_gars});
  %
- \item multi-start ({\sc lgo\_ms}, {\sc msnlp}, {\sc oqnlp}); specifically, the former two apply to QCQ whereas the latter to QGQ.
+ \item multi-start ({\sc knitro}, {\sc lgo\_ms}, {\sc msnlp}, {\sc oqnlp}); specifically, the former three apply to QCQ whereas the latter to QGQ.
 \end{itemize}
 
 \paragraph{Global Adaptive Random Search.}
