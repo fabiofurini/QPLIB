@@ -37,7 +37,7 @@ instances. Namely, the libraries from which we gathered instances are
 \item the {\tt CUTEst} library
  \url{https://ccpforge.cse.rl.ac.uk/gf/project/cutest/wiki};
 %
-\item the {\tt GAMS} library
+\item the {\tt GAMS Performance} libraries
  \url{http://www.gamsworld.org/performance/performlib.htm};
 %
 \item the {\tt MacMINLP} library
@@ -72,9 +72,9 @@ Linear (QML) instances. In the call for instances, no specific formats
 requirements were imposed for the submissions.
 
 To evaluate the instances we decided, for practical reasons, to use
-Gams as common platform for all the experiments involving commercial and
+GAMS as common platform for all the experiments involving commercial and
 non-commercial solvers. For this reason, we decided to translate all
-instances into the Gams format (\texttt{.gms}). 
+instances into the GAMS format (\texttt{.gms}). 
 % In a preliminary phase, all the instances received were divided
 %according to their format and subsequently translated.
 %In \S~\ref{subsec:tools}
@@ -172,7 +172,7 @@ filters, applied in cascade.
        for the hardness of an instance is the CPU time needed by a
        complete solver (cf.~\S \ref{sec:algo}) to solve it to
        global optimality. Accordingly, for each of the gathered instance we
-       ran the complete solvers in {\tt Gams} (cf.~Table \ref{t:solvers})
+       ran the complete solvers in {\tt GAMS} (cf.~Table \ref{t:solvers})
        capable of solving it, whose number depends on the category of the
        instance under consideration. We then filtered according to a relative
        measure of computational difficulty, i.e., we discarded all instances
