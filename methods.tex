@@ -6,31 +6,11 @@
 
 \subsection{Solution Methods and Solvers}\label{sec:algo}
 
-In this section we provide a quick overview of existing solution methods for QP, restricting ourselves to these implemented by the set of solvers considered in this paper (Table \ref{t:solvers}). For each approach we briefly describe the main algorithmic ideas and point out the formulation they address according to the classification set out in Sect.~\ref{sec:classification}. We remark that many solvers implement more than one algorithm, among which the user can choose at runtime. Moreover, algorithms are typically implemented by different solvers in different ways, so that the same conceptual algorithm can sometimes yield wildly different results or performance measures on the same instances.
+In this section we provide a quick overview of existing solution methods for QP, restricting ourselves to these implemented by the set of solvers considered in this paper (\S~\ref{subsec:solver}). For each approach we briefly describe the main algorithmic ideas and point out the formulation they address according to the classification set out in \S~\ref{sec:classification}. We remark that many solvers implement more than one algorithm, among which the user can choose at runtime. Moreover, algorithms are typically implemented by different solvers in different ways, so that the same conceptual algorithm can sometimes yield wildly different results or performance measures on the same instances.
 
-% antigone/glomiqo: sBB
-% baron: sBB
-% couenne: sBB
-% knitro: IPM with CG, SLQP, convexBB + outerapproxBB
-% lindo/lindoglobal: sBB
-% scip: sBB
-% msnlp/oqnlp: multistart
-% alphaecp: cutting plane for pseudoconvex MINLP
-% bonmin: convexBB
-% dicopt: alternating projection NLP/MILP
-% sbb: convexBB
-% conopt: GRG (active set -- like SQP)
-% ipopt: IPM w/ line search filter
-% lgo: Lipschitz BB, random search, multistart (default) [cassato?]
-% minos: active set method
-% snopt: active set SQP
-% xpress: convexBB
-% gurobi: convexBB
-% cplex: sBB
+Solution methods for QP can, following \cite{neumaier}, be broadly organized in three categories: {\it incomplete}, {\it asymptotically complete}, {\it complete}, and {\it rigorous}. Incomplete methods are only able to identify solutions, often locally optimal according to a suitable notion, and may even fail to find one even when one exists; in particular, they are typically not able to determine that an instance is empty. Asymptotically complete methods can find a globally optimal solution with probability one in infinite time, but again they cannot prove that a given instance is infeasible. Complete methods find an approximate globally optimal solution within a prescribed optimality tolerance within finite time, or prove that none such exists (but see Sect.~\ref{s:complete} below); they are often referred to as \emph{exact} methods in the computational optimization community. Finally, {\it rigorous} methods find globally optimal solutions within given tolerances even in the presence of rounding errors, except for ``near-degenerate cases''. Since none of the solvers we are using can be classified as rigorous, we limit ourselves to declaring solvers complete.
 
-The methods implemented by the solvers in Table~\ref{t:solvers} can, following \cite{neumaier}, be broadly organized in three categories: {\it incomplete}, {\it asymptotically complete}, and {\it complete}. Incomplete methods are only able to identify solutions, often locally optimal according to a suitable notion, and may even fail to find one even when one exists; in particular, they are typically not able to determine that an instance is empty. Asymptotically complete methods can find a globally optimal solution with probability one in infinite time, but again they cannot prove that a given instance is infeasible. Complete methods find an approximate globally optimal solution within a prescribed optimality tolerance within finite time, or prove that none such exists (but see Sect.~\ref{s:complete} below); they are often referred to as \emph{exact} methods in the computational optimization community. According to \cite{neumaier}, {\it rigorous} methods also exist, which find globally optimal solutions within given tolerances even in the presence of rounding errors, except for ``near-degenerate cases''. Since none of the solvers we are using can be classified as rigorous, we limit ourselves to declaring solvers complete.
-
-Incomplete methods are usually realized as local search algorithms, asymptotically complete methods are usually realized by meta-heuristic methods such as multi-start or simulated annealing, and complete methods for $\mathcal{NP}$-hard problems such as QP are typically realized as implicit exhaustive exploration algorithms. However, these three categories may exhibit some overlap. For example, any deterministic method for solving QCQ locally is incomplete in general, but becomes complete for CCC, since any local optimum of a convex QP is also global. Therefore, when we state that a given algorithm is incomplete or (asymptotically) complete we mean that it is so the largest problem class that the solver naturally targets, although it may be complete on specific sub-classes. For example, \snopt naturally targets continuous NLPs and it is incomplete on nonconvex NLPs, and therefore on QCQ, but becomes complete for CCC. In general, all complete methods for a problem $P$ must be complete for any problem $Q \subseteq P$, while a complete method for $P$ might be incomplete for $R \supset P$. 
+Incomplete methods are usually realized as local search algorithms, asymptotically complete methods are usually realized by meta-heuristic methods such as multi-start or simulated annealing, and complete methods for $\mathcal{NP}$-hard problems such as QP are typically realized as implicit exhaustive exploration algorithms. However, these three categories may exhibit some overlap. For example, any deterministic method for solving QCQ locally is incomplete in general, but becomes complete for CCC, since any local optimum of a convex QP is also global. Therefore, when we state that a given algorithm is incomplete or (asymptotically) complete we mean that it is so the largest problem class that the solver naturally targets, although it may be complete on specific sub-classes. For example, interior point algorithms naturally target continuous NLPs and are incomplete on nonconvex NLPs, and therefore on QCQ, but become complete for CCC. In general, all complete methods for a problem $P$ must be complete for any problem $Q \subseteq P$, while a complete method for $P$ might be incomplete for $R \supset P$.
 
 \input{solvers.tex}
 
