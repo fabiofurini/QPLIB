@@ -183,13 +183,13 @@ filters, applied in cascade.
        The goal of the second filter was to eliminate ``similar'' instances.
        We carefully analysed the instances one by one, and we clustered them
        according to their features; for each cluster we kept only a few
-       representatives. {\bf Comment: we may want to be a tad more specific
+       representatives\todo{we may want to be a tad more specific
        about what ``features'' exactly meant there}. Finally, in order to only
        keep computationally challenging instances we ran a general purpose solver
        able to tackle all QP categories with a time limit of 120 seconds; all the
        instances which have been solved to proven optimality within this time limit
-       were discarded. {\bf Comment: this might actually be best characterized as
-       a third filter.}
+       were discarded\todo{this might actually be best characterized as
+       a third filter}.
 \end{itemize}
 %
 In Table~\ref{tab:filters} we summarize the two filter steps, which
