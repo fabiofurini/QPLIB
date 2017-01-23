@@ -30,7 +30,7 @@ In this section we provide a quick overview of existing solution methods for QP,
 
 The methods implemented by the solvers in Table~\ref{t:solvers} can, following \cite{neumaier}, be broadly organized in three categories: {\it incomplete}, {\it asymptotically complete}, and {\it complete}. Incomplete methods are only able to identify solutions, often locally optimal according to a suitable notion, and may even fail to find one even when one exists; in particular, they are typically not able to determine that an instance is empty. Asymptotically complete methods can find a globally optimal solution with probability one in infinite time, but again they cannot prove that a given instance is infeasible. Complete methods find an approximate globally optimal solution within a prescribed optimality tolerance within finite time, or prove that none such exists (but see Sect.~\ref{s:complete} below); they are often referred to as \emph{exact} methods in the computational optimization community. According to \cite{neumaier}, {\it rigorous} methods also exist, which find globally optimal solutions within given tolerances even in the presence of rounding errors, except for ``near-degenerate cases''. Since none of the solvers we are using can be classified as rigorous, we limit ourselves to declaring solvers complete.
 
-Incomplete methods are usually realized as local search algorithms, asymptotically complete methods are usually realized by meta-heuristic methods such as multi-start or simulated annealing, and complete methods for $\mathcal{NP}$-hard problems such as QP are typically realized as implicit exhaustive exploration algorithms. However, these three categories may exhibit some overlap. For example, any deterministic method for solving QCQ locally is incomplete in general, but becomes complete for CCC, since any local optimum of a convex QP is also global. Therefore, when we state that a given algorithm is incomplete or (asymptotically) complete we mean that it is so the largest problem class that the solver naturally targets, although it may be complete on specific sub-classes. For example, {\sc SnOpt} naturally targets continuous NLPs and it is incomplete on nonconvex NLPs, and therefore on QCQ, but becomes complete for CCC. In general, all complete methods for a problem $P$ must be complete for any problem $Q \subseteq P$, while a complete method for $P$ might be incomplete for $R \supset P$. 
+Incomplete methods are usually realized as local search algorithms, asymptotically complete methods are usually realized by meta-heuristic methods such as multi-start or simulated annealing, and complete methods for $\mathcal{NP}$-hard problems such as QP are typically realized as implicit exhaustive exploration algorithms. However, these three categories may exhibit some overlap. For example, any deterministic method for solving QCQ locally is incomplete in general, but becomes complete for CCC, since any local optimum of a convex QP is also global. Therefore, when we state that a given algorithm is incomplete or (asymptotically) complete we mean that it is so the largest problem class that the solver naturally targets, although it may be complete on specific sub-classes. For example, \snopt naturally targets continuous NLPs and it is incomplete on nonconvex NLPs, and therefore on QCQ, but becomes complete for CCC. In general, all complete methods for a problem $P$ must be complete for any problem $Q \subseteq P$, while a complete method for $P$ might be incomplete for $R \supset P$. 
 
 
 % -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
@@ -40,13 +40,13 @@ Local search methods typically require as an input a solution $x'$ and attempt t
 
 Most local search methods for *C* are iterative in nature, and need a starting point $x^0$ as input. The ($k+1$)-st iterate is obtained as $x^{k+1} = x^k + \alpha_k d^k$, where $\alpha_k$ (a scalar) is the {\it step length}, and $d^k$ (a vector) is the {\it search direction}, e.g.~belonging to a tangent manifold and having a negative directional derivative at $x^k$, in order to improving optimality while reducing infeasibility. Alternatively, $x^{k+1} = x^k + d^k(\alpha_k)$ where $d^k(\cdot)$ is an arc satisfying $d^k(0) = 0$. Local search methods for *I* are also iterative, but since defining a useful notion of descent direction is harder in presence of integer variables, $d^k$ and $\alpha_k$ are usually computed in different ways, depending on the application at hand. 
 
-The solvers in Table \ref{t:solvers} which implement incomplete methods for continuous NLPs (a problem class containing QCQ) are {\sc ConOpt}, {\sc IpOpt}, {\sc Minos}, {\sc SnOpt} and {\sc KNitro}\todo{check capitalization of solver names}. The methods are local search algorithms and are essentially of the following types: %Note that traditionally {\sc KNitro} used to be a local (nonconvex) NLP solver.
+The solvers in Table \ref{t:solvers} which implement incomplete methods for continuous NLPs (a problem class containing QCQ) are \conopt, \ipopt, \minos, \snopt, and \knitro. The methods are local search algorithms and are essentially of the following types: %Note that traditionally \knitro used to be a local (nonconvex) NLP solver.
 %All of these solvers implement essentially three types of local search methods for continuous NLPs:
 \todo{sequential linear programming, sequential quadratic programming, trust-region}
 \begin{itemize}
- \item active set methods ({\sc ConOpt}, {\sc Minos}, {\sc SnOpt}, {\sc KNitro}) \cite{Dost09};
+ \item active set methods (\conopt, \minos, \snopt, \knitro) \cite{Dost09};
  %
- \item interior point methods ({\sc IpOpt}, {\sc KNitro}) \cite{Wright97};
+ \item interior point methods (\ipopt, \knitro) \cite{Wright97};
  %
  \item projected gradient methods \cite{CalaMore87:mp,ChenGui13:coap}.
 \end{itemize}
@@ -70,17 +70,17 @@ These approaches are similar to active-set methods in that at each iteration the
 
 Asymptotically complete methods do not usually require a starting point, and, if given sufficient time (infinite in the worst case) will identify a globally optimal solution with probability one. Most often, these methods are meta-heuristics, involving an element of random choice, which exploit a given (heuristic) local search procedure.
 
-The solvers in Table \ref{t:solvers} which implement asymptotically complete methods are {\sc oqnlp}, {\sc msnlp}, {\sc knitro}, and certain sub-solvers of {\sc lgo}. Specifically, we consider the following methods:
+The solvers in Table \ref{t:solvers} which implement asymptotically complete methods are \oqnlp, \msnlp, \knitro, and certain sub-solvers of \lgo. Specifically, we consider the following methods:
 %
 \begin{itemize}
- \item global adaptive random search ({\sc lgo\_gars});
+ \item global adaptive random search (\lgo GARS);
  %
- \item multi-start ({\sc knitro}, {\sc lgo\_ms}, {\sc msnlp}, {\sc oqnlp}); specifically, the former three apply to QCQ whereas the latter to QGQ.
+ \item multi-start (\knitro, \lgo MS, \msnlp, \oqnlp); specifically, the former three apply to QCQ whereas the latter to QGQ.
 \end{itemize}
 
-\paragraph{Global Adaptive Random Search.}
+\paragraph{Global Adaptive Random Search (GARS).}
 %
-This is a modification of an algorithm called {\it pure random search}, which consists in sampling a random point $x'$ from a given compact set known to contain a global optimum, and then sampling a new candidate solution $y$ in a neighborhood of $x'$, setting $x' \leftarrow y$ if $y$ improves $x'$, and repeating as long as a termination condition is not satisfied. The adaptivity stems from changing the distribution for sampling $y$ at run-time, depending on the quality of the solutions identified by the method. Since this method only depends on sampling and function evaluation, it is usually fast. In the {\sc lgo\_gars} solver, it provides a useful starting point for a subsequent local search procedure. Asymptotic global convergence is attained by restarting the random search from different initial points $x'$. 
+This is a modification of an algorithm called {\it pure random search}, which consists in sampling a random point $x'$ from a given compact set known to contain a global optimum, and then sampling a new candidate solution $y$ in a neighborhood of $x'$, setting $x' \leftarrow y$ if $y$ improves $x'$, and repeating as long as a termination condition is not satisfied. The adaptivity stems from changing the distribution for sampling $y$ at run-time, depending on the quality of the solutions identified by the method. Since this method only depends on sampling and function evaluation, it is usually fast. In the GARS solver of \lgo, it provides a useful starting point for a subsequent local search procedure. Asymptotic global convergence is attained by restarting the random search from different initial points $x'$. 
 
 \paragraph{Multi-start.}
 %
@@ -124,21 +124,21 @@ BB algorithms are exponential time in the worst case, and their exponential beha
 The following solvers from Table \ref{t:solvers} implement complete BB algorithms for QGQ or some subclasses:
 %
 \begin{itemize}
- \item {\sc Antigone}, {\sc Baron}, {\sc Couenne}, {\sc Lindo API}, {\sc SCIP} for QGQ;
+ \item \antigone, \baron, \couenne, \lindo, \scip for QGQ;
  %
-\item {\sc CPLEX} for QGL and CGC;
+\item \cplex for QGL and CGC;
 %
- \item {\sc Knitro}, {\sc BonMin}, {\sc sBB}, {\sc Xpress}, {\sc Gurobi}, and {\sc Mosek} for CGC.
+ \item \knitro, \bonmin, \sbb, \xpress, \gurobi, and \mosek for CGC.
 \end{itemize}
 %
 We remark that the latter category can be used as incomplete solvers for QGQ. %We also remark that CPLEX can currently only target problems with linear constraints when the objective function is nonconvex \cite{bliek}.
-We also remark that {\sc lgo} implements an incomplete BB algorithm for QCQ by using bounds obtained from sampling.
+We also remark that \lgo implements an incomplete BB algorithm for QCQ by using bounds obtained from sampling.
 
 \paragraph{Cutting plane approaches.}
 %
 Cutting plane approaches construct and iteratively improve a MILP (LIL) relaxation of the problem \cite{quesada,westerlund}. The cutting planes for the MILP are generated by linearization (first-order Taylor approximation) of the nonlinearities. If the latter are convex, the MILP provides a valid lower bound for the problem. Additionally, incomplete methods can be used to provide local solutions. Therefor, these methods are complete on CGC if a complete method is used to solve the MILP. The latter is typically based on BB, which is therefore a crucial technique also for this class of approaches.
 
-Solvers in Table \ref{t:solvers} that implement complete cutting plane methods for CGC are {\sc AlphaECP} \cite{westerlund}, {\sc BonMin} (in the algorithmic mode B-OA) \cite{BBCCGLLLMSW} and {\sc DICOpt} \cite{quesada}. \todo{here we give references to the solvers, above we don't}
+Solvers in Table \ref{t:solvers} that implement complete cutting plane methods for CGC are \alphaecp \cite{westerlund}, \bonmin (in the algorithmic mode B-OA) \cite{BBCCGLLLMSW} and \dicopt \cite{quesada}. \todo{here we give references to the solvers, above we don't}
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
