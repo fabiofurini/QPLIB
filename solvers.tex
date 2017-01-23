@@ -21,7 +21,7 @@ When a solver implements several algorithms, we have chosen, for each problem cl
 \bonmin      & \cite{BBCCGLLLMSW} &  C  &  I  &  C  &  I  &  C  &  I  \\
 \conopt      & \cite{Drud1985,Drud1994} &     &     &     &     &  C  &  I  \\
 \couenne     & \cite{BeLeLiMaWa08} &  C  &  C  &  C  &  C  &  C  &  C  \\
-\cplex       & &  C  &  C  &  C  &     &  C  &     \\
+\cplex       & \cite{Bixby2000,cplex} &  C  &  C  &  C  &     &  C  &     \\
 \dicopt      & \cite{DuGr86,KoGr89,ViGr90} &  C  &  I  &  C  &  I  &  C  &  I  \\
 \gurobi      & \cite{Ro12} &  C  &     &  C  &     &  C  &     \\
 \ipopt       & \cite{WaBi06} &     &     &     &     &  C  &  I  \\
@@ -29,17 +29,17 @@ When a solver implements several algorithms, we have chosen, for each problem cl
 \lindo       & \cite{LiSc09} &  C  &  C  &  C  &  C  &  C  &  C  \\
 \lgo         & \cite{Pinter1997,Pinter1998} &     &     &     &     &  A  &  A  \\
 \minos       & \cite{murtagh78,murtagh82} &     &     &     &     &  C  &  I  \\
-\mosek       & &  C  &     &  C  &     &  C  &     \\
+\mosek       & \cite{Andersen2000,Andersen2003} &  C  &     &  C  &     &  C  &     \\
 \msnlp       & \cite{ULPGKM02,LasdonPlummerUgrayBussieck2006} &     &     &     &     &  C  &  A  \\
 \oqnlp       & \cite{ULPGKM02,LasdonPlummerUgrayBussieck2006} &  A  &  A  &  A  &  A  &  C  &  A  \\
-\sbb         &  &  C  &  I  &  C  &  I  &  C  &  I  \\
+\sbb         & \cite{sbb} &  C  &  I  &  C  &  I  &  C  &  I  \\
 \scip        & \cite{Ach09,VigerskeGleixner2016} &  C  &  C  &  C  &  C  &  C  &  C  \\
 \snopt       & \cite{GMS02,GMS05} &     &     &     &     &  C  &  I  \\
-\xpress      & &  C  &     &  C  &     &  C  &     \\
+\xpress      & \cite{xpress} &  C  &     &  C  &     &  C  &     \\
 \bottomrule
 \end{tabular}
 \caption{Families of QP problems that can be tackled by each solver} \label{t:solvers}
-\todo[inline]{references for cplex, mosek, sbb, xpress}
+\todo[inline]{Someone has better references for cplex, sbb, xpress? I would prefer to cite papers that describe the implementation.}
 
 \end{table}              
 
