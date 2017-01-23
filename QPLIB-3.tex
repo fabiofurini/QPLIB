@@ -6,10 +6,10 @@
 \section{Library Construction}\label{sec:lib}
 
 In this section we present all the steps performed in order to build the
-new library. In \S \ref{subsec:instColl}, we describe the set of gathered
-instances. In \S \ref{subsec:selection} we present the features used to
+new library. In \S~\ref{subsec:instColl}, we describe the set of gathered
+instances. In \S~\ref{subsec:selection} we present the features used to
 classify the instances and we discuss the issues concerning the format of
-the instances. Finally, in \S \ref{subsec:final set}, we describe the
+the instances. Finally, in \S~\ref{subsec:final set}, we describe the
 selection process used to filter the instances and we graphically present
 the main features of the selected instances.
 
@@ -89,13 +89,13 @@ In addition, we have introduced a new, specific \texttt{.qplib} format. This
 new format is capable of describing all the instances of the library in a sparse form.
 In comparison to a more \emph{high level} format like \texttt{.gms}, the new
 format presents two advantages: it is easier to read by a self-made parser and
-it produces smaller files. See the Appendix~\ref{sec:format} for more details.
+it produces smaller files. See the \S~\ref{sec:format} for more details.
 
 %\subsection{Instance Features}\label{subsec:feature}
 
 For each instance of the starting set, we collected important characteristics
 which allowed us to classify the instances into the QP categories described in
-Section~\ref{sec:QPbasic}. As far as the variable types are concerned, we
+\S~\ref{sec:QPbasic}. As far as the variable types are concerned, we
 collected the following information:
 %
 \begin{itemize}
@@ -170,7 +170,7 @@ filters, applied in cascade.
        The first filter was designed to drastically reduce the number of
        instances by eliminating the ``easy'' ones. An empirical measure
        for the hardness of an instance is the CPU time needed by a
-       complete solver (cf.~\S \ref{sec:algo}) to solve it to
+       complete solver (cf.~\S~\ref{sec:algo}) to solve it to
        global optimality. Accordingly, for each of the gathered instance we
        ran the complete solvers in {\tt GAMS} (cf.~Table \ref{t:solvers})
        capable of solving it, whose number depends on the category of the
@@ -470,7 +470,7 @@ density larger that 50\%. However, also intermediate values are present.
 \end{figure}
 
 
-Additional details on the instance features can be found in the Appendix~\ref{sec:instance_details}.
+Additional details on the instance features can be found in \S~\ref{sec:instance_details}.
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %  End QPLIB-3.tex
