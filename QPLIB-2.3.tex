@@ -121,19 +121,18 @@ When the BB algorithm is allowed to select coordinate directions corresponding t
 
 BB algorithms are exponential time in the worst case, and their exponential behavior unfortunately often shows up in practice. They can also be used heuristically (forsaking their completeness guarantee) by either terminating them early, or by using non-guaranteed bounds.
 
-The solvers in Table \ref{t:solvers} BB type methods are:
+The following solvers from Table \ref{t:solvers} implement complete BB algorithms for QGQ or some subclasses:
 %
 \begin{itemize}
- \item {\sc Antigone}, {\sc Baron}, {\sc Couenne}, {\sc Lindo API}, {\sc SCIP}, which implement complete BB algorithms for QGQ;
+ \item {\sc Antigone}, {\sc Baron}, {\sc Couenne}, {\sc Lindo API}, {\sc SCIP} for QGQ;
  %
-\item {\sc CPLEX}, which implements a complete BB algorithm for QGL;
+\item {\sc CPLEX} for QGL and CGC;
 %
- \item {\sc Knitro\_bb}, {\sc BonMin}, {\sc sBB}, {\sc Xpress}, {\sc Gurobi}, and {\sc Mosek} which implement complete BB algorithms for CGC.
+ \item {\sc Knitro}, {\sc BonMin}, {\sc sBB}, {\sc Xpress}, {\sc Gurobi}, and {\sc Mosek} for CGC.
 \end{itemize}
 %
-We remark that the latter category can be used as incomplete solvers for QGQ. We also remark that CPLEX can currently only target problems with linear constraints when the objective function is nonconvex \cite{bliek}.
-
-\todo[inline]{{\sc lgo\_bb} was in the listing above, but is it a complete solver for any class?}
+We remark that the latter category can be used as incomplete solvers for QGQ. %We also remark that CPLEX can currently only target problems with linear constraints when the objective function is nonconvex \cite{bliek}.
+We also remark that {\sc lgo} implements an incomplete BB algorithm for QCQ by using bounds obtained from sampling.
 
 \paragraph{Cutting plane approaches}.
 %
