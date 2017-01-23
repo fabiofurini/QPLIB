@@ -1,11 +1,10 @@
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%  QPLIB-2.4.tex
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-\subsection{Solvers}\label{subsec:solver}
+\subsubsection{Solvers}\label{subsec:solver}
 
-We now provide a succinct list of the solvers we have worked with. In Table \ref{t:solvers}, we mark with ``I'' a pair (solver, problem) if the solver accepts the problem in input but it is an incomplete solver for the problem, with ``A'' if it is asymptotically complete, with ``C'' if it is complete, and leave it blank if the solver won't accept the problem in input.
+When compiling QPLIB, we have worked with QP solvers that come with the GAMS distribution\footnote{\url{https://www.gams.com}}.
+A list of these solvers is provided by Table \ref{t:solvers}.
+
+We mark a pair (solver, problem) with ``I'' if the solver accepts the problem in input but it is an incomplete solver for the problem, with ``A'' if it is asymptotically complete, with ``C'' if it is complete, and leave it blank if the solver won't accept the problem in input.
+When a solver implements several algorithms, we have chosen, for each problem class, the algorithm that potentially provides the ``strongest'' results (``C'' $>$ ``A'' $>$ ``I'' $>$ blank).
 
 \begin{table}
 {
@@ -45,9 +44,3 @@ We now provide a succinct list of the solvers we have worked with. In Table \ref
 }
 
 \end{table}              
-
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%  End QPLIB-2.4.tex
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

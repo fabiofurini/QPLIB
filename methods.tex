@@ -4,7 +4,7 @@
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
-\subsection{Solution Methods}\label{sec:algo}
+\subsection{Solution Methods and Solvers}\label{sec:algo}
 
 In this section we provide a quick overview of existing solution methods for QP, restricting ourselves to these implemented by the set of solvers considered in this paper (Table \ref{t:solvers}). For each approach we briefly describe the main algorithmic ideas and point out the formulation they address according to the classification set out in Sect.~\ref{sec:classification}. We remark that many solvers implement more than one algorithm, among which the user can choose at runtime. Moreover, algorithms are typically implemented by different solvers in different ways, so that the same conceptual algorithm can sometimes yield wildly different results or performance measures on the same instances.
 
@@ -32,6 +32,7 @@ The methods implemented by the solvers in Table~\ref{t:solvers} can, following \
 
 Incomplete methods are usually realized as local search algorithms, asymptotically complete methods are usually realized by meta-heuristic methods such as multi-start or simulated annealing, and complete methods for $\mathcal{NP}$-hard problems such as QP are typically realized as implicit exhaustive exploration algorithms. However, these three categories may exhibit some overlap. For example, any deterministic method for solving QCQ locally is incomplete in general, but becomes complete for CCC, since any local optimum of a convex QP is also global. Therefore, when we state that a given algorithm is incomplete or (asymptotically) complete we mean that it is so the largest problem class that the solver naturally targets, although it may be complete on specific sub-classes. For example, \snopt naturally targets continuous NLPs and it is incomplete on nonconvex NLPs, and therefore on QCQ, but becomes complete for CCC. In general, all complete methods for a problem $P$ must be complete for any problem $Q \subseteq P$, while a complete method for $P$ might be incomplete for $R \supset P$. 
 
+\input{solvers.tex}
 
 % -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 \subsubsection{Incomplete methods}\label{s:incomplete}
