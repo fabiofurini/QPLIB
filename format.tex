@@ -88,8 +88,8 @@ characters !, \% or \# are ignored. Each term in the first column of
 Table~\ref{tab-qplib-format} denotes a required value. Any strings beyond
 those required on a given line will be regarded as comments and ignored.
 Real values may either by in decimal or exponential formats; for the latter,
-the exponent may be preceded by either the character {\tt D} or {\tt E},
-e.g. {\tt 12.56D+2} or {\tt 12.56E+2}.
+the exponent may be preceded by either the character \texttt{D} or \texttt{E},
+e.g. \texttt{12.56D+2} or \texttt{12.56E+2}.
 
 \vspace*{2mm}
 
@@ -198,13 +198,13 @@ non-default starting value in $z^0$, if $n^{z^0} > 0$, one pair per line} &  \\
 $n^x_d$ & \lbox{number of non-default names (integer) of variables---default
 for variable $i$ is the character string representing the numerical
 value $i$} &  \\
-$j$\; ${\tt var\_name}_j$ & \lbox{index (integer) and name (character string)
+$j$\; $\texttt{var\_name}_j$ & \lbox{index (integer) and name (character string)
 for each non-default variable name, if $n^x_d > 0$,  one pair per line} & \\
 \hline
 $n^c_d$ & \lbox{number of non-default names (integer) of general
 constraints---default for constraint $i$ is the character string representing
 the numerical value $i$} &  \\
-$i$\; ${\tt cons\_name}_i$ & \lbox{index  (integer) and name (character string) for each
+$i$\; $\texttt{cons\_name}_i$ & \lbox{index  (integer) and name (character string) for each
 non-default constraint name, if $n^c_d > 0$,  one pair per line} & \\
 \hline
 \end{longtable}
@@ -234,7 +234,7 @@ section to specify the range.}
 The problem type is represented by a character string as one of the following:
 \begin{description}
 \item For continuous problems (i.e., all variables are continuous):
-\begin{description}[leftmargin=!,labelwidth=\widthof{\ttfamily SMILQPC}]
+\begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
 \item [LP]      a linear program,
 \item [LPQC]    a linear program with quadratic constraints,
 \item [BQP]     a bound-constrained quadratic program,
@@ -242,7 +242,7 @@ The problem type is represented by a character string as one of the following:
 \item [QPQC]    a quadratic program with quadratic constraints.
 \end{description}
 \item For integer problems (i.e., all variables are integer valued):
-\begin{description}[leftmargin=!,labelwidth=\widthof{\ttfamily SMILQPC}]
+\begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
 \item [ILP]     an integer linear program,
 \item [ILPQC]   an integer linear program with quadratic constraints,
 \item [IBQP]    an integer bound-constrained quadratic program,
@@ -251,7 +251,7 @@ The problem type is represented by a character string as one of the following:
 \end{description}
 \item For mixed-integer problems (i.e., there is a mix of continuous and
 integer variables):
-\begin{description}[leftmargin=!,labelwidth=\widthof{\ttfamily SMILQPC}]
+\begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
 \item [MILP]    a mixed-integer linear program,
 \item [MILPQC]  a mixed-integer linear program with quadratic constraints,
 \item [MIBQP]   a mixed-integer bound-constrained quadratic program,

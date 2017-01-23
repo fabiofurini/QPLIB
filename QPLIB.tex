@@ -100,16 +100,15 @@
 \newenvironment{example}{\begin{EX}\rm}{\end{EX}}
 
 \newenvironment{proof}[1][Proof]{\textbf{#1.} }{\ \rule{0.5em}{0.5em}}
-%\renewenvironment{proof}{{\bfseries Proof}}{\qed}
 
-\def\remark{\stepcounter{theorem}\par{\bf Remark}.
+\def\remark{\stepcounter{theorem}\par\textbf{Remark}.
 \ignorespaces}
 \def\endremark{ \vbox{\hrule\hbox{%
     \vrule height1.3ex\hskip0.8ex\vrule}\hrule
    }\par}
 
 \newenvironment{keywords}{\vspace{0.4in}\begin{quote}\small \em
-{\bf Keywords\/}:}{\end{quote}}
+\textbf{Keywords\/}:}{\end{quote}}
 \fi
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
