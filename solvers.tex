@@ -1,47 +1,44 @@
 \subsubsection{Solvers}\label{subsec:solver}
 
-When compiling QPLIB, we have worked with QP solvers that come with the GAMS distribution\footnote{\url{https://www.gams.com}}.
-A list of these solvers is provided by Table \ref{t:solvers}.
-
-We mark a pair (solver, problem) with ``I'' if the solver accepts the problem in input but it is an incomplete solver for the problem, with ``A'' if it is asymptotically complete, with ``C'' if it is complete, and leave it blank if the solver won't accept the problem in input.
+When compiling QPLIB, we have worked with the QP solvers that come with the GAMS distribution\footnote{\url{https://www.gams.com}}. 
+Table \ref{t:solvers} provides a list of these solvers, together with a classification of their algorithm, and references.
+For more details on the solvers, we refer to the given references, solver manuals, and the survey \cite{BuVi10}.
+In the table, we mark a pair (solver, problem) with ``I'' if the solver accepts the problem in input but it is an incomplete solver for the problem, with ``A'' if it is asymptotically complete, with ``C'' if it is complete, and leave it blank if the solver won't accept the problem in input.
 When a solver implements several algorithms, we have chosen, for each problem class, the algorithm that potentially provides the ``strongest'' results (``C'' $>$ ``A'' $>$ ``I'' $>$ blank).
 
 \begin{table}
-{
- \centering                
- \scriptsize                
- \setlength{\tabcolsep}{3pt}                
-% \renewcommand \arraystretch{1}                
-                
-\begin{tabular}{lccccccc}
-\toprule  
-             & CGL & QGL & CGC & QGQ & CCC & QCQ \\
-\hline
-\alphaecp    &  C  &  I  &  C  &  I  &  C  &  I  \\
-\antigone    &  C  &  C  &  C  &  C  &  C  &  C  \\
-\baron       &  C  &  C  &  C  &  C  &  C  &  C  \\
-\bonmin      &  C  &  I  &  C  &  I  &  C  &  I  \\
-\conopt      &     &     &     &     &  C  &  I  \\
-\couenne     &  C  &  C  &  C  &  C  &  C  &  C  \\
-\cplex       &  C  &  C  &  C  &     &  C  &     \\
-\dicopt      &  C  &  I  &  C  &  I  &  C  &  I  \\
-\gurobi      &  C  &     &  C  &     &  C  &     \\
-\ipopt       &     &     &     &     &  C  &  I  \\
-\knitro      &  C  &  I  &  C  &  I  &  C  &  A  \\
-\lindo       &  C  &  C  &  C  &  C  &  C  &  C  \\
-\lgo         &     &     &     &     &  A  &  A  \\
-\minos       &     &     &     &     &  C  &  I  \\
-\mosek       &  C  &     &  C  &     &  C  &     \\
-\msnlp       &     &     &     &     &  C  &  A  \\
-\oqnlp       &  A  &  A  &  A  &  A  &  C  &  A  \\
-\sbb         &  C  &  I  &  C  &  I  &  C  &  I  \\
-\scip        &  C  &  C  &  C  &  C  &  C  &  C  \\
-\snopt       &     &     &     &     &  C  &  I  \\
-\xpress      &  C  &     &  C  &     &  C  &     \\
-\hline
-\end{tabular}                 
+ \centering
+ \scriptsize
+ \setlength{\tabcolsep}{3pt}
+
+\begin{tabular}{llccccccc}
+\toprule
+             & & CGL & QGL & CGC & QGQ & CCC & QCQ \\
+\midrule
+\alphaecp    & \cite{WeLu03,WePoe02} &  C  &  I  &  C  &  I  &  C  &  I  \\
+\antigone    & \cite{MiFl13,MiFl14} &  C  &  C  &  C  &  C  &  C  &  C  \\
+\baron       & \cite{TaSa02,TaSa04,TaSa05} &  C  &  C  &  C  &  C  &  C  &  C  \\
+\bonmin      & \cite{BBCCGLLLMSW} &  C  &  I  &  C  &  I  &  C  &  I  \\
+\conopt      &  &     &     &     &     &  C  &  I  \\
+\couenne     & \cite{BeLeLiMaWa08} &  C  &  C  &  C  &  C  &  C  &  C  \\
+\cplex       & &  C  &  C  &  C  &     &  C  &     \\
+\dicopt      & \cite{DuGr86,KoGr89,ViGr90} &  C  &  I  &  C  &  I  &  C  &  I  \\
+\gurobi      & \cite{Ro12} &  C  &     &  C  &     &  C  &     \\
+\ipopt       & &     &     &     &     &  C  &  I  \\
+\knitro      & \cite{ByNoWa06} &  C  &  I  &  C  &  I  &  C  &  A  \\
+\lindo       & \cite{LiSc09} &  C  &  C  &  C  &  C  &  C  &  C  \\
+\lgo         & &     &     &     &     &  A  &  A  \\
+\minos       & &     &     &     &     &  C  &  I  \\
+\mosek       & &  C  &     &  C  &     &  C  &     \\
+\msnlp       & &     &     &     &     &  C  &  A  \\
+\oqnlp       & \cite{ULPGKM02} &  A  &  A  &  A  &  A  &  C  &  A  \\
+\sbb         &  &  C  &  I  &  C  &  I  &  C  &  I  \\
+\scip        & \cite{Ach09,VigerskeGleixner2016} &  C  &  C  &  C  &  C  &  C  &  C  \\
+\snopt       & &     &     &     &     &  C  &  I  \\
+\xpress      & &  C  &     &  C  &     &  C  &     \\
+\bottomrule
+\end{tabular}
 \caption{Families of QP problems that can be tackled by each solver} \label{t:solvers}
-}
 
 \end{table}              
 

@@ -1,4 +1,4 @@
-﻿@Article{Koch2011,
+@Article{Koch2011,
 author="Koch, Thorsten
 and Achterberg, Tobias
 and Andersen, Erling
@@ -90,17 +90,6 @@ Nonconvex Programs: Part {I} --- {C}onvex Underestimating Problems},
          }
 }
 
-@article{glomiqo,
-         key     = {glomiqo},
-         author  = {R.~Misener and C.~Floudas},
-         title   = {{GloMIQO}: {Glo}bal {M}ixed-{I}nteger {Q}uadratic {O}ptimizer},
-         journal = {Journal of Global Optimization},
-         year    = {2013},
-         volume  = {57},
-         number  = {},
-         pages   = {3-50}
-}
-
 @techreport{tarski-reals,
          key     = {tarski-reals},
          author  = {A.~Tarski},
@@ -119,27 +108,6 @@ Nonconvex Programs: Part {I} --- {C}onvex Underestimating Problems},
          volume  = {21},
          number  = {1},
          pages   = {1-46}
-}
-
-@article{westerlund,
-         key     = {westerlund},
-         author  = {Westerlund, T. and P\"orn, R.},
-         title   = {Solving Pseudo-convex Mixed Integer Optimization Problems by Cutting Plane Techniques},
-         journal = {Optimization and Engineering},
-         year    = {2002},
-         volume  = {3},
-         pages   = {235-280}
-}
-
-@article{quesada,
-         key     = {quesada},
-         author  = {Quesada, I. and Grossmann, I.E.},
-         title   = {Global optimization of bilinear process networks and multicomponent flows},
-         journal = {Computers \& Chemical Engineering},
-         volume  = {19},
-         number  = {12},
-         pages   = {1219-1242},
-         year    = {1995}
 }
 
 @inproceedings{bliek,
@@ -274,7 +242,7 @@ year="2008",
 volume="121",
 number="2",
 pages="307--335",
-OPTabstract="We present a method for finding exact solutions of Max-Cut, the problem of finding a cut of maximum weight in a weighted graph. We use a Branch-and-Bound setting that applies a dynamic version of the bundle method as bounding procedure. This approach uses Lagrangian duality to obtain a ``nearly optimal'' solution of the basic semidefinite Max-Cut relaxation, strengthened by triangle inequalities. The expensive part of our bounding procedure is solving the basic semidefinite relaxation of the Max-Cut problem, which has to be done several times during the bounding process. We review other solution approaches and compare the numerical results with our method. We also extend our experiments to instances of unconstrained quadratic 0--1 optimization and to instances of the graph equipartition problem. The experiments show that our method nearly always outperforms all other approaches. In particular, for dense graphs, where linear programming-based methods fail, our method performs very well. Exact solutions are obtained in a reasonable time for any instance of size up to n = 100, independent of the density. For some problems of special structure we can solve even larger problem classes. We could prove optimality for several problems of the literature where, to the best of our knowledge, no other method is able to do so.",
+OPTabstract="We present a method for finding exact solutions of Max-Cut, the problem of finding a cut of maximum weight in a weighted graph. We use a Branch-and-Bound setting that applies a dynamic version of the bundle method as bounding procedure. This approach uses Lagrangian duality to obtain a ``nearly optimal'' solution of the basic semidefinite Max-Cut relaxation, strengthened by triangle inequalities. The expensive part of our bounding procedure is solving the basic semidefinite relaxation of the Max-Cut problem, which has to be done several times during the bounding process. We review other solution approaches and compare the numerical results with our method. We also extend our experiments to instances of unconstrained quadratic 0--1 optimization and to instances of the graph equipartition problem. The experiments show that our method nearly always outperforms all other approaches. In particular, for dense graphs, where linear programming-based methods fail, our method performs very well. Exact solutions are obtained in a reasonable time for any instance of size up to n = 100, independent of the density. For some problems of special structure we can solve even larger problem classes. We could prove optimality for several problems of the literature where, to the best of our knowledge, no other method is able to do so.",
 issn="1436-4646",
 OPTdoi="10.1007/s10107-008-0235-8",
 OPTurl="http://dx.doi.org/10.1007/s10107-008-0235-8",
@@ -1040,4 +1008,216 @@ journal = {Discrete Optimization},
 pages = {186--204},
 annote = {IBM Research Report RC23771},
 doi = {10.1016/j.disopt.2006.10.011}
+}
+
+@InCollection{BuVi10,
+ author = {Michael R. Bussieck and S. Vigerske},
+ title = {{MINLP} Solver Software},
+ crossref = {CoCoKeKhSm10},
+ booktitle = {Wiley Encyclopedia of Operations Research and Management Science},
+ publisher = {Wiley \& Sons, Inc.},
+ editor = {J. J. Cochran et.al.},
+ year = {2010},
+ doi = {10.1002/9780470400531.eorms0527},
+ xnote = {\url{http://www.math.hu-berlin.de/~stefan/minlpsoft.pdf}}
+}
+
+@Article{WePoe02,
+author = {Tapio Westerlund and Ray P{\"o}rn},
+title = {Solving Pseudo-Convex Mixed Integer Optimization Problems by Cutting Plane Techniques},
+journal = {Optimization and Engineering},
+year = {2002},
+volume = {3},
+number = {3},
+pages = {253--280},
+doi = {10.1023/A:1021091110342}
+}
+
+@article{QuGr92,
+   author    = {Ignacio Quesada and Ignacio E. Grossmann},
+   title     = {An {LP/NLP} Based Branch and Bound Algorithm for Convex {MINLP} Optimization Problems},
+   journal   = {Computers \& Chemical Engineering},
+   year      = {1992},
+   volume    = {16},
+   number    = {10-11},
+   pages     = {937--947},
+   doi       = {10.1016/0098-1354(92)80028-8}
+}
+
+@Article{KoGr89,
+author = {Gary R. Kocis and Ignacio E. Grossmann},
+title = {Computational Experience with {DICOPT} Solving {MINLP} Problems in Process Systems Engineering},
+journal = {Computers \& Chemical Engineering},
+year = {1989},
+volume = {13},
+number = {3},
+pages = {307--315},
+doi = {10.1016/0098-1354(89)85008-2}
+}
+
+@article{DuGr86,
+   author    = {Marco A. Duran and Ignacio E. Grossmann},
+   title     = {An Outer-Approximation Algorithm for a Class of Mixed-integer Nonlinear Programs},
+   journal   = {Mathematical Programming},
+   year      = {1986},
+   volume    = {36},
+   number    = {3},
+   pages     = {307--339},
+   doi       = {10.1007/BF02592064}
+}
+
+@article{ViGr90,
+   author    = {J. Viswanathan and Ignacio E. Grossmann},
+   title     = {A Combined Penalty Function and Outer-Approximation Method for {MINLP} Optimization},
+   journal   = {Computers \& Chemical Engineering},
+   year      = {1990},
+   volume    = {14},
+   number    = {7},
+   pages     = {769--782},
+   doi       = {10.1016/0098-1354(90)87085-4}
+}
+
+@TechReport{WeLu03,
+author = {Tapio Westerlund and K. Lundquist},
+title = {Alpha-{ECP}, Version 5.04. An Interactive {MINLP}-Solver Based on the Extended Cutting Plane Method},
+institution = {Process Design Laboratory, \AA{}bo Akademi University},
+year = {2003},
+number = {01-178-A},
+address = {\AA{}bo, Finland},
+url = {http://www.abo.fi/~twesterl/A-ECPManual.pdf}
+}
+
+@article{MiFl13,
+   author = {Ruth Misener and Christodoulos A. Floudas},
+   title = {{GloMIQO}: {G}lobal {M}ixed-{I}nteger {Q}uadratic {O}ptimizer},
+   journal = {Journal of Global Optimization},
+   publisher = {Springer Netherlands},
+   volume = {57},
+   number = {1},
+   pages = {3--50},
+   year = {2013},
+   doi = {10.1007/s10898-012-9874-7}
+}
+
+@article{MiFl14,
+ author = {Ruth Misener and Christodoulos A. Floudas},
+ title = {{ANTIGONE: {A}lgorithms for co{NT}inuous / {I}nteger {G}lobal {O}ptimization of {N}onlinear {E}quations}},
+    DOI     = {10.1007/s10898-014-0166-2},
+    JOURNAL = {Journal of Global Optimization},
+    YEAR    = {2014},
+    VOLUME  = {59},
+    NUMBER  = {2-3},
+    PAGES   = {503-526}
+}
+
+@book{TaSa02,
+   author    = {Mohit Tawarmalani and Nikolaos V. Sahinidis},
+   title     = {Convexification and Global Optimization in Continuous and Mixed-Integer Nonlinear Programming: Theory, Algorithms, Software, and Applications},
+   year      = {2002},
+   publisher = {Kluwer Academic Publishers},
+   series    = {Nonconvex Optimization and Its Applications},
+   volume    = {65},
+   isbn      = {978-1-4020-1031-6}
+}
+
+@article{TaSa04,
+  author  = "Mohit Tawarmalani and Nikolaos V. Sahinidis",
+  title   = "Global optimization of mixed-integer nonlinear programs: A theoretical and computational study",
+  journal = "Mathematical Programming",
+  volume  = "99",
+  number  = "3",
+  pages   = "563--591",
+  year    = "2004",
+  doi     = "10.1007/s10107-003-0467-6"
+}
+
+@Article{TaSa05,
+author = {Mohit Tawarmalani and Nikolaos V. Sahinidis},
+title = {A polyhedral branch-and-cut approach to global optimization},
+journal = {Mathematical Programming},
+year = {2005},
+volume = {103},
+number = {2},
+pages = {225--249},
+doi = {10.1007/s10107-005-0581-8}
+}
+
+@Article{BeLeLiMaWa08,
+  author       = "Pietro Belotti and Jon Lee and Leo Liberti and F. Margot and Andreas W{\"a}chter",
+  title        = "Branching and bounds tightening techniques for non-convex {MINLP}",
+  journal      = "Optimization Methods and Software",
+  volume       = "24",
+  number       = "4-5",
+  pages        = "597--634",
+  year         = "2009",
+  doi          = "10.1080/10556780903087124",
+  xURL          = "{http://www.optimization-online.org/DB_HTML/2008/08/2059.html}",
+  annote = {IBM Research Report RC24620}
+}
+
+@Misc{Ro12,
+author = {E. Rothberg},
+title = {Solving Quadratically-Constrained Models using {Gurobi}},
+url = {http://www.gurobi.com/resources/seminars-and-videos/gurobi-quadratic-constraints-webinar},
+year = {2012}
+}
+
+@InCollection{ByNoWa06,
+author = {R. H. Byrd and J. Nocedal and R.A. Waltz},
+title = {{KNITRO}: An Integrated Package for Nonlinear Optimization},
+booktitle = {Large-Scale Nonlinear Optimization},
+series = {Nonconvex Optimization and Its Applications},
+volume = {83},
+pages = {35--59},
+publisher = {Springer},
+year = {2006},
+editor = {G. di Pillo and M. Roma},
+doi = {10.1007/0-387-30065-1_4},
+}
+
+@Article{LiSc09,
+author = {Y. Lin and L. Schrage},
+title = {The global solver in the {LINDO API}},
+journal = {Optimization Methods \& Software},
+year = {2009},
+volume = {24},
+number = {4--5},
+pages = {657--668},
+doi = {10.1080/10556780902753221}
+}
+
+@article{ULPGKM02,
+   author    = {Z. Ugray and L. Lasdon and J. Plummer and F. Glover and J. Kelly and R. Mart\'{\i}},
+   title     = {Scatter Search and Local {NLP} Solvers: A Multistart Framework for Global Optimization},
+   journal   = {INFORMS Journal on Computing},
+   year      = {2007},
+   volume    = {19},
+   number    = {3},
+   pages     = {328--340},
+   doi       = {10.1287/ijoc.1060.0175},
+   annote    = {http://www.utexas.edu/courses/lasdon/ijocmultistart5.htm}
+}
+
+@Article{Ach09,
+  author =	 {T. Achterberg},
+  title =	 {{SCIP: Solving Constraint Integer Programs}},
+  journal =	 {Mathematical Programming Computation},
+  year =	 {2009},
+  volume =	 {1},
+  number =	 {1},
+  pages =	 {1--41},
+  doi =      {10.1007/s12532-008-0001-1}
+}
+
+@techreport{VigerskeGleixner2016,
+  author      = {Stefan Vigerske and Ambros Gleixner},
+  title       = {SCIP: Global Optimization of Mixed-Integer Nonlinear Programs in a Branch-and-Cut Framework},
+  institution = {Zuse Institute Berlin},
+  type        = {ZIB Report},
+  xaddress     = {Takustr. 7, 14195 Berlin},
+  number      = {16-24},
+  language    = {eng},
+  urn         = {urn:nbn:de:0297-zib-59377},
+  year        = {2016},
+  url         = {http://nbn-resolving.de/urn:nbn:de:0297-zib-59377}
 }
