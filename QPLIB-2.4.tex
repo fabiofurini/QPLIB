@@ -8,9 +8,6 @@
 
 We now provide a succinct list of the solvers we have tested, using the approaches described in \S \ref{sec:algo}. In Table \ref{t:solvers}, we mark with ``I'' a pair (solver, problem) if the solver accepts the problem in input but it is an incomplete solver for the problem, with ``A'' if it is asymptotically complete, with ``C'' if it is complete, and leave it blank if the solver won't accept the problem in input.
 
-{\bf The table has to be checked, as I've extrapolated from the text but I'm not 100\% sure. Also, ``?''s have to be removed.}
-
-
 \begin{table}
 {
  \centering                
@@ -35,18 +32,22 @@ We now provide a succinct list of the solvers we have tested, using the approach
 {\sc sBB}         &  C  &  I  &  C  &  I  &  C  &  I  \\
 {\sc ConOpt}      &     &     &     &     &  C  &  I  \\
 {\sc IpOpt}       &     &     &     &     &  C  &  I  \\
-{\sc lgo}         &     &     &     &     &  C? &  A  \\  %try it out
+{\sc lgo}         &     &     &     &     &  A  &  A  \\
 {\sc Minos}       &     &     &     &     &  C  &  I  \\
 {\sc msnlp}       &     &     &     &     &  C  &  A  \\
 {\sc SnOpt}       &     &     &     &     &  C  &  I  \\
-{\sc XPress}      &  C  &     &  C  &     &  C  &  ?  \\ %try it out
-{\sc Gurobi}      &  C  &     &  C  &     &  C  &  ?  \\ %try it out
-{\sc CPLEX}       &  C  &  C  &  C  &     &  C  &  I? \\ %try it out
+{\sc XPress}      &  C  &     &  C  &     &  C  &     \\
+{\sc Gurobi}      &  C  &     &  C  &     &  C  &     \\
+{\sc CPLEX}       &  C  &  C  &  C  &     &  C  &     \\
 {\sc mosek}       &  C  &     &  C  &     &  C  &     \\
 \hline
 \end{tabular}                 
 \caption{Families of QP problems that can be tackled by each solver} \label{t:solvers}
-} 
+}
+
+\todo[inline]{Xpress has a solver for convex MIQCPs called Xpress-SLP.
+However, it is not available within GAMS.
+Should Table 2 take Xpress-SLP into account?}
 
 \end{table}              
 
