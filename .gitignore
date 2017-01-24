@@ -6,4 +6,5 @@
 *.log
 *.synctex.gz
 *.out
+*.tdo
 QPLIB.pdf
