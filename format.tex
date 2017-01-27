@@ -17,36 +17,6 @@
 \newcommand{\st}{\mbox{subject to}\;\;}
 \newcommand{\lbox}[1]{\parbox[t]{105mm}{#1}\vspace*{1mm}}
 
-Following the notation of \S~\ref{sec:QPbasic}, a generic Quadratic Program (QP) can be written as follows:
-%
-\begin{align*}
- \min \;\;
- & x^\top Q^0 x + b^0 x + f \\
- %
- & c^i_l \leq x^\top Q^i x + b^i x \leq c^i_u & i \in \Mcm \\
- %
- & l_j \leq x_j \leq u_j & j \in \Mcn  \\
- %
- & x_j \in \mathbb{Z} & j \in \Mcz
-\end{align*}
-
-where:
-
-\begin{itemize}
- \item $\Mcn = \{ 1, \ldots, n \}$ is the set of (indices) of variables, and $\Mcm = \{ 1, \ldots, m \}$ is the set of (indices) of constraints;
- %
- \item $x = [x_j]_{j = 1}^n \in \RR^n$ is a finite vector of real variables;
- %
- \item $Q^i$ for $i \in \{ 0 \} \cup \Mcm$ are symmetric $n \times n$ real matrices;
- %
- \item $b^i$, $c^i_l$, $c^i_u$ for $i \in \{ 0 \} \cup \Mcm$ and $f$ are, respectively, real $n$-vectors, real constants, real constants and real constant;
- %
- \item $-\infty \leq l_j \leq u_j \leq \infty$ are the (extended) real upper and lower bounds on each variable $x_j$ for $j \in \Mcn$;
- %
- \item $\Mcm = \Mcq \cup \Mcl$ where $Q^i = 0$ for all $i \in \Mcl$;
- %
- \item the variables in $\Mcz \subseteq \Mcm$ are restricted to only attain integer values.
-\end{itemize}
 
 %Accordingly, the QPLIB format is designed to cope with a variety of linear and quadratic programs.
 %We distinguish, in particular,
@@ -81,7 +51,8 @@ where:
 %integer, while further restrictions (such as a variable being binary)
 %may be imposed via explicit constraints.
 
-The QPLIB format is defined in Table~\ref{tab-qplib-format}.
+The QPLIB format is defined in Table~\ref{tab-qplib-format}, with the notation of \S~\ref{sec:QPbasic}.
+
 The data is in free format (blanks separate values), but must occur in
 the order given here. Any blank lines, or lines starting with any of the
 characters !, \% or \# are ignored. Each term in the first column of
@@ -130,19 +101,19 @@ $n^{b^0}$ & number of non-default entries (integer) in $b^0$ & \\
 $j$\; $b^0_j$ & \lbox{index (integer) and value (real) for each non-default
 term in $b^0$, if $n^{b^0} > 0$, one pair per line} & \\
 \hline
-$f$ & constant part of the objective function & \\ \hline
+$q^0$ & constant part of the objective function & \\ \hline
 $n^{Q^i}$ & number of nonzeros (integer) in lower triangle of
 $Q^i$  & [2,4] \\
 $i$\; $h$\; $k$\; $Q^{i}_{hk}$
 & \lbox{constraint, row and column indices (integers) and value (real) for
  each entry of $Q^{i}$, if $n^{Q^i}$, one quadruple on each line} & \\
 \hline
-$n^{b}$ & number of nonzeros  (integer) in $b^i$, $i \in \Mcm$                     & [2] \\
+$n^{b^i}$ & number of nonzeros  (integer) in $b^i$, $i \in \Mcm$                     & [2] \\
 $i$\; $j$\; $b^i_{j}$ & \lbox{row and column indices (integers) and value (real)
 for each nonzero
 entry of $b^i$, if $n^{b} > 0$, one triple on each line} & \\
 \hline
-$\infty$ & \lbox{value (real) for infinity for constraint or variable
+$c_{\infty}$ & \lbox{value (real) for infinity for constraint or variable
 bounds---any bound greater than or equal to this in, absolute value,
 is infinite} & \\
 \hline
@@ -209,18 +180,18 @@ non-default constraint name, if $n^c_d > 0$,  one pair per line} & \\
 \hline
 \end{longtable}
 %}
-
-\todo[inline]{\small Stefan: I would suggest to make it simpler, even though that
-would reduce flexibility. Always fix the default value for coefficients to 0
-(otherwise, how you parse this? First initialize a n x n matrix with the non-zero
-default and then overwrite with the given entries, which may then be zero?)
-and have no default bounds for variables. If you then also adapt the suggestion
-to use a constraint sense ($\leq$,$\geq$,$=$) and a right-hand-side instead of
-a left- and right-hand-side, then there is also no need to specify a value for infinity.
-This would leave out ranged constraints - but are they really used? One could
-do it like CPLEX and have an extra constraint sense for ranges and an extra
-section to specify the range.}
-
+%
+%\todo[inline]{\small Stefan: I would suggest to make it simpler, even though that
+%would reduce flexibility. Always fix the default value for coefficients to 0
+%(otherwise, how you parse this? First initialize a n x n matrix with the non-zero
+%default and then overwrite with the given entries, which may then be zero?)
+%and have no default bounds for variables. If you then also adapt the suggestion
+%to use a constraint sense ($\leq$,$\geq$,$=$) and a right-hand-side instead of
+%a left- and right-hand-side, then there is also no need to specify a value for infinity.
+%This would leave out ranged constraints - but are they really used? One could
+%do it like CPLEX and have an extra constraint sense for ranges and an extra
+%section to specify the range.}
+%
 
 %\end{tabular}
 
@@ -228,7 +199,7 @@ section to specify the range.}
 
 \begin{description}
 \item [{[1]}]
-\todo[inline]{\small Fabio and Emiliano: we think that, if possible, we should follow the classification proposed in Section 2.}
+%\todo[inline]{\small Fabio and Emiliano: we think that, if possible, we should follow the classification proposed in Section 2.}
 
 
 The problem type is represented by a character string as one of the following:
@@ -258,11 +229,11 @@ integer variables):
 \item [MIQP]    a mixed-integer quadratic program, and
 \item [MIQPQC]  a mixed-integer quadratic program with quadratic constraints.
 \end{description}
-\todo[inline]{\small Stefan: I agree that leaving out information on
-numerical properties of the matrices and vectors (convexity, etc.) is good here.
-Such properties may also depend on tolerances, etc.
-As above, I would suggest to eliminate LPQC and rename QPQC into QCP.
-Having a string for ``unspecified'' may be nice, too, or one just uses MIQCQP in this case.}
+%\todo[inline]{\small Stefan: I agree that leaving out information on
+%numerical properties of the matrices and vectors (convexity, etc.) is good here.
+%Such properties may also depend on tolerances, etc.
+%As above, I would suggest to eliminate LPQC and rename QPQC into QCP.
+%Having a string for ``unspecified'' may be nice, too, or one just uses MIQCQP in this case.}
 \end{description}
 
 
@@ -303,7 +274,7 @@ Minimize  # minimize the objective function
 -0.2      default value for entries in b_0
 1         # non default entries in b_0
 2 -0.4    1 lines of index & value of non-default values in b_0
-0.0       value of f
+0.0       value of q^0
 4         # nonzeros in vectors b^i (i =0,...,m)
 1 1 1.0   4 lines of row & column index & value of nonzeros in b^i (i =0,...,m)
 1 2 1.0   |
