@@ -180,16 +180,6 @@ non-default constraint name, if $n^c_d > 0$,  one pair per line} & \\
 \end{longtable}
 %}
 %
-\todo[inline]{\small Stefan: I would suggest to make it simpler, even though that
-would reduce flexibility. Always fix the default value for coefficients to 0
-(otherwise, how you parse this? First initialize a n x n matrix with the non-zero
-default and then overwrite with the given entries, which may then be zero?)
-and have no default bounds for variables. If you then also adapt the suggestion
-to use a constraint sense ($\leq$,$\geq$,$=$) and a right-hand-side instead of
-a left- and right-hand-side, then there is also no need to specify a value for infinity.
-This would leave out ranged constraints - but are they really used? One could
-do it like CPLEX and have an extra constraint sense for ranges and an extra
-section to specify the range.}
 
 
 %\end{tabular}
@@ -229,7 +219,6 @@ integer variables):
 \item [MIQPQC]  a mixed-integer quadratic program with quadratic constraints.
 \end{description}
 \end{description}
-\todo[inline]{\small Stefan: Are LPQC and QPQC frequently used abbreviations? If a linear program has quadratic constraints, how can it then still be a linear program? I am more familiar with the abbreviations QCP instead of LPQC and QCQP instead of QPQC. I further think that one could skip QCP and consider them as part of QCQP.}
 
 
 \item [{[2]}]
