@@ -119,7 +119,8 @@ information:
        number of entries). %(\emph{\% dens}).
 \end{itemize}
 %
-The number of negative eigenvalues of $Q^0$ allows us to identify the
+
+The number of negative (i.e., smaller than $-10^{-16}$) eigenvalues of $Q^0$ allows us to identify the
 objective function type, as in presence of at least one negative eigenvalue
 the objective function is non convex. Finally, as far as the constraint types
 are concerned, we collected the following information:
@@ -136,8 +137,9 @@ are concerned, we collected the following information:
 %
 A constraint is considered quadratic if it contains at least one nonzero in
 the quadratic term. Among the quadratic constraints, the ones with only
-non-negative eigenvalues are classified as convex constraints. All this
-information allowed us to analyse the gathered instances and to perform the
+non-negative eigenvalues are classified as convex constraints.
+Note that this might lead to classify some instances that have conic constraints as non-convex ones, although their feasible region is in fact convex. However, only some solvers are capable of properly exploiting this property.
+ All this information allowed us to analyse the gathered instances and to perform the
 filters described in the the next paragraph.
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -174,7 +176,7 @@ filters, applied in cascade.
        global optimality. Accordingly, for each of the gathered instance we
        ran the complete solvers in GAMS, which number depends on the category
        of the instance under consideration, cf.~Table \ref{t:solvers}.
-       We then filtered according to a relative
+       We then filtered according to a first
        measure of computational difficulty, i.e., we discarded all instances
        that are solved by at least 30\% of the complete solvers within a time
        limit of 30 seconds.
@@ -183,13 +185,10 @@ filters, applied in cascade.
        The goal of the second filter was to eliminate ``similar'' instances.
        We carefully analysed the instances one by one, and we clustered them
        according to their features; for each cluster we kept only a few
-       representatives\todo{we may want to be a tad more specific
-       about what ``features'' exactly meant there}. Finally, in order to only
-       keep computationally challenging instances we ran a general purpose solver
-       able to tackle all QP categories\todo{do you mean a complete solver for QGQ? if so, maybe say so}\xspace with a time limit of 120 seconds; all the
+       representatives (e.g., very similar size, same donor,\ldots). Finally, in order to only
+       keep computationally challenging instances we ran a a complete solver for QGQ with a time limit of 120 seconds; all the
        instances which have been solved to proven optimality within this time limit
-       were discarded\todo{this might actually be best characterized as
-       a third filter}.
+       were discarded.
 \end{itemize}
 %
 In Table~\ref{tab:filters} we summarize the two filter steps, which
@@ -225,8 +224,7 @@ library. The characteristics of the instances are presented in Table
 \ref{tab:CC} for \emph{continuous} ones (*C*). For each category, the tables
 report in column ``$\#$'' the corresponding number of instances. It can be seen
 that the final set well respects the original distribution of the gathered
-instances\todo{Maybe one could put the numbers for the original set of instances
-into Tables \ref{tab:DD} and \ref{tab:CC}, too?}\xspace among the different categories. Indeed, the discrete categories
+instances among the different categories. Indeed, the discrete categories
 (LMQ) or (QBL) are well represented by $118$ and $59$ instances,
 respectively. Similarly, the continuous categories (LCQ) and (QCQ) are well
 represented by $50$ and $17$ instances, respectively. Moreover, the library
@@ -434,11 +432,11 @@ computationally challenging than linear ones, especially if nonconvex.
 Figure~\ref{fig:pic_conv_constr} shows the instances with at least one quadratic constraint sorted according to the number of quadratic constraints (vertical axis). For each instance we report the total number of constraints with a ``$+$''
 and the total number of nonconvex quadratic constraints
 with a ``$\times$''.
+It can be seen that the majority of instances only have convex constraints; of those that have nonconvex ones, however, a significant fraction have no convex ones at all.
 
 \begin{figure}\centering
   \includegraphics[width=0.85\textwidth]{pic_quad_conv_vs_nonconv.png}
-  \todo[inline]{horizontal axis label could say ``Instances with at least one quadratic constraint''}
-  \caption{Quadratic constraints \label{fig:pic_conv_constr}}
+  \caption{Quadratic constraints (instances with at least one) \label{fig:pic_conv_constr}}
 \end{figure}
 
 
@@ -447,16 +445,15 @@ with a ``$\times$''.
 
 Speaking of nonconvexity, Figure~\ref{fig:pic_neg_eig} focuses on
 the instances with a quadratic objective function, ordered by the
-the percentage of negative eigenvalues\todo{Was there some tolerance applied on when an eigenvalue is considered negative? $-10^{-9}$, $-10^{-6}$, etc.?} in the $Q^0$ matrix (vertical axis). The instances are mostly
-clustered around two values. About 25\% of the instances are convex\todo{so one also restrict to linear constraints, or may only the objective be convex?},
+the percentage of negative eigenvalues in the $Q^0$ matrix (vertical axis). The instances are mostly
+clustered around two values. About 25\% of the instances have convex objective function,
 i.e., they have 0\% of negative eigenvalues. Among the others, a vast
 majority has around 50\% of negative eigenvalues. However, instances
 with high or low percentages of negative eigenvalues are present, too.
 
 \begin{figure}\centering
   \includegraphics[width=0.85\textwidth]{pic_neg_eig.png}
-  \todo[inline]{horizontal axis label should say ``Instances with quadratic objective function''}
-  \caption{Negative eigenvalues \label{fig:pic_neg_eig}}
+  \caption{Negative eigenvalues (instances with quadratic objective function) \label{fig:pic_neg_eig}}
 \end{figure}
 
 Similarly, Figure~\ref{fig:pic_density} shows the instances with a
@@ -468,12 +465,47 @@ density larger than 50\%. However, also intermediate values are present.
 
 \begin{figure}\centering
   \includegraphics[width=0.85\textwidth]{pic_density.png}
-  \todo[inline]{horizontal axis label should say ``Instances with quadratic objective function''}
-  \caption{Density \label{fig:pic_density}}
+  \caption{Density of $Q^0$ (instances with quadratic objective function) \label{fig:pic_density}}
 \end{figure}
 
 
 Additional details on the instance features can be found in \S~\ref{sec:instance_details}.
+
+%The all set of instances can be downloaded at \url{http://qplib.zib.de/html/index.html}.
+%Since, as described in Section \ref{subsec:final set} the library contains instances of different nature, the website allows to filter the instances according to the classification proposed in Section \ref{ssec:taxonomy}.
+
+\subsection{Website}
+%Select subset or categories of instances (EXTRACT FROM THE LIBRARY A SUBSET OF INSTANCES WITH SPECIFIC CHARACTERISTICS)
+%\todo[inline]{TASK X : write }
+
+The instances of QPLIB are publically accessible at the website \url{http://qplib.zib.de}.
+%
+Beyond links to the \texttt{gms} and \texttt{lp} format files, the website provides a rich set of metadata for each
+instance: the three letter problem classification (as described in Section \ref{subsec:final set}), basic properties such as the number of variables and constraints of
+different types, the sense and curvature of the objective function, and information on the nonzero structure of the
+problem.
+%
+In addition, we display a visualization of the sparsity patterns of the Jacobian and the Hessian matrix of the
+Lagrangian function.  In the plots of the Jacobian nonzero pattern, the linear and nonlinear entries are distinguished
+by color.  Figure... shows an example for instance QPLIB...
+
+
+The entire set of instances can be explored in a searchable and sortable table of selected instance features: problem
+classification, convexity of the continuous relaxation, and number of variables, constraints, and nonzeros.
+%
+Finally, a statistics page displays diagrams on the composition of the library according to different criteria: the
+number instances according to problem type, variable types, convexity, number of variables and constraints, and density.
+%
+A table containing the relevant metadata for each instance can be downloaded in \texttt{csv} format and as spreadsheets
+such that researchers can easily compile their own subset of instances according to these statistics.
+
+
+The complete library can be downloaded as one archive, which contains the website for offline browsing and exploration.  
+%
+In the future, we plan to extend the website by the addition of contributor information and references to the literature.
+
+
+
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %  End QPLIB-3.tex
