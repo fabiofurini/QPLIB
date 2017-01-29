@@ -340,7 +340,7 @@ Total                    &           & 116 \\
 \end{table}
 
 We now report some graphs that help in illustrating the main features
-of the instances. In Figure~\ref{fig:distribution} we plot the number
+of the instances. In Figure~\ref{fig:distribution}~(left) we plot the number
 of variables (horizontal axis) versus the number of constrains
 (vertical axis), both in logarithmic scale. Continuous instances are
 marked with ``$+$'', and discrete ones with ``$\times$''. The figure shows
@@ -348,12 +348,14 @@ that the library contains a quite diverse set of instances in
 terms of number of variables and constraints. The maximal number of constraints
 is 100000, while the maximal number of
 variables is almost 40000.
+Figure~\ref{fig:distribution}~(right) plots the number of nonzero elements in the gradient of the objective function and the Jacobian and the number of these nonzeros corresponding to nonlinear variables, that is, it counts the appearances of variables in objectives and constraints and how often such an appearance is in a quadratic term.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}\centering
-  \includegraphics[width=0.55\textwidth]{pic_overview.pdf}
+  \includegraphics[width=0.50\textwidth]{pic_overview.pdf}
+  \includegraphics[width=0.49\textwidth]{pic_nz.pdf}
   \caption{Distribution of number of variables and constraints of QPLIB instances
-instances. \label{fig:distribution}}
+(left). Number of (nonlinear) nonzeros of QPLIB instances (right).\label{fig:distribution}}
 \end{figure}
 
 %Figure~\ref{fig:pic_var_small}, Figure~\ref{fig:pic_var_medium} and
