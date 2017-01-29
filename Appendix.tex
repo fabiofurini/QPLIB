@@ -9,10 +9,10 @@
 
 In this Appendix we provide detailed data on all the instances of the final library. 
 %This is done in Tables \ref{tab:A1}--\ref{tab:A10} for \emph{discrete} instances (*\{B,M,I,G\}*) and in Tables \ref{tab:B1}--\ref{tab:B5} for \emph{continuous} ones (*C*). 
-In Table \ref{tab:A1} the features of the instances are described by three sets of columns. The first (``\%~n.e.'') describes the objective function by reporting the fraction of eigenvalues of $Q^0$ that are negative: a positive number implies that $Q^0$ is not PSD (hence, the instance is a Q**), ``0.0'' implies that $Q^0$ is PSD (hence, the instance is a C**), a blank implies that $Q^0 = 0$, i.e., the objective function is linear (hence, the instance is a L**). 
-The second (``\%~d.'') describes the density of the $Q^0$ matrix; a blank implies that the corresponding instance has a linear objective function.
+In Table \ref{tab:A1} the features of the instances are described by three sets of columns. Column ``\%~h.e.'' provides the fraction of hard eigenvalues of $Q^0$, the coefficient matrix of the objective function: a positive number implies that the instance is a Q**, ``0.0'' implies that the instance is a C**, a blank implies that $Q^0 = 0$, i.e., the objective function is linear (hence, the instance is a L**). 
+Column ``\%~d.'' describes the density of the $Q^0$ matrix: a blank implies that the corresponding instance has a linear objective function.
 For both columns (``\%~n.e.'' and ``\%~d.''), nonzeros values below $0.1$ were rounded up to $0.1$.
-The following three columns describe the variables by reporting the number of binary ones (``\#~b.''), general integer ones (``\#~i.''), and continuous ones (``\#~c.''). Finally, the last three columns describe the constraints reporting the number of linear ones (``\#~l.''), nonconvex quadratic ones (``\#~q.''), and convex quadratic ones (``\#~c.''). 
+The following three columns describe the variables by reporting the number of binary ones (``\#~b.''), general integer ones (``\#~i.''), and continuous ones (``\#~c.''). Finally, the last four columns describe the constraints reporting the number of linear ones (``\#~l.''), nonconvex quadratic ones (``\#~q.''), convex quadratic ones (``\#~c.''), and variable bounds (``\#~v.''). 
 %Tables \ref{tab:B1}--\ref{tab:B5} are similarly structured except that all variables are continuous, and hence only one column is present.
 
 
@@ -30,7 +30,7 @@ The following three columns describe the variables by reporting the number of bi
 %\cmidrule(lr){5-7} \cmidrule(lr){9-12}							 														
 % &	 	&	 	&	&	vars 	&	 &	 	&	&	cons &	 	& 	&	\\	
 %name	&	\% n.e.	&	\% dens	&	&	\# bin	&	\# int 	&	\# cont 	&	&	\# lin 	&	\# quad 	&	\# conv 	&	\# box	\\[2 ex]
-name	&	\% n.e.	&	\% d.	&	&	\# b.	&	\# i. 	&	\# c. 	&	&	\# l. 	&	\# q. 	&	\# c. 	&	\# b.	\\[2 ex]
+name	&	\% h.e.	&	\% d.	&	&	\# b.	&	\# i. 	&	\# c. 	&	&	\# l. 	&	\# q. 	&	\# c. 	&	\# v.	\\[2 ex]
 
 \endhead 														
 
