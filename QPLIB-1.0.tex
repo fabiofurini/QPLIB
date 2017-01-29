@@ -136,6 +136,26 @@ Then, \S~\ref{sec:lib} describes the process used to obtain the library and its 
 %; the software tools that we have used, and that are freely released together with the library, are discussed in \S~\ref{subsec:tools}. 
 Some conclusions are drawn in \S~\ref{sec:conclusions}, after which Appendix A provides a complete description of all the instances of the library, while Appendix B describes the QPLIB file format.
 
+
+While no performance issues of solvers for QP/QCP problems are considered in 
+this paper, we refer to the comprehensive benchmark site \url{http://plato.asu.edu/bench.html}. Of the benchmarks
+on this site three deal exlusively with QP/QCP problems: 
+the (1) Large SOCP, (2) MISOCP, and the (3) MIQ(C)P benchmarks. 
+The following contain partly results for such problems: 
+(4) Parallel Barrier Solvers on Large LP/QP problems, (5) AMPL-NLP, (6) MINLP.
+The benchmarks (1,2,4) have only convex instances, while the others include 
+nonconvex instances. Global optima are obtained by several of the solvers in
+the benchmarks (3,5).
+All solvers in the latest addition (6) compute global optima, they are ANTIGONE,
+BARON, COUENNE, LINDO, and SCIP. This benchmark is based on MINLPLIB2 \url{http://www.gamsworld.org/minlp/minlplib2/html/}, a
+collection of presently 1388 instances. In order to give a first representative
+impression of solver performance, care was taken to reduce the number and 
+allow all solvers to finish in reasonable time. More than half of the selected
+instances are QP or QCP. A time limit of two hours on a
+modern workstation with sufficent memory was used. Computations were done in
+GAMS with scripts derived from the MIPLIB scripts and available at Github.
+For details we refer to \url{http://plato.asu.edu/ftp/minlp.html}.
+
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %  End QPLIB-1.0.tex
