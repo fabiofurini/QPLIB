@@ -147,13 +147,13 @@ The benchmarks (1,2,4) have only convex instances, while the others include
 nonconvex instances. Global optima are obtained by several of the solvers in
 the benchmarks (3,5).
 All solvers in the latest addition (6) compute global optima, they are ANTIGONE,
-BARON, COUENNE, LINDO, and SCIP. This benchmark is based on MINLPLIB2 \url{http://www.gamsworld.org/minlp/minlplib2/html/}, a
+BARON, COUENNE, LINDO, and SCIP, c.f.~\S~\ref{subsec:solver}. This benchmark is based on MINLPLib~2 \cite{Vigerske2014}, a
 collection of presently 1388 instances. In order to give a first representative
-impression of solver performance, care was taken to reduce the number and 
+impression of solver performance, care was taken to reduce the number of instances and 
 allow all solvers to finish in reasonable time. More than half of the selected
 instances are QP or QCP. A time limit of two hours on a
-modern workstation with sufficent memory was used. Computations were done in
-GAMS with scripts derived from the MIPLIB scripts and available at Github.
+modern workstation with sufficient memory was used. Computations were done in
+GAMS with scripts derived from the SCIP check scripts and available at GitHub.
 For details we refer to \url{http://plato.asu.edu/ftp/minlp.html}.
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
