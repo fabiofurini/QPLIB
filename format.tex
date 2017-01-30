@@ -61,12 +61,7 @@ Real values may either by in decimal or exponential formats; for the latter,
 the exponent may be preceded by either the character \texttt{D} or \texttt{E},
 e.g. \texttt{12.56D+2} or \texttt{12.56E+2}.
 
-\vspace*{2mm}
-
-%\vspace*{-10mm}
-%{\tiny
-%\LTcapwidth=16.17cm
-\begin{longtable}{|llr|}
+\begin{longtable}{|lp{.7\textwidth}r|}
 \caption{\label{tab-qplib-format}{The QPLIB file format: refer to the notes
 after the table for more details.}}\\
 \hline
@@ -82,8 +77,6 @@ data & description & note \\
 \endfoot
 \hline
 \endlastfoot
-%\begin{tabular}{|llr|}
-%\hline
 name & problem name (character string) & \\
 type & problem type (character string) & [1] \\
 sense & one of the words minimize or maximize (character string, case irrelevant) & \\
@@ -92,100 +85,94 @@ $n$  & number of variables (integer) & \\
 $m$  & number of constraints (integer) & [2] \\
 \hline
 $n^{Q^0}$ & number of nonzeros  (integer) in lower triangle of $Q^0$  & [3] \\
-$h$\; $k$\; $Q_{hk}^0$ & \lbox{row and column indices (integers) and value (real)
-for each nonzero entry of $Q^0$, if $n^{Q^0} > 0$, one triple on each line} & \\
+$h$\; $k$\; $Q_{hk}^0$ & row and column indices (integers) and value (real)
+for each nonzero entry of $Q^0$, if $n^{Q^0} > 0$, one triple on each line & \\
 \hline
 $b^0_d$ & default value (real) for entries in $b^0$ & \\
 $n^{b^0}$ & number of non-default entries (integer) in $b^0$ & \\
-$j$\; $b^0_j$ & \lbox{index (integer) and value (real) for each non-default
-term in $b^0$, if $n^{b^0} > 0$, one pair per line} & \\
+$j$\; $b^0_j$ & index (integer) and value (real) for each non-default
+term in $b^0$, if $n^{b^0} > 0$, one pair per line & \\
 \hline
 $q^0$ & constant part of the objective function & \\ \hline
 $n^{Q^i}$ & number of nonzeros (integer) in lower triangle of
 $Q^i$  & [2,4] \\
 $i$\; $h$\; $k$\; $Q^{i}_{hk}$
-& \lbox{constraint, row and column indices (integers) and value (real) for
- each entry of $Q^{i}$, if $n^{Q^i}$, one quadruple on each line} & \\
+& constraint, row and column indices (integers) and value (real) for
+ each entry of $Q^{i}$, if $n^{Q^i}$, one quadruple on each line & \\
 \hline
 $n^{b^i}$ & number of nonzeros  (integer) in $b^i$, $i \in \Mcm$                     & [2] \\
-$i$\; $j$\; $b^i_{j}$ & \lbox{row and column indices (integers) and value (real)
+$i$\; $j$\; $b^i_{j}$ & row and column indices (integers) and value (real)
 for each nonzero
-entry of $b^i$, if $n^{b} > 0$, one triple on each line} & \\
+entry of $b^i$, if $n^{b} > 0$, one triple on each line & \\
 \hline
-$c_{\infty}$ & \lbox{value (real) for infinity for constraint or variable
+$c_{\infty}$ & value (real) for infinity for constraint or variable
 bounds---any bound greater than or equal to this in, absolute value,
-is infinite} & \\
+is infinite & \\
 \hline
 $c_{l,d}$ & default value (real) for entries in $c_{l}$            & [2] \\
 $n^{c_{l,d}}$ & number of non-default entries (integer) in $c_{l}$    & [2] \\
-$i$\;\ $c^i_{l}$ & \lbox{index (integer) and value (real) for each non-default
+$i$\;\ $c^i_{l}$ & index (integer) and value (real) for each non-default
 term
-in $c_{l,d}$, if $n^{c_{l,d}} > 0$, one pair per line}        & [2] \\
+in $c_{l,d}$, if $n^{c_{l,d}} > 0$, one pair per line        & [2] \\
 \hline
 $c_{u,d}$ & default value (real) for entries in $c_{u}$            & [2] \\
 $n^{c_{u,d}}$ & number of non-default entries (integer) in $c_{u}$    & [2] \\
-$i$\;\ $c^i_{u}$ & \lbox{index (integer) and value (real) for each non-default
+$i$\;\ $c^i_{u}$ & index (integer) and value (real) for each non-default
 term
-in $c_{u,d}$, if $n^{c_{u,d}} > 0$, one pair per line}        & \\
+in $c_{u,d}$, if $n^{c_{u,d}} > 0$, one pair per line        & \\
 \hline
 $l_{d}$ & default value (real) for entries in $l$            & \\
 $n^{l_{d}}$ & number of non-default entries (integer) in $l$    &  \\
-$i$\;\ $l_{i}$ & \lbox{index (integer) and value (real) for each non-default
+$i$\;\ $l_{i}$ & index (integer) and value (real) for each non-default
 term
-in $l$, if $n^{l_{d}}> 0$, one pair per line}        &  \\
+in $l$, if $n^{l_{d}}> 0$, one pair per line        &  \\
 \hline
 $u_{d}$ & default value (real) for entries in $u$            & \\
 $n^{u_{d}}$ & number of non-default entries (integer) in $u$    &  \\
-$i$\;\ $u_{i}$ & \lbox{index (integer) and value (real) for each non-default
+$i$\;\ $u_{i}$ & index (integer) and value (real) for each non-default
 term
-in $u$, if $n^{u_{d}}> 0$, one pair per line}        &  \\
+in $u$, if $n^{u_{d}}> 0$, one pair per line        &  \\
 \hline
-$v_d$ & \lbox{default variable type  (integer, 0 for continuous variables,
- 1 for integer variables)} & [5] \\
+$v_d$ & default variable type  (integer, 0 for continuous variables,
+ 1 for integer variables) & [5] \\
 $n^v$ & number of non-default variables (integer)  & [5] \\
-$i$\; $v_i$ & \lbox{index  and type (integers) for each non-default
-variable type, if  $n^v > 0$, one pair per line} & [5] \\
+$i$\; $v_i$ & index  and type (integers) for each non-default
+variable type, if  $n^v > 0$, one pair per line & [5] \\
 \hline
-$x\s{0}_d$ & \lbox{default value (real) for the components of the starting
-point  $x^0$ for the  variables $x$} & \\
+$x\s{0}_d$ & default value (real) for the components of the starting
+point  $x^0$ for the  variables $x$ & \\
 $n^{x^0}$ & number of non-default starting entries (integer) in $x$ & \\
-$i$\; $x_i^0$ & \lbox{index (integer) and value (real) for each non-default
-starting value in $x^0$, if $n^{x^0} > 0$, one pair per line} &  \\
+$i$\; $x_i^0$ & index (integer) and value (real) for each non-default
+starting value in $x^0$, if $n^{x^0} > 0$, one pair per line &  \\
 \hline
-$y\s{0}_d$ & \lbox{default value (real) for the components of the starting
+$y\s{0}_d$ & default value (real) for the components of the starting
 point $y^0$ for the Lagrange multipliers $y$ for the general
-constraints} &  [2] \\
+constraints &  [2] \\
 $n^{y^0}$ & number of non-default starting entries  (integer) in $y$ &  [2] \\
-$i$\; $y_i^0$ & \lbox{index (integer) and value (real) for each non-default
-starting value in $y^0$, if $n^{y^0} > 0$, one pair per line} &  [2] \\
+$i$\; $y_i^0$ & index (integer) and value (real) for each non-default
+starting value in $y^0$, if $n^{y^0} > 0$, one pair per line &  [2] \\
 \hline
-$z\s{0}_d$ & \lbox{default value (real) for the components of the starting
-point $z^0$ for the dual variables $z$ for the simple bound constraints} & \\
+$z\s{0}_d$ & default value (real) for the components of the starting
+point $z^0$ for the dual variables $z$ for the simple bound constraints & \\
 $n^{z^0}$ & number of non-default starting entries (integer) in $z$ & \\
-$i$\; $z_i^0$ & \lbox{index (integer) and value (real) for each
-non-default starting value in $z^0$, if $n^{z^0} > 0$, one pair per line} &  \\
+$i$\; $z_i^0$ & index (integer) and value (real) for each
+non-default starting value in $z^0$, if $n^{z^0} > 0$, one pair per line &  \\
 \hline
-$n^x_d$ & \lbox{number of non-default names (integer) of variables---default
+$n^x_d$ & number of non-default names (integer) of variables---default
 for variable $i$ is the character string representing the numerical
-value $i$} &  \\
-$j$\; $\texttt{var\_name}_j$ & \lbox{index (integer) and name (character string)
-for each non-default variable name, if $n^x_d > 0$,  one pair per line} & \\
+value $i$ &  \\
+$j$\; $\texttt{var\_name}_j$ & index (integer) and name (character string)
+for each non-default variable name, if $n^x_d > 0$,  one pair per line & \\
 \hline
-$n^c_d$ & \lbox{number of non-default names (integer) of general
+$n^c_d$ & number of non-default names (integer) of general
 constraints---default for constraint $i$ is the character string representing
-the numerical value $i$} &  \\
-$i$\; $\texttt{cons\_name}_i$ & \lbox{index  (integer) and name (character string) for each
-non-default constraint name, if $n^c_d > 0$,  one pair per line} & \\
+the numerical value $i$ &  \\
+$i$\; $\texttt{cons\_name}_i$ & index  (integer) and name (character string) for each
+non-default constraint name, if $n^c_d > 0$,  one pair per line & \\
 \hline
 \end{longtable}
-%}
-%
-
-
-%\end{tabular}
 
 \renewcommand{\descriptionlabel}[1]{\hspace{\labelsep}\texttt{#1}}
-
 \begin{description}
 \item [{[1]}]
 %\todo[inline]{\small Fabio and Emiliano: we think that, if possible, we should follow the classification proposed in Section 2.}
@@ -250,7 +237,7 @@ Minimize  # minimize the objective function
 3         # variables
 2         # general linear constraints
 5         # nonzeros in lower triangle of Q^0
-1 1 2.0   5 lines of row & column index & value of nonzeros in lower triangle Q^0
+1 1 2.0   5 lines row & column index & value of nz. in lower triangle Q^0
 2 1 -1.0  |
 2 2 2.0   |
 3 2 -1.0  |
@@ -260,7 +247,7 @@ Minimize  # minimize the objective function
 2 -0.4    1 lines of index & value of non-default values in b_0
 0.0       value of q^0
 4         # nonzeros in vectors b^i (i =0,...,m)
-1 1 1.0   4 lines of row & column index & value of nonzeros in b^i (i =0,...,m)
+1 1 1.0   4 lines row & column index & value of nz. in b^i (i =0,...,m)
 1 2 1.0   |
 2 1 1.0   |
 2 3 1.0   |
@@ -287,6 +274,3 @@ Minimize  # minimize the objective function
 0         # non default names for constraints
 \end{verbatim}
 }
-
-
-
