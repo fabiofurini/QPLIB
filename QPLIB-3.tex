@@ -88,8 +88,7 @@ instances into the GAMS format (\texttt{.gms}).
 In addition, we have introduced a new, specific \texttt{.qplib} format. This
 new format is capable of describing all the instances of the library in a sparse form.
 In comparison to a more \emph{high level} format like \texttt{.gms}, the new
-format presents two advantages: it is easier to read by a self-made parser and
-it produces smaller files. See the \S~\ref{sec:format} for more details.
+format presents three advantages: it is easier to read by a self-made parser, it produces smaller files, and the order of variables and constraints is fixed. See the \S~\ref{sec:format} for more details.
 
 %\subsection{Instance Features}\label{subsec:feature}
 
@@ -443,7 +442,7 @@ Additional details on the instance features can be found in \S~\ref{sec:instance
 The instances of QPLIB are publicly accessible at the website \url{http://qplib.zib.de}.
 Scripts and tools developed for MINLPLib 2 \cite{Vigerske2014} were used and extended to create the website.
 %
-Beyond all instances in GAMS and \texttt{.lp} format, the website provides a rich set of metadata for each
+Beyond all instances in GAMS, \texttt{.lp}, and \texttt{.qplib} format, the website provides a rich set of metadata for each
 instance: the three letter problem classification (as described in Section \ref{subsec:final set}), basic properties such as the number of variables and constraints of
 different types, the sense and convexity/concavity of the objective function, and information on the nonzero structure of the
 problem.
