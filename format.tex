@@ -176,44 +176,43 @@ non-default constraint name, if $n^c_d > 0$,  one pair per line & \\
 \begin{description}
 \item [{[1]}]
 %\todo[inline]{\small Fabio and Emiliano: we think that, if possible, we should follow the classification proposed in Section 2.}
-
-
 The problem type is represented by a character string as one of the following:
 \begin{description}
 \item For continuous problems (i.e., all variables are continuous):
 \begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
-\item [LP]      a linear program,
-\item [LPQC]    a linear program with quadratic constraints,
-\item [BQP]     a bound-constrained quadratic program,
-\item [QP]      a quadratic program, and
-\item [QPQC]    a quadratic program with quadratic constraints.
+\item [LP]   a problem with linear objective and linear constraints,
+\item [QCP]  a problem with linear objective and linear and quadratic constraints,
+\item [BQP]  a problem with quadratic objective and variable bounds,
+\item [QP]   a problem with quadratic objective and linear constraints, and
+\item [QCQP] a problem with quadratic objective and linear and quadratic constraints.
 \end{description}
+
 \item For integer problems (i.e., all variables are integer valued):
 \begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
-\item [ILP]     an integer linear program,
-\item [ILPQC]   an integer linear program with quadratic constraints,
-\item [IBQP]    an integer bound-constrained quadratic program,
-\item [IQP]     an integer quadratic program, and
-\item [IQPQC]   an integer quadratic program with quadratic constraints.
+\item [ILP]   an LP plus integer requirement for all variables,
+\item [IQCP]  an QCP plus integer requirement for all variables,
+\item [IBQP]  an BQP plus integer requirement for all variables,
+\item [IQP]   an QP plus integer requirement for all variables, and
+\item [IQCQP] an QCQP plus integer requirement for all variables.
 \end{description}
+
 \item For mixed-integer problems (i.e., there is a mix of continuous and
 integer variables):
 \begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
-\item [MILP]    a mixed-integer linear program,
-\item [MILPQC]  a mixed-integer linear program with quadratic constraints,
-\item [MIBQP]   a mixed-integer bound-constrained quadratic program,
-\item [MIQP]    a mixed-integer quadratic program, and
-\item [MIQPQC]  a mixed-integer quadratic program with quadratic constraints.
+\item [MILP]   an LP plus integer requirement for some variables,
+\item [MIQCP]  an QCP plus integer requirement for some variables,
+\item [MIBQP]  an BQP plus integer requirement for some variables,
+\item [MIQP]   an QP plus integer requirement for some variables, and
+\item [MIQCQP] an QCQP plus integer requirement for some variables.
 \end{description}
 \end{description}
-
 
 \item [{[2]}]
-for bound-constrained QPs, these sections are omitted.
+for BQPs, IBQPs, and MIBQPs, these sections are omitted.
 \item [{[3]}]
-for linear program with quadratic constraints, this section is omitted.
+for LPs, QCPs, ILPs, IQCPs, MILPs, MIQCPs, this section is omitted.
 \item [{[4]}]
-for problems without quadratic constraints, this section is omitted.
+for LPs, BQPs, QPs, ILPs, IBQPs, IBQPs, MILPs, MIBQPs, MIBQPs, this section is omitted.
 \item [{[5]}]
 for purely-continuous or purely-integer problems, this section is omitted.
 \end{description}
