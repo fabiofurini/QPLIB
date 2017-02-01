@@ -120,17 +120,17 @@ $n^{c_{u,d}}$ & number of non-default entries (integer) in $c_{u}$    & [2] \\
 $i$\;\ $c^i_{u}$ & index (integer) and value (real) for each non-default
 term in $c_{u,d}$, if $n^{c_{u,d}} > 0$, one pair per line        & [2] \\
 \hline
-$l_{d}$ & default value (real) for entries in $l$            & \\
-$n^{l_{d}}$ & number of non-default entries (integer) in $l$    &  \\
+$l_{d}$ & default value (real) for entries in $l$            & [6] \\
+$n^{l_{d}}$ & number of non-default entries (integer) in $l$    & [6] \\
 $i$\;\ $l_{i}$ & index (integer) and value (real) for each non-default
 term
-in $l$, if $n^{l_{d}}> 0$, one pair per line        &  \\
+in $l$, if $n^{l_{d}}> 0$, one pair per line        &  [6] \\
 \hline
-$u_{d}$ & default value (real) for entries in $u$            & \\
-$n^{u_{d}}$ & number of non-default entries (integer) in $u$    &  \\
+$u_{d}$ & default value (real) for entries in $u$            & [6] \\
+$n^{u_{d}}$ & number of non-default entries (integer) in $u$    &  [6] \\
 $i$\;\ $u_{i}$ & index (integer) and value (real) for each non-default
 term
-in $u$, if $n^{u_{d}}> 0$, one pair per line        &  \\
+in $u$, if $n^{u_{d}}> 0$, one pair per line        & [6] \\
 \hline
 $v_d$ & default variable type  (integer, 0 for continuous variables,
  1 for integer variables, 2 for binary variables) & [5] \\
@@ -206,16 +206,19 @@ in \S\ref{ssec:taxonomy}
 %\end{description}
 
 \item [{[2]}]
-for problems of type \texttt{**N} or \texttt{**B}, these lines/sections
+For problems of type \texttt{**N} or \texttt{**B}, these lines/sections
 are omitted.
 \item [{[3]}]
-for problems of type \texttt{L**}, this section is omitted.
+For problems of type \texttt{L**}, this section is omitted.
 \item [{[4]}]
-for problems of type \texttt{**N}, \texttt{**B} or \texttt{**L},
+For problems of type \texttt{**N}, \texttt{**B} or \texttt{**L},
 this section is omitted.
 \item [{[5]}]
-for problems of type \texttt{*C*}, \texttt{*B*} or \texttt{*I*},
+For problems of type \texttt{*C*}, \texttt{*B*} or \texttt{*I*},
 this section is omitted. In case of \texttt{*I*}, binary variable need to be specified as general integer variables with bounds 0 and 1.
+\item [{[6]}]
+For problems of type \texttt{*B*} and for variables that are specified explicitly as binary variables, the default values for lower and upper bounds of a binary variables are assumed to be 0 and 1, respectively, independent of the specification of $l_d$ and $u_d$.
+%Note, that in case of \texttt{*I*}, binary variable need to be specified as general integer variables with bounds 0 and 1.
 \end{description}
 
 As a simple example, consider the mixed-integer QP
