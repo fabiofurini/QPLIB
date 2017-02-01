@@ -9,8 +9,6 @@
                      \mbox{ $\scriptstyle x \in \smallRe^n #1 $ }
                      \end{array} \;} }
 \newcommand{\s}[1]{^{\mbox{\protect\tiny #1}}}
-\newcommand{\sfrac}[2]{{\scriptstyle \frac{#1}{#2}}}
-\newcommand{\half}{\sfrac{1}{2}}
 \newcommand{\smallRe}
      {\mbox{\raisebox{-0.8pt}{\footnotesize I\hskip -1.5pt R\hskip -0.5pt}}}
 \newcommand{\tim}[1]{\;\; \mbox{#1} \;\;}
@@ -50,7 +48,7 @@
 %integer, while further restrictions (such as a variable being binary)
 %may be imposed via explicit constraints.
 
-The QPLIB format is defined in Table~\ref{tab-qplib-format}, with the notation of \S~\ref{sec:QPbasic}.
+The QPLIB format is defined in Table~\ref{tab-qplib-format}, with the notation of \S\ref{sec:QPbasic}.
 
 The data is in free format (blanks separate values), but must occur in
 the order given here. Any blank lines, or lines starting with any of the
@@ -94,16 +92,18 @@ $j$\; $b^0_j$ & index (integer) and value (real) for each non-default
 term in $b^0$, if $n^{b^0} > 0$, one pair per line & \\
 \hline
 $q^0$ & constant part of the objective function & \\ \hline
-$n^{Q^i}$ & number of nonzeros (integer) in lower triangle of
+$n^{Q^i}$ & total number of nonzeros (integer) in lower triangles of
 $Q^i$  & [2,4] \\
 $i$\; $h$\; $k$\; $Q^{i}_{hk}$
-& constraint, row and column indices (integers) and value (real) for
- each entry of $Q^{i}$, if $n^{Q^i}$, one quadruple on each line & \\
+& i, row and column indices (integers) and value (real) for
+ each entry of $Q^{i}$ for every $i \in \Mcm$,  if $n^{Q^i}$,
+ one quadruple on each line & \\
 \hline
-$n^{b^i}$ & number of nonzeros  (integer) in $b^i$, $i \in \Mcm$                     & [2] \\
-$i$\; $j$\; $b^i_{j}$ & row and column indices (integers) and value (real)
-for each nonzero
-entry of $b^i$, if $n^{b} > 0$, one triple on each line & \\
+$n^{b^i}$ & total number of nonzeros  (integer) in $b^i$ for all $i \in \Mcm$ &
+ [2] \\
+$i$\; $j$\; $b^i_{j}$ & i and index (integers) and value (real)
+for each nonzero entry of $b^i$ for every $i \in \Mcm$, if $n^{b} > 0$,
+one triple on each line & \\
 \hline
 $c_{\infty}$ & value (real) for infinity for constraint or variable
 bounds---any bound greater than or equal to this in, absolute value,
@@ -133,7 +133,7 @@ term
 in $u$, if $n^{u_{d}}> 0$, one pair per line        &  \\
 \hline
 $v_d$ & default variable type  (integer, 0 for continuous variables,
- 1 for integer variables) & [5] \\
+ 1 for integer variables, 2 for binary variables) & [5] \\
 $n^v$ & number of non-default variables (integer)  & [5] \\
 $i$\; $v_i$ & index  and type (integers) for each non-default
 variable type, if  $n^v > 0$, one pair per line & [5] \\
@@ -175,53 +175,57 @@ non-default constraint name, if $n^c_d > 0$,  one pair per line & \\
 \begin{description}
 \item [{[1]}]
 %\todo[inline]{\small Fabio and Emiliano: we think that, if possible, we should follow the classification proposed in Section 2.}
-The problem type is represented by a character string as one of the following:
-\begin{description}
-\item For continuous problems (i.e., all variables are continuous):
-\begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
-\item [LP]   a problem with linear objective and linear constraints,
-\item [QCP]  a problem with linear objective and linear and quadratic constraints,
-\item [BQP]  a problem with quadratic objective and variable bounds,
-\item [QP]   a problem with quadratic objective and linear constraints, and
-\item [QCQP] a problem with quadratic objective and linear and quadratic constraints.
-\end{description}
-
-\item For integer problems (i.e., all variables are integer valued):
-\begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
-\item [ILP]   an LP plus integer requirement for all variables,
-\item [IQCP]  an QCP plus integer requirement for all variables,
-\item [IBQP]  an BQP plus integer requirement for all variables,
-\item [IQP]   an QP plus integer requirement for all variables, and
-\item [IQCQP] an QCQP plus integer requirement for all variables.
-\end{description}
-
-\item For mixed-integer problems (i.e., there is a mix of continuous and
-integer variables):
-\begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
-\item [MILP]   an LP plus integer requirement for some variables,
-\item [MIQCP]  an QCP plus integer requirement for some variables,
-\item [MIBQP]  an BQP plus integer requirement for some variables,
-\item [MIQP]   an QP plus integer requirement for some variables, and
-\item [MIQCQP] an QCQP plus integer requirement for some variables.
-\end{description}
-\end{description}
+The problem type is represented by a three character string as given
+in \S\ref{ssec:taxonomy}
+%\begin{description}
+%\item For continuous problems (i.e., all variables are continuous):
+%\begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
+%\item [LP]   a problem with linear objective and linear constraints,
+%\item [QCP]  a problem with linear objective and linear and quadratic constraints,
+%\item [BQP]  a problem with quadratic objective and variable bounds,
+%\item [QP]   a problem with quadratic objective and linear constraints, and
+%\item [QCQP] a problem with quadratic objective and linear and quadratic constraints.
+%\end{description}
+%\item For integer problems (i.e., all variables are integer valued):
+%\begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
+%\item [ILP]   an LP plus integer requirement for all variables,
+%\item [IQCP]  an QCP plus integer requirement for all variables,
+%\item [IBQP]  an BQP plus integer requirement for all variables,
+%\item [IQP]   an QP plus integer requirement for all variables, and
+%\item [IQCQP] an QCQP plus integer requirement for all variables.
+%\end{description}
+%\item For mixed-integer problems (i.e., there is a mix of continuous and
+%integer variables):
+%\begin{description}[leftmargin=!,labelwidth=\widthof{\texttt{SMILQPC}}]
+%\item [MILP]   an LP plus integer requirement for some variables,
+%\item [MIQCP]  an QCP plus integer requirement for some variables,
+%\item [MIBQP]  an BQP plus integer requirement for some variables,
+%\item [MIQP]   an QP plus integer requirement for some variables, and
+%\item [MIQCQP] an QCQP plus integer requirement for some variables.
+%\end{description}
+%\end{description}
 
 \item [{[2]}]
-for BQPs, IBQPs, and MIBQPs, these sections are omitted.
+for problems of type \textit{**N} or \textit{**B}, these lines/sections
+are omitted.
 \item [{[3]}]
-for LPs, QCPs, ILPs, IQCPs, MILPs, MIQCPs, this section is omitted.
+for problems of type \textit{L**}, this section is omitted.
 \item [{[4]}]
-for LPs, BQPs, QPs, ILPs, IBQPs, IBQPs, MILPs, MIBQPs, MIBQPs, this section is omitted.
+for problems of type \textit{**N}, \textit{**B} or \textit{**L},
+this section is omitted.
 \item [{[5]}]
-for purely-continuous or purely-integer problems, this section is omitted.
+for problems of type \textit{*C*}, \textit{*B*} or \textit{*I*},
+this section is omitted.
 \end{description}
 
 As a simple example, consider the mixed-integer QP
 \[\arr{l}{\min_{x \in \smallRe^3} x_1^2 + x_2^2 + x_3^2 - x_1 x_2 - x_2 x_3
   - 0.2 x_1  -0.4 x_2 - 0.2 x_3 \\
 \st 1 \leq x_1 + x_2, \; 1 \leq x_1 + x_3, \; 0 \leq x_1 \leq 1,
-\; 0 \leq x_2 \leq 2, \; \mbox{and binary} \; x_3.}
+\; 0 \leq x_2 \leq 2, \; \mbox{and binary} \; x_3,}
 \]
+for which the Hessian of the objective function is
+\[Q^0 = \mat{ccc}{2 & -1 & 0 \\ -1 & 2 & -1 \\ 0 & -1 & 2}.\]
 This may then be represent in QPLIB format as follows:
 
 {\small
@@ -230,22 +234,22 @@ This may then be represent in QPLIB format as follows:
 ! example problem
 ! ---------------
 MIPBAND   # problem name
-MIQP      # problem is a mixed-integer quadratic program
+QML       # problem is a mixed-integer quadratic program
 Minimize  # minimize the objective function
 3         # variables
 2         # general linear constraints
 5         # nonzeros in lower triangle of Q^0
-1 1 2.0   5 lines row & column index & value of nz. in lower triangle Q^0
+1 1 2.0   5 lines row & column index & value of nonzero in lower triangle Q^0
 2 1 -1.0  |
 2 2 2.0   |
 3 2 -1.0  |
 3 3 2.0   |
 -0.2      default value for entries in b_0
 1         # non default entries in b_0
-2 -0.4    1 lines of index & value of non-default values in b_0
+2 -0.4    1 line of index & value of non-default values in b_0
 0.0       value of q^0
-4         # nonzeros in vectors b^i (i =0,...,m)
-1 1 1.0   4 lines row & column index & value of nz. in b^i (i =0,...,m)
+4         # nonzeros in vectors b^i (i=0,...,m)
+1 1 1.0   4 lines constraint, index & value of nonzero in b^i (i=0,...,m)
 1 2 1.0   |
 2 1 1.0   |
 2 3 1.0   |
@@ -261,7 +265,7 @@ Minimize  # minimize the objective function
 2 2.0     1 line of non-default indices and values in u
 0         default variable type is continuous
 1         # non default variable types
-3 1       variable 3 is integer
+3 2       variable 3 is binary
 1.0       default value for initial values for x
 0         # non default entries in x
 0.0       default value for initial values for y

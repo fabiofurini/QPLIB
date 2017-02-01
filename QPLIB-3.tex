@@ -6,10 +6,10 @@
 \section{Library Construction}\label{sec:lib}
 
 In this section we present all the steps performed in order to build the
-new library. In \S~\ref{subsec:instColl}, we describe the set of gathered
-instances. In \S~\ref{subsec:selection} we present the features used to
+new library. In \S\ref{subsec:instColl}, we describe the set of gathered
+instances. In \S\ref{subsec:selection} we present the features used to
 classify the instances and we discuss the issues concerning the format of
-the instances. Finally, in \S~\ref{subsec:final set}, we describe the
+the instances. Finally, in \S\ref{subsec:final set}, we describe the
 selection process used to filter the instances and we graphically present
 the main features of the selected instances.
 
@@ -74,10 +74,10 @@ requirements were imposed for the submissions.
 To evaluate the instances we decided, for practical reasons, to use
 GAMS as common platform for all the experiments involving commercial and
 non-commercial solvers. For this reason, we decided to translate all
-instances into the GAMS format (\texttt{.gms}). 
+instances into the GAMS format (\texttt{.gms}).
 % In a preliminary phase, all the instances received were divided
 %according to their format and subsequently translated.
-%In \S~\ref{subsec:tools}
+%In \S\ref{subsec:tools}
 %%~\ref{subsec:CP_convex}
 %the tools used
 %to translate an instance from a given format to the \texttt{.gms} format
@@ -88,13 +88,13 @@ instances into the GAMS format (\texttt{.gms}).
 In addition, we have introduced a new, specific \texttt{.qplib} format. This
 new format is capable of describing all the instances of the library in a sparse form.
 In comparison to a more \emph{high level} format like \texttt{.gms}, the new
-format presents three advantages: it is easier to read by a self-made parser, it produces smaller files, and the order of variables and constraints is fixed. See the \S~\ref{sec:format} for more details.
+format presents three advantages: it is easier to read by a self-made parser, it produces smaller files, and the order of variables and constraints is fixed. See the \S\ref{sec:format} for more details.
 
 %\subsection{Instance Features}\label{subsec:feature}
 
 For each instance of the starting set, we collected important characteristics
 which allowed us to classify the instances into the QP categories described in
-\S~\ref{sec:QPbasic}. As far as the variable types are concerned, we
+\S\ref{sec:QPbasic}. As far as the variable types are concerned, we
 collected the following information:
 %
 \begin{itemize}
@@ -111,10 +111,10 @@ As far as the objective function is concerned, we gathered the following
 information:
 %
 \begin{itemize}
- \item percentage of positive and negative eigenvalues of the $Q^0$ matrix;
+ \item percentage of positive and negative eigenvalues of the Hessian $Q^0$;
        % (\emph{\% neg eig}),
  %
- \item density of the $Q^0$ matrix (number of nonzero entries divided by the total
+ \item density of the Hessian $Q^0$ (number of nonzero entries divided by the total
        number of entries). %(\emph{\% dens}).
 \end{itemize}
 %
@@ -171,7 +171,7 @@ filters, applied in cascade.
        The first filter was designed to drastically reduce the number of
        instances by eliminating the ``easy'' ones. An empirical measure
        for the hardness of an instance is the CPU time needed by a
-       complete solver (cf.~\S~\ref{sec:algo}) to solve it to
+       complete solver (cf.~\S\ref{sec:algo}) to solve it to
        global optimality. Accordingly, for each of the gathered instance we
        ran the complete solvers in GAMS, which number depends on the category
        of the instance under consideration, cf.~Table \ref{t:solvers}.
@@ -356,7 +356,7 @@ Figure~\ref{fig:distribution}~(right) plots the number of nonzero elements in th
 \end{figure}
 
 %Figure~\ref{fig:pic_var_small}, Figure~\ref{fig:pic_var_medium} and
-Figure~\ref{fig:pic_var} 
+Figure~\ref{fig:pic_var}
 describes how discrete and continuous
 variables are distributed within the instances. The instances are
 sorted accordingly to the total number of variables.
@@ -364,7 +364,7 @@ sorted accordingly to the total number of variables.
 %readability, the graph is splitted in the three figures:
 %Figure~\ref{fig:pic_var_small} describes the 100 smaller instances,
 %Figure~\ref{fig:pic_var_medium} the 200 medium ones, and
-%Figure~\ref{fig:pic_var_large} the 67 largest ones. 
+%Figure~\ref{fig:pic_var_large} the 67 largest ones.
 For each instance we report the total number of variables with a ``$+$'', and the total number of discrete variables (binary or general integer) with a ``$\times$''. The pictures clearly show that instances with different percentages of integer and continuous variables are present in the library, and that these differences are well distributed across the whole spectrum of variable sizes.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -375,7 +375,7 @@ For each instance we report the total number of variables with a ``$+$'', and th
 
 Similarly, Figures~\ref{fig:pic_constr} (left)
 %Figure~\ref{fig:pic_constr_medium}
-%and Figure~\ref{fig:pic_constr_big} 
+%and Figure~\ref{fig:pic_constr_big}
 describes how the number of linear and quadratic
 constraints are distributed within the instances. The instances are sorted
 accordingly to the total number of constraints.
@@ -410,7 +410,7 @@ It can be seen that the majority of instances only have nonconvex constraints. %
 
 Speaking of nonconvexity, Figure~\ref{fig:pic_neg_eig} (left) focuses on
 the instances with a quadratic objective function, ordered by the
-the percentage ``hard'' eigenvalues in the $Q^0$ matrix (vertical axis), by which
+the percentage ``hard'' eigenvalues in the Hessian $Q^0$ (vertical axis), by which
 we mean negative eigenvalues in case of a minimization problem and positive eigenvalues in case of a maximization problem.
 The instances are mostly clustered around two values. About 25\% of the instances have a convex (if minimization) or concave (if maximization) objective function,
 i.e., they have 0\% of ``hard'' eigenvalues. Among the others, a vast
@@ -420,18 +420,18 @@ with high or low percentages of ``hard'' eigenvalues are present, too.
 \begin{figure}\centering
   \includegraphics[width=0.49\textwidth]{pic_neg_eig.pdf}
   \includegraphics[width=0.49\textwidth]{pic_density.pdf}
-  \caption{``Hard'' eigenvalues (left) and density (right) of $Q^0$ matrix for QPLIB instances with a quadratic objective function. \label{fig:pic_neg_eig}}
+  \caption{``Hard'' eigenvalues (left) and density (right) of the Hessian $Q^0$ for QPLIB instances with a quadratic objective function. \label{fig:pic_neg_eig}}
 \end{figure}
 
 Similarly, Figure~\ref{fig:pic_neg_eig} (right) shows the instances with a
 quadratic objective function sorted according to the density of the
-$Q^0$ matrix (vertical axis). The majority of the instances have either
+Hessian $Q^0$ (vertical axis). The majority of the instances have either
 a very low or a rather high density: indeed, about 30\% of the instances
 have density smaller than 5\%, and about 30\% of the instances have
-density larger than 50\%. However, also intermediate values are present. 
+density larger than 50\%. However, also intermediate values are present.
 
 
-Additional details on the instance features can be found in \S~\ref{sec:instance_details}.
+Additional details on the instance features can be found in \S\ref{sec:instance_details}.
 
 %The all set of instances can be downloaded at \url{http://qplib.zib.de/html/index.html}.
 %Since, as described in Section \ref{subsec:final set} the library contains instances of different nature, the website allows to filter the instances according to the classification proposed in Section \ref{ssec:taxonomy}.

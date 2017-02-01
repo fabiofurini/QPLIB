@@ -2,13 +2,13 @@
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %  QPLIB-2.2.tex
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - 
+%- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Classification}\label{sec:classification}
 
-Despite the apparent simplicity of the definition given in \S~\ref{subsec:notation}, Quadratic Programming instances can be of several rather different ``types'' in practice, depending on the fine details of the data. In particular, many algorithmic approaches can only be applied to QP when the data of the problem has specific properties. A taxonomy of QP instances should therefore strive to identify the set of properties that an instance should have in order to apply the most relevant computational methods. However, the sheer number of different existing approaches, and the fact that new ones are continuously proposed, makes it hard to provide a taxonomy that is both simple and covers all possible special cases. This is why, in this paper, we propose an approach that aims at finding a good balance between simplicity and coverage of the main families of computational methods.
+Despite the apparent simplicity of the definition given in \S\ref{subsec:notation}, Quadratic Programming instances can be of several rather different ``types'' in practice, depending on the fine details of the data. In particular, many algorithmic approaches can only be applied to QP when the data of the problem has specific properties. A taxonomy of QP instances should therefore strive to identify the set of properties that an instance should have in order to apply the most relevant computational methods. However, the sheer number of different existing approaches, and the fact that new ones are continuously proposed, makes it hard to provide a taxonomy that is both simple and covers all possible special cases. This is why, in this paper, we propose an approach that aims at finding a good balance between simplicity and coverage of the main families of computational methods.
 
 % -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 \subsubsection{Taxonomy}\label{ssec:taxonomy}
@@ -45,16 +45,16 @@ Some problem classes are actually ``too simple'' to make sense in our context. F
 \[
  \textstyle
  \min \; \Big\{ \,
- \sum_{j \in \Mcn} \big( \, Q^0_j x_j^2 + b^0_j x_j \, \big) \;:\;
+ \sum_{j \in \Mcn} \big( \, \half Q^0_j x_j^2 + b^0_j x_j \, \big) \;:\;
  l_j \leq x_j \leq u_j \quad j \in \Mcn \;\;,\;\;
  x_j \in \mathbb{Z} \quad j \in \Mcz \, \Big\}
  \;\; .
 \]
-Hence, their solution only requires the independent minimization of a convex quadratic univariate function in each single variable $x_j$ over a box constraint and possibly integrality requirements, which can be attained trivially in $O(1)$ (per variable) by closed-form formul{\ae}, projection and rounding arguments. \emph{A fortiori}, the even simpler cases L*B, D*N and L*N (the latter obviously unbounded unless $b^0 = 0$) will not be discussed here. Similarly, CCN are immediately solved by linear algebra techniques, and therefore are of no interest in this context. On the other end of the spectrum, in general QP is a hard problem. Actually, LIQ---linear objective function and quadratic constraints in integer variables with no finite bounds, i.e. 
+Hence, their solution only requires the independent minimization of a convex quadratic univariate function in each single variable $x_j$ over a box constraint and possibly integrality requirements, which can be attained trivially in $O(1)$ (per variable) by closed-form formul{\ae}, projection and rounding arguments. \emph{A fortiori}, the even simpler cases L*B, D*N and L*N (the latter obviously unbounded unless $b^0 = 0$) will not be discussed here. Similarly, CCN are immediately solved by linear algebra techniques, and therefore are of no interest in this context. On the other end of the spectrum, in general QP is a hard problem. Actually, LIQ---linear objective function and quadratic constraints in integer variables with no finite bounds, i.e.
 \[
  \textstyle
  \min \; \Big\{ \, b^0 x \;:\;
- x^\top Q^i x + b^i x \leq c^i \quad i \in \Mcm \;\;,\;\;
+ \half x^\top Q^i x + b^i x \leq c^i \quad i \in \Mcm \;\;,\;\;
  x_j \in \mathbb{Z} \quad j \in \Mcn \, \Big\}
  \;\; ,
 \]
@@ -65,13 +65,13 @@ It is important to note that the relationships between the different classes can
 
 Another relevant reformulation trick concerns the fact that, as soon as quadratic constraints are allowed, then a linear objective function can be assumed w.l.o.g.. Indeed, any Q** (C*C) problem can always be rewritten as
 %
-\begin{align*}	
+\begin{align*}
  \min \;\;
  & x^0 \\
  %
- & -\infty \leq x^\top Q^0 x + b^0 x \leq x^0 & \\ 
+ & -\infty \leq \half x^\top Q^0 x + b^0 x \leq x^0 & \\
  %
- & c^i_l \leq x^\top Q^i x + b^i x \leq c^i_u & i \in \Mcm \\ 
+ & c^i_l \leq \half x^\top Q^i x + b^i x \leq c^i_u & i \in \Mcm \\
  %
  & l_j \leq x_j \leq u_j & j \in \Mcn  \\
  %
@@ -80,7 +80,7 @@ Another relevant reformulation trick concerns the fact that, as soon as quadrati
 %
 i.e., a L*Q (L*C). Hence, it is clear that quadratic constraints are, in a well-defined sense, the most general situation (cf.~also the result above about hardness of LIQ).
 
-When a $Q^i$ is positive semidefinite (PSD), i.e., the corresponding constraint/objective function is convex, general quadratic constraints are in fact equivalent to diagonal ones. In fact, since every PSD matrix can be factorized as $Q^i = L^i (L^i)^\top$, e.g.~by the (incomplete) Cholesky factorization, $f^i(x) = x^\top Q^i x = \sum_{j \in \Mcn} z^2_j$ where $z^\top = x^\top L^i$. Hence, one could think that D** problems need not be distinguished from C** ones; however, this is true only for ``complicated'' constraints, but not for ``simple'' ones, because the above reformulation technique introduces linear constraints. Indeed, while C*L (and, a fortiori, C*\{C,Q\}) can always be brought to D*L (D*\{C,Q\}), using the same technique C*B becomes D*L, which is significantly different from D*B. In practice, a diagonal convex objective function under linear constraints is found in many applications (e.g., \cite{FrFG16,FrGe06a,FrGe09a,FGGP11}), so that D*L still makes sense to distinguish the case where the objective function is ``naturally'' separable from that where separability is artificially introduced.
+When a $Q^i$ is positive semidefinite (PSD), i.e., the corresponding constraint/objective function is convex, general quadratic constraints are in fact equivalent to diagonal ones. In fact, since every PSD matrix can be factorized as $Q^i = L^i (L^i)^\top$, e.g.~by the (incomplete) Cholesky factorization, the term $\half x^\top Q^i x \equiv \half \sum_{j \in \Mcn} z^2_j$ where $z^\top = x^\top L^i$. Hence, one could think that D** problems need not be distinguished from C** ones; however, this is true only for ``complicated'' constraints, but not for ``simple'' ones, because the above reformulation technique introduces linear constraints. Indeed, while C*L (and, a fortiori, C*\{C,Q\}) can always be brought to D*L (D*\{C,Q\}), using the same technique C*B becomes D*L, which is significantly different from D*B. In practice, a diagonal convex objective function under linear constraints is found in many applications (e.g., \cite{FrFG16,FrGe06a,FrGe09a,FGGP11}), so that it still makes sense to distinguish the D*L case where the objective function is ``naturally'' separable from that where separability is artificially introduced.
 
 % -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 \subsubsection{QP classes}\label{ssec:classes}

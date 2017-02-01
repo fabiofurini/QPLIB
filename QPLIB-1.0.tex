@@ -20,7 +20,7 @@ A consequence of our focus is that this paper is \emph{not} concerned about the 
 \subsection{Motivation}\label{subsec:motiv}
 
 Optimization problems with quadratic constraints and/or objective function (QP) have been the subject of a considerable amount of research over the last 60 years. At least some of the rationale for this interest is likely due to the fact that they are the ``least-nonlinear nonlinear problems''. Hence, in particular for the convex case, tools and techniques that have been honed during decades of research for Linear Programming (LP), typically with integrality constraints (MILP), can often be extended to the quadratic case with at least less effort than what would be required for tackling general Non Linear Programming (NLP) problems, without or with integrality constraints (MINLP). This has indeed happened over and over again with different algorithmic techniques, such as Interior Point methods, active-set methods (of which the simplex method is a prototypical example), enumeration methods, cut-generation techniques, reformulation techniques, and many others \cite{BS09}.
-Similarly, nonconvex continuous QP are perhaps the ``simplest'' class of problems that require features like spatial enumeration techniques to be solved. 
+Similarly, nonconvex continuous QP are perhaps the ``simplest'' class of problems that require features like spatial enumeration techniques to be solved.
 Hence, they are both the natural basis for the development of general techniques for nonconvex NLP, and a very specific class so that specialized approaches can be developed \cite{Dur2010,Burer2012}.
 
 On the other hand, (MI)QP is, in some sense, a considerably more expressive class than (MI)LP. Quadratic expressions are found, either naturally or after appropriate reformulations, in very many optimization problems \cite{Kochenberger2014}. Table \ref{tbl:application} provides a certainly non-exhaustive collection of applications that lead to formulations with either quadratic constraints, or quadratic objective function, or both. Also, in general any continuous function can be approximated with arbitrary accuracy (over a compact set) by a polynomial of arbitrary degree; in turn, every polynomial can be broken down to a system of quadratic expressions. Hence, (MI)QP is, in some sense, roughly as expressive as the whole of (MI)NLP. Of course this is, in principle, true for (MI)LP as well, but at the cost of much larger and much more complex formulations. Hence, for many applications QP may represent the ``sweet spot'' between the effectiveness, but lower expressive power, of (MI)LP and the higher expressive power, but much higher computational cost, of (MI)NLP.
@@ -41,11 +41,11 @@ Problem & Discrete & Contributions \\
 \midrule
 \endhead
 %
-\midrule 
+\midrule
 \multicolumn{3}{l}{\multirow{1}{.95\textwidth}{$^{\ddagger}$Applications with many manuscripts cite reviews and recent works \\[-12pt] \phantom{hi}  \hfill\emph{continued}}}
 \endfoot
 %
-\bottomrule 
+\bottomrule
 \multicolumn{3}{l}{\multirow{1}{.95\textwidth}{$^{\ddagger}$Applications with many manuscripts cite reviews and recent works.}}
 \endlastfoot
 %
@@ -133,25 +133,25 @@ Controlled Tabular Adjustment & \checkmark & \cite{CaFG14}
 
 
 
-The structure of this paper is the following. In \S~\ref{sec:QPbasic} we review the basic notions about QP. In particular, \S~\ref{subsec:notation} sets out the notation, \S~\ref{sec:classification} proposes a---to the best of our knowledge, new---taxonomy of QP that helps us in discussing the (very) different classes of QPs, \S~\ref{sec:algo} very briefly reviews the solution methods for QP and the solvers we have employed.
-Then, \S~\ref{sec:lib} describes the process used to obtain the library and its results.
-%; the software tools that we have used, and that are freely released together with the library, are discussed in \S~\ref{subsec:tools}. 
-Some conclusions are drawn in \S~\ref{sec:conclusions}, after which Appendix A provides a complete description of all the instances of the library, while Appendix B describes the QPLIB file format.
+The structure of this paper is the following. In \S\ref{sec:QPbasic} we review the basic notion of QP. In particular, \S\ref{subsec:notation} sets out the notation, \S\ref{sec:classification} proposes a---to the best of our knowledge, new---taxonomy of QP that helps us in discussing the (very) different classes of QPs, \S\ref{sec:algo} very briefly reviews the solution methods for QP and the solvers we have employed.
+Then, \S\ref{sec:lib} describes the process used to obtain the library and its results.
+%; the software tools that we have used, and that are freely released together with the library, are discussed in \S\ref{subsec:tools}.
+Some conclusions are drawn in \S\ref{sec:conclusions}, after which Appendix A provides a complete description of all the instances of the library, while Appendix B describes the QPLIB file format.
 
 
-While no performance issues of solvers for QP/QCP problems are considered in 
+While no performance issues of solvers for QP/QCP problems are considered in
 this paper, we refer to the comprehensive benchmark site \url{http://plato.asu.edu/bench.html}. Of the benchmarks
-on this site three deal exlusively with QP/QCP problems: 
-the (1) Large SOCP, (2) MISOCP, and the (3) MIQ(C)P benchmarks. 
-The following contain partly results for such problems: 
+on this site three deal exlusively with QP/QCP problems:
+the (1) Large SOCP, (2) MISOCP, and the (3) MIQ(C)P benchmarks.
+The following contain partly results for such problems:
 (4) Parallel Barrier Solvers on Large LP/QP problems, (5) AMPL-NLP, (6) MINLP.
-The benchmarks (1,2,4) have only convex instances, while the others include 
+The benchmarks (1,2,4) have only convex instances, while the others include
 nonconvex instances. Global optima are obtained by several of the solvers in
 the benchmarks (3,5).
 All solvers in the latest addition (6) compute global optima, they are ANTIGONE,
-BARON, COUENNE, LINDO, and SCIP, c.f.~\S~\ref{subsec:solver}. This benchmark is based on MINLPLib~2 \cite{Vigerske2014}, a
+BARON, COUENNE, LINDO, and SCIP, c.f.~\S\ref{subsec:solver}. This benchmark is based on MINLPLib~2 \cite{Vigerske2014}, a
 collection of presently 1388 instances. In order to give a first representative
-impression of solver performance, care was taken to reduce the number of instances and 
+impression of solver performance, care was taken to reduce the number of instances and
 allow all solvers to finish in reasonable time. More than half of the selected
 instances are QP or QCP. A time limit of two hours on a
 modern workstation with sufficient memory was used. Computations were done in
