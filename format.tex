@@ -215,11 +215,20 @@ For problems of type \texttt{**N}, \texttt{**B} or \texttt{**L},
 this section is omitted.
 \item [{[5]}]
 For problems of type \texttt{*C*}, \texttt{*B*} or \texttt{*I*},
-this section is omitted. In case of \texttt{*I*}, binary variable need to be specified as general integer variables with bounds 0 and 1.
+this section is omitted. For problems of \texttt{*I*}, binary variables
+should be specified with lower and upper bounds 0 and 1.
 \item [{[6]}]
 For problems of type \texttt{*B*}, this section is omitted.
-Bounds for binary variables must not be specified in this section. They are assumed to have a lower bound of 0 and an upper bound of 1, disregarding any setting of $l_d$ and $u_d$. To fix a binary variable to 0 or 1, either a corresponding linear equation must be added or the variable type should be changed to continuous or general integer.
+%Bounds for binary variables must not be specified in this section.
 \end{description}
+Binary variables defined either implicitly via the type \texttt{*B*}
+or explicitly in the variable type section will be assumed to
+have lower and upper bounds 0 and 1, and this will override any
+explicit bounds $l_d$, $u_d$ $l_i$ and $u_i$ set in the lower and upper
+bound sections.
+To fix a binary variable to 0 or 1, its variable type should be changed
+to continuous or general integer and the corresponding lower and upper
+bounds set accordingly in the lower and upper bound sections.
 
 As a simple example, consider the mixed-integer QP
 \[\arr{l}{\min_{x \in \smallRe^3} x_1^2 + x_2^2 + x_3^2 - x_1 x_2 - x_2 x_3
