@@ -439,8 +439,8 @@ Additional details on the instance features can be found in \S\ref{sec:instance_
 \subsection{Website}
 %Select subset or categories of instances (EXTRACT FROM THE LIBRARY A SUBSET OF INSTANCES WITH SPECIFIC CHARACTERISTICS)
 
-The instances of QPLIB are publicly accessible at the website \url{http://qplib.zib.de}.
-Scripts and tools developed for MINLPLib 2 \cite{Vigerske2014} were used and extended to create the website.
+The instances of QPLIB are publicly accessible at the website \url{http://qplib.zib.de}, which was created by extending
+scripts and tools initially developed for MINLPLib\,2~\cite{Vigerske2014}.
 %
 Beyond all instances in GAMS, \texttt{.lp}, and \texttt{.qplib} format, the website provides a rich set of metadata for each
 instance: the three letter problem classification (as described in Section \ref{subsec:final set}), basic properties such as the number of variables and constraints of
@@ -455,19 +455,21 @@ by color.  Figure \ref{fig:sparsitypattern} shows an example for instance QPLIB\
 \centering
 \includegraphics[scale=0.5]{{QPLIB_2967.jac}.png} \qquad
 \includegraphics{{QPLIB_2967.hess}.png}
-\caption{Sparsity pattern of Gradient of objective (first line) and Jacobian (left) and of Hessian of Lagrangian function (right) for instance QPLIB\_2967.}
+\caption{Example for the sparsity pattern of the Jacobian of the constraint functions (left) and
+  of the Hessian of the Lagrangian function (right) for instance QPLIB\_2967.
+  The gradient of the objective function is displayed as the first row
+  of the Jacobian matrix.}
 \label{fig:sparsitypattern}
 \end{figure}
 
 The entire set of instances can be explored in a searchable and sortable table of selected instance features: problem
-classification, convexity of the continuous relaxation, number of (all, binary, integer) variables, (all, quadratic) constraints, nonzeros, hard eigenvalues in $Q^0$, and density of $Q^0$.
+classification, convexity of the continuous relaxation, number of (all, binary, integer) variables, (all, quadratic) constraints, nonzeros, hard eigenvalues in~$Q^0$, and density of~$Q^0$.
 %
 Finally, a statistics page displays diagrams on the composition of the library according to different criteria: the
-number instances according to problem type, variable and constraint types, convexity, number of variables and constraints, and density.
+number of instances according to problem type, variable and constraint types, convexity, problem size, and density.
 %
 A file containing the relevant metadata for each instance can be downloaded in comma-separated-values (\texttt{csv}) format,
 so that researchers can easily compile their own subset of instances according to these statistics.
-
 
 The complete library can be downloaded as one archive, which contains the website for offline browsing and exploration.
 %
