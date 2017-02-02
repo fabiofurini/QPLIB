@@ -217,8 +217,8 @@ this section is omitted.
 For problems of type \texttt{*C*}, \texttt{*B*} or \texttt{*I*},
 this section is omitted. In case of \texttt{*I*}, binary variable need to be specified as general integer variables with bounds 0 and 1.
 \item [{[6]}]
-For problems of type \texttt{*B*} and for variables that are specified explicitly as binary variables, the default values for lower and upper bounds of a binary variables are assumed to be 0 and 1, respectively, independent of the specification of $l_d$ and $u_d$.
-%Note, that in case of \texttt{*I*}, binary variable need to be specified as general integer variables with bounds 0 and 1.
+For problems of type \texttt{*B*}, this section is omitted.
+Bounds for binary variables must not be specified in this section. They are assumed to have a lower bound of 0 and an upper bound of 1, disregarding any setting of $l_d$ and $u_d$. To fix a binary variable to 0 or 1, either a corresponding linear equation must be added or the variable type should be changed to continuous or general integer.
 \end{description}
 
 As a simple example, consider the mixed-integer QP
