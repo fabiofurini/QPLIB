@@ -8,22 +8,22 @@
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \section{Introduction}\label{sec:intro}
 
-Quadratic Programming (QP) problems---mathematical optimization problems for which either the objective function \cite{wiki:qp} or the constraints \cite{wiki:qcqp} (or both) are polynomial function of the variables of degree two---include a notably diverse set of different instances. This is not surprising, given the vast scope of practical applications of such problems, and of solution methods designed to solve them \cite{GoulToin00a}. Depending on the fine details of the formulation, solving a QP may require either fundamentally combinatorial techniques, or ideas rooted in nonlinear optimization principles, or a mix of the two. In this sense, QP is arguably one of the classes of problems where collaboration between the communities interested in combinatorial and in nonlinear optimization is most needed, and potentially fruitful.
+Quadratic Programming (QP) problems---mathematical optimization problems for which the objective function \cite{wiki:qp}, the constraints \cite{wiki:qcqp}, or both are polynomial function of the variables of degree two---include a notably diverse set of different instances. This is not surprising, given the vast scope of practical applications of such problems, and of solution methods designed to solve them \cite{GoulToin00a}. Depending on the specifics of the formulation, solving a QP may require primarily combinatorial techniques, ideas rooted in nonlinear optimization principles, or a mix of the two. In this sense, QP is arguably one of the classes of problems where collaboration between the communities interested in combinatorial and in nonlinear optimization is most needed, and potentially fruitful.
 
-However, this diversity also implies that QP means very different things to different researchers. This is illustrated by the simple fact that the class of problems that we simply refer to here as ``QP'' might more accurately be called Mixed-Integer Quadratically-Constrained Quadratic Programming (MIQCQP) in the most general case. It is, therefore, perhaps not surprising that, unlike for ``simpler'' problems classes \cite{Koch2011},  there has been, to date, no single library devoted to all different kinds of instances of QP. While several specialised libraries devoted to particular cases of QP are available, each of them is either focussed on a particular application (a specific problem that can be modelled as a QP), or on QPs with specific structural properties that make them suitable for solution by some given class of algorithmic approaches. To the best of our knowledge, collecting a set of QP instances that is at the same time not overwhelmingly numerous and significant for the many different interested communities has not been attempted. This work constitutes a first step in this direction.
+However, this diversity also implies that QP means very different things to different researchers. This is illustrated by the fact that the class of problems that we simply refer to here as ``QP'' might more accurately be called Mixed-Integer Quadratically-Constrained Quadratic Programming (MIQCQP) in the most general case. It is, therefore, perhaps not surprising that, unlike for ``simpler'' problems classes \cite{Koch2011},  there has been, to date, no single library devoted to all different kinds of instances of QP. While several specialised libraries devoted to particular cases of QP are available, each of them is either focussed on a particular application (a specific problem that can be modelled as a QP), or on QPs with specific structural properties that make them suitable for solution by some given class of algorithmic approaches. To the best of our knowledge, collecting a set of QP instances that is at the same time not overwhelmingly onerous but sufficiently challenging for the many different interested communities has not been attempted. This work constitutes a first step in this direction.
 
-In this paper we report the steps that have been done to collect (we believe) a significant library of QP instances, filtering the a much larger set of currently available (or specifically provided) instances in order to end up with a manageable set that still contains a meaningful sample of all possible QP types. A particularly thorny issue in this process is how to select instances that are ``interesting''. Our choice has been to take this to mean ``challenging for a significant set of solution methods''. Our filtering process has then been in part based on the idea that if a significant fraction of the solvers that can solve a QP instance do so in a ``short'' time, then the instance is not challenging enough to be included in the library. Conversely, if very few (maybe one) solvers can solve it very efficiently by exploiting some specific structure, but most other approaches cannot, then the instance should be deemed ``interesting''. Putting this approach into practice requires a nontrivial number of technical steps and decisions that are detailed in the paper. We hope that our work can provide useful guidelines for other interested researchers.
+In this paper, we report the steps that have been done to collect what we consider to be a quality library of QP instances, filtering a much larger set of currently available (or specifically provided) instances in order to end up with a manageable set that still contains a meaningful sample of possible QP types. A particularly thorny issue in this process was how to select instances that are ``interesting''. Our choice has been to take this to mean ``challenging for a significant set of solution methods''. Our filtering process has then been in part based on the idea that, if a significant fraction of the solvers that can solve a QP instance do so in a ``short'' time, then the instance is not challenging enough to be included in the library. Conversely, if very few (maybe one) of the solvers can solve it very efficiently by exploiting some specific structure, but most other approaches cannot, then the instance should be deemed ``interesting''. Putting this approach into practice requires a nontrivial number of technical steps and decisions that are detailed in the paper. We hope that our work can provide useful guidelines for other researchers interested in the constructions of benchmarks for mathematical optimization problems.
 
-A consequence of our focus is that this paper is \emph{not} concerned with the different performance of the very diverse available set of QP solvers; we will \emph{not} report any data comparing them. The only reason that solvers are used (and, therefore, described) in this context is to ensure that the instances of the library are nontrivial at least for a significant fraction of the current solution methods. Providing guidance about which solvers are most suited to some specific class of QPs is entirely outside the scope of our work.
+A consequence of our focus is that this paper is \emph{not} concerned with the performance of the very diverse available set of QP solvers; we will \emph{not} report any data comparing them. The only reason that solvers are used (and, therefore, described) in this context is to ensure that the instances of the library are nontrivial---at least for a significant fraction of the current solution methods. Providing guidance about which solvers are most suited to some specific class of QPs is entirely outside the scope of our work.
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Motivation}\label{subsec:motiv}
 
-Optimization problems with quadratic constraints and/or objective function (QP) have been the subject of a considerable amount of research over the last almost seventy years. At least some of the rationale for this interest is likely due to the fact that they are the ``least-nonlinear nonlinear problems''. Hence, in particular for the convex case, tools and techniques that have been honed during decades of research for Linear Programming (LP), typically with integrality constraints (MILP), can often be extended to the quadratic case more easily than would be required to tackle general (Mixed-Integer) Nonlinear Programming ((MI)NLP) problems. This has indeed happened over-and-over again with different algorithmic techniques, such as interior-point methods, active-set methods (of which the simplex method is a prototypical example), enumeration methods, cut-generation techniques, reformulation techniques, and many others \cite{BS09}.
-Similarly, nonconvex continuous QP are perhaps the ``simplest'' class of problems that require features, such as spatial enumeration techniques, for their solution.
-Hence, they are both the natural basis for the development of general techniques for nonconvex NLP, and a very specific class so that specialized approaches can be developed \cite{Dur2010,Burer2012}.
+Optimization problems with quadratic constraints and/or objective function (QP) have been the subject of a considerable amount of research over the last almost seventy years. At least some of the rationale for this interest is likely due to the fact that QPs are the ``least-nonlinear nonlinear problems''. Hence, in particular for the convex case, tools and techniques that have been honed during decades of research for Linear Programming (LP), typically with integrality constraints (MILP), can often be extended to the quadratic case more easily than would be required to tackle general (Mixed-Integer) Nonlinear Programming ((MI)NLP) problems. This has indeed happened over-and-over again with different algorithmic techniques, such as interior-point methods, active-set methods (of which the simplex method is a prototypical example), enumeration methods, cut-generation techniques, reformulation techniques, and many others \cite{BS09}.
+Similarly, nonconvex continuous QP is perhaps the ``simplest'' class of problems that require features such as spatial enumeration techniques for their solution.
+Hence, QPs are both a natural basis for the development of general techniques for nonconvex NLP, and a very specific class so that specialized approaches can be developed \cite{Dur2010,Burer2012}.
 
-In addition, QP, that is, quadratic problems with continuous or integer variables, is arguably a considerably more expressive class than (MI)LP. Quadratic expressions are found, either naturally or after appropriate reformulations, in very many optimization problems \cite{Kochenberger2014}. Table \ref{tbl:application} provides a certainly non-exhaustive collection of applications that lead to formulations with either quadratic constraints, or quadratic objective function, or both. Also, in general any continuous function can be approximated with arbitrary accuracy (over a compact set) by a polynomial of arbitrary degree. In turn, every polynomial can be broken down to a system of quadratic expressions. Hence, QP is, in some sense, roughly as expressive as the whole of MINLP. Of course this is, in principle, true for MILP as well, but at the cost of much larger and much more complicated formulations. Hence, for many applications QP may represent the ``sweet spot'' between the effectiveness, but lower expressive power, of MILP and the higher expressive power, but much higher computational cost, of MINLP.
+In addition, QP, with continuous or integer variables, is arguably a considerably more expressive class than (MI)LP. Quadratic expressions are found, either naturally or after appropriate reformulations, in very many optimization problems \cite{Kochenberger2014}. Table \ref{tbl:application} provides a certainly non-exhaustive collection of applications that lead to formulations with quadratic constraints, quadratic objective function, or both. In general, any continuous function can be approximated with arbitrary accuracy (over a compact set) by a polynomial of arbitrary degree. In turn, every polynomial can be broken down to a system of quadratic expressions. Hence, QP is, in some sense, roughly as expressive as MINLP. This is, in principle, true for MILP as well, but at the cost of much larger and much more complicated formulations. Hence, for many applications QP may represent the ``sweet spot'' between the effectiveness, but lower expressive power, of MILP and the higher expressive power, but much higher computational cost of MINLP.
 
 
 \begin{longtable}[c]{lcl}
@@ -51,9 +51,9 @@ Problem & Discrete & Contributions \\
 %
 \multicolumn{3}{l}{\textbf{Fundamental problems that can be formulated as MIQP}} \\[1pt]
 %
-Quadratic Assignment Problem$^{\ddagger}$ & \checkmark & \cite{anstreicher:2003,loiola-etal:2007} \\ \cmidrule(rl){2-3}
+Quadratic assignment problem$^{\ddagger}$ & \checkmark & \cite{anstreicher:2003,loiola-etal:2007} \\ \cmidrule(rl){2-3}
 %
-Max-Cut & \checkmark & \cite{Rendl2008,KrislockMalickRoupin2016} \\ \cmidrule(rl){2-3}
+Max-cut & \checkmark & \cite{Rendl2008,KrislockMalickRoupin2016} \\ \cmidrule(rl){2-3}
 %
 Maximum clique$^{\ddagger}$ & \checkmark & \cite{bomze-etal:1999} \\
 \midrule
@@ -82,7 +82,7 @@ Portfolio optimization & \checkmark & \multirow{1}{.3\textwidth}{\cite{deng-etal
 %
 \midrule
 %
-\multicolumn{3}{l}{\textbf{Process Networks}} \\[1pt]
+\multicolumn{3}{l}{\textbf{Process networks}} \\[1pt]
 %
 %\multicolumn{3}{l}{Process networks optimisation problems typically involve two} \\
 %
@@ -112,8 +112,8 @@ Water networks$^{\ddagger}$ & \checkmark & \multirow{1}{.3\textwidth}{\cite{ahme
 %
 \multicolumn{3}{l}{\textbf{Robotics}} \\[1pt]
 %
-Traveling Salesman Problem \\
-with Neighborhoods & \checkmark & \cite{gentilini-etal:2013} \\
+Traveling salesman problem \\
+with neighborhoods & \checkmark & \cite{gentilini-etal:2013} \\
 \midrule
 %
 \multicolumn{3}{l}{\textbf{Telecommunications}} \\[1pt]
@@ -126,22 +126,22 @@ Delay-constrained routing & \checkmark & \cite{FrGaSc14,FrGaSt16a} \\
 Unit-commitment & \checkmark & \cite{FrFG16,FrGe06a,FrGe09a,Tetal15} \\
 \midrule
 %
-\multicolumn{3}{l}{\textbf{Data Confidentiality}} \\[1pt]
+\multicolumn{3}{l}{\textbf{Data confidentiality}} \\[1pt]
 %
 Controlled Tabular Adjustment & \checkmark & \cite{CaFG14}
 \end{longtable}
 
 
 
-The structure of this paper is as follows. In \S\ref{sec:QPbasic} we review the basic notion of QP. In particular, \S\ref{subsec:notation} sets out the notation, \S\ref{sec:classification} proposes a (to the best of our knowledge, new) taxonomy of QP that helps us in discussing the (very) different classes of QPs, and \S\ref{sec:algo} very briefly reviews the solution methods for QP and the solvers we have employed.
+The structure of this paper is as follows. In \S\ref{sec:QPbasic} we review the basic notion of QP. In particular, \S\ref{subsec:notation} sets out the notation, \S\ref{sec:classification} proposes a new taxonomy of QP that helps us in discussing the (very) different classes of QPs, and \S\ref{sec:algo} very briefly reviews the solution methods for QP and the solvers we have employed.
 Next \S\ref{sec:lib} describes the process used to obtain the library and its results.
 %; the software tools that we have used, and that are freely released together with the library, are discussed in \S\ref{subsec:tools}.
 Some conclusions are drawn in \S\ref{sec:conclusions}, after which Appendix A provides a complete description of all the instances of the library, while Appendix B describes a simple (QPLIB) file format that encodes all of our examples.
 
 While no performance issues of solvers for QP problems are considered in
 this paper, we refer to the comprehensive benchmark site \url{http://plato.asu.edu/bench.html}. Of the result on this site, three deal exclusively with
-QP problems, namely the (1) Large SOCP, (2) MISOCP, and the (3) MIQ(C)P benchmarks, while three others contain have partial results for such problems,
-namely those for (4) Parallel Barrier Solvers on Large LP/QP problems, (5) AMPL-NLP and (6) MINLP.
+QP problems, namely the (1) large SOCP, (2) MISOCP, and the (3) MIQ(C)P benchmarks, while three others contain have partial results for such problems,
+namely those for (4) parallel barrier solvers on large LP/QP problems, (5) AMPL-NLP and (6) MINLP.
 Benchmarks (1, 2 \& 4) contain only convex instances, while the others
 include nonconvex ones. Global optima are obtained by several of the solvers in
 benchmarks (3 \& 5), while all solvers in the latest addition (6) compute
