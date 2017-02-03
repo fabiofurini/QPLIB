@@ -1,9 +1,9 @@
 \subsubsection{Solvers}\label{subsec:solver}
 
-When compiling QPLIB, we have worked with the QP solvers that come with the GAMS distribution\footnote{\url{https://www.gams.com}}. 
+When compiling QPLIB, we have worked with the QP solvers that come with the GAMS distribution\footnote{\url{https://www.gams.com}}.
 Table \ref{t:solvers} provides a list of these solvers, together with a classification of their algorithm, and references.
 For more details on the solvers, we refer to the given references, solver manuals, and the survey \cite{BuVi10}.
-In the table, we mark a pair (solver, problem) with ``I'' if the solver accepts the problem in input but it is an incomplete solver for the problem, with ``A'' if it is asymptotically complete, with ``C'' if it is complete, and leave it blank if the solver won't accept the problem in input.
+In the table, we mark a pair (solver, problem) with ``I'' if the solver accepts the problem as input but it is an incomplete solver for the problem, with ``A'' if it is asymptotically complete, with ``C'' if it is complete, and leave it blank if the solver won't accept the provided problem.
 When a solver implements several algorithms, we have chosen, for each problem class, the algorithm that potentially provides the ``strongest'' results (``C'' $>$ ``A'' $>$ ``I'' $>$ blank).
 
 \begin{table}
@@ -40,7 +40,7 @@ When a solver implements several algorithms, we have chosen, for each problem cl
 \end{tabular}
 \caption{Families of QP problems that can be tackled by each solver} \label{t:solvers}
 
-\end{table}              
+\end{table}
 
 % antigone/glomiqo: sBB
 % baron: sBB
