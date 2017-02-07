@@ -48,7 +48,7 @@ Some problem classes are actually ``too simple'' to make sense in our context. F
 \[
  \textstyle
  \min \; \Big\{ \,
- \sum_{j \in \Mcn} \big( \, \half Q^0_j x_j^2 + b^0_j x_j \, \big) \;:\;
+ \sum_{j \in \Mcn} \big( \, {\textstyle \half} Q^0_j x_j^2 + b^0_j x_j \, \big) \;:\;
  l_j \leq x_j \leq u_j \quad j \in \Mcn \;\;,\;\;
  x_j \in \mathbb{Z} \quad j \in \Mcz \, \Big\}
  \;\; .
@@ -57,7 +57,7 @@ Hence, their solution only requires the independent minimization of a convex qua
 \[
  \textstyle
  \min \; \Big\{ \, b^0 x \;:\;
- \half x^\top Q^i x + b^i x \leq c^i \quad i \in \Mcm \;\;,\;\;
+ {\textstyle \half} x^\top Q^i x + b^i x \leq c^i \quad i \in \Mcm \;\;,\;\;
  x_j \in \mathbb{Z} \quad j \in \Mcn \, \Big\}
  \;\; ,
 \]
@@ -74,9 +74,9 @@ Another relevant reformulation trick concerns the fact that, as soon as quadrati
  \min \;\;
  & x^0 \\
  %
- & \hspace*{-5mm} -\infty \leq \half x^\top Q^0 x + b^0 x \leq x^0 & \\
+ & \hspace*{-5mm} -\infty \leq {\textstyle \half} x^\top Q^0 x + b^0 x \leq x^0 & \\
  %
- & c^i_l \leq \half x^\top Q^i x + b^i x \leq c^i_u & i \in \Mcm \\
+ & c^i_l \leq {\textstyle \half} x^\top Q^i x + b^i x \leq c^i_u & i \in \Mcm \\
  %
  & l_j \leq x_j \leq u_j & j \in \Mcn  \\
  %
