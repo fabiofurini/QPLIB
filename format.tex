@@ -57,8 +57,10 @@ Table~\ref{tab-qplib-format} denotes a required value. Any strings beyond
 those required on a given line will be regarded as comments and ignored.
 Real values may either by in decimal or exponential formats; for the latter,
 the exponent may be preceded by either the character \texttt{D} or \texttt{E},
-e.g. \texttt{12.56D+2} or \texttt{12.56E+2}. Variable and constraint indices
-are \textbf{1-based}.
+e.g. \texttt{12.56D+2} or \texttt{12.56E+2}. Variable indices, $j$, must lie in
+the range $1 \leq j \leq n$, while constraint indices, $i$, must satisfy
+$1 \leq i \leq m$, that is they are both \textbf{one-based}. The case for
+character strings is irrelevant.
 
 \begin{longtable}{|lp{.7\textwidth}r|}
 \caption{\label{tab-qplib-format}{The QPLIB file format: refer to the notes
@@ -78,7 +80,7 @@ data & description & note \\
 \endlastfoot
 name & problem name (character string) & \\
 type & problem type (character string) & [1] \\
-sense & one of the words minimize or maximize (character string, case irrelevant) & \\
+sense & one of the words minimize or maximize (character string) & \\
 \hline
 $n$  & number of variables (integer) & \\
 $m$  & number of constraints (integer) & [2] \\
@@ -93,14 +95,14 @@ $j$\; $b^0_j$ & index (integer) and value (real) for each non-default
 term in $b^0$, if $n^{b^0} > 0$, one pair per line & \\
 \hline
 $q^0$ & constant part of the objective function & \\ \hline
-$\sum_{i\in\Mcm} n^{Q^i}$ & number of nonzeros (integer) in lower triangles of
-$Q^i$, sum up over all $i\in\Mcm$  & [2,4] \\
+$\displaystyle \sum_{i\in\Mcm} n^{Q^i}$ & number of nonzeros (integer) in lower triangles of
+$Q^i$, summed over all $i\in\Mcm$  & [2,4] \\
 $i$\; $h$\; $k$\; $Q^{i}_{hk}$
 & $i$, row and column indices (integers) and value (real) for
  each entry of $Q^{i}$ for every $i \in \Mcm$,  if $n^{Q^i}>0$,
  one quadruple on each line & \\
 \hline
-$\sum_{i\in\Mcm} n^{b^i}$ & number of nonzeros (integer) in $b^i$, sum up over all $i \in \Mcm$ &
+$\displaystyle \sum_{i\in\Mcm} n^{b^i}$ & number of nonzeros (integer) in $b^i$, summed over all $i \in \Mcm$ &
  [2] \\
 $i$\; $j$\; $b^i_{j}$ & $i$ and index (integers) and value (real)
 for each nonzero entry of $b^i$ for every $i \in \Mcm$, if $n^{b^i} > 0$,
@@ -261,8 +263,8 @@ Minimize  # minimize the objective function
 1         # non default entries in b_0
 2 -0.4    1 line of index & value of non-default values in b_0
 0.0       value of q^0
-4         # nonzeros in vectors b^i (i=0,...,m)
-1 1 1.0   4 lines constraint, index & value of nonzero in b^i (i=0,...,m)
+4         # nonzeros in vectors b^i (i=1,...,m)
+1 1 1.0   4 lines constraint, index & value of nonzero in b^i (i=1,...,m)
 1 2 1.0   |
 2 1 1.0   |
 2 3 1.0   |
