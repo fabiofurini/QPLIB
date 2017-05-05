@@ -121,7 +121,7 @@ information:
 \end{itemize}
 %
 
-The number of positive (i.e., larger than $10^{-16}$) and negative (i.e., smaller than $-10^{-16}$) eigenvalues of $Q^0$ allowed us to identify the
+The number of positive (i.e., larger than $10^{-12}$) and negative (i.e., smaller than $-10^{-12}$) eigenvalues of $Q^0$ allowed us to identify the
 objective function type, as in presence of at least one negative (positive) eigenvalue
 the objective function is nonconvex (nonconcave). Finally, as far as the constraint types
 are concerned, we collected the following information:
@@ -279,12 +279,12 @@ Obj. Fun. & Variables & Constraints & \#\\
 \multirow{1}*{or}
           & \multirow{2}*{Mixed}
                     & Linear    &   12\\[1.2 ex]
-\multirow{2}*{Concave (if max)}
+\multirow{1}*{Concave (if max)}
           &         & Quadratic &    1\\[1.2 ex]
 %          & General & Linear    &    \\
-\cmidrule(lr){2-4}
-          & \multirow{1}*{Integer}
-                    & Linear    &   1\\[1.2 ex]
+%\cmidrule(lr){2-4}
+%          & \multirow{1}*{Integer}
+%                    & Linear    &   1\\[1.2 ex]
 %\hline
 \cmidrule(lr){1-4}
 \multirow{6}*{Quadratic}
@@ -297,7 +297,7 @@ Obj. Fun. & Variables & Constraints & \#\\
                     & Linear    &   11\\[1.2 ex]
           &         & Quadratic &    1\\[1.2 ex]
 \cmidrule(lr){2-4}
-          & Integer & Linear    &    1\\
+          & Integer & Linear    &    2\\[1.2 ex]
 \cmidrule(lr){2-4}
           & \multirow{1}*{General}
                     & Quadratic    &    1\\[1.2 ex]
@@ -321,8 +321,8 @@ Total     &         &           & 251\\
 Obj. Fun. & Constraints & \#\\
 \cmidrule(lr){1-3}
 %
-\multirow{2}*{Linear}    & Convex    &   15\\[1.2 ex]
-                         & Quadratic &   46\\[1.2 ex]
+\multirow{2}*{Linear}    & Convex    &   13\\[1.2 ex]
+                         & Quadratic &   48\\[1.2 ex]
 \cmidrule(lr){1-3}
 \multirow{1}*{Convex (if min)}
                          & Box       &   3 \\[1.2 ex]
@@ -334,8 +334,8 @@ Obj. Fun. & Constraints & \#\\
 \cmidrule(lr){1-3}
 \multirow{3}*{Quadratic}
                          & Linear    &   6\\[1.2 ex]
-                         & Convex    &   3\\[1.2 ex]
-                         & Quadratic &   26\\[1.2 ex]
+                         & Convex    &   1\\[1.2 ex]
+                         & Quadratic &   28\\[1.2 ex]
 \hline
 Total                    &           & 116 \\
 %
