@@ -1,0 +1,232 @@
+\documentclass[11pt]{article}
+\usepackage[american]{babel}
+%\usepackage{a4wide,paralist,url,xcolor,xspace}
+\usepackage{a4wide,url,xcolor,xspace}
+\definecolor{acblue}{rgb}{0,0,1}
+\definecolor{acgreen}{rgb}{0,1,0}
+\definecolor{acred}{rgb}{1,0,0}
+\newcommand{\rep}[1]{{\textcolor{acblue}{#1}}}
+%\newcommand{\comm}[1]{{\textcolor{acgreen}{#1}}}
+\newcommand{\comm}[1]{}
+\newcommand{\todo}[1]{{\textcolor{acred}{#1}}}
+
+\usepackage{amsmath}
+
+\newcommand{\eg}{e.g.,\xspace}
+\newcommand{\ie}{i.e.,\xspace}
+
+\parindent0pt
+\parskip.8ex
+
+
+\begin{document}
+
+\section*{QPLIB: a Library of a Quadratic Programming Instances (MPC-022017-00003)-- Answer to the Referees}
+
+\rep{
+ Following the Area Editor suggestions, we 
+ performed a deep revision of our manuscript. We carefully took into account all the comments made by the Referees and the Associate Editor.
+ [\dots]
+ The new submitted document highlights in red the text that has been
+added or changed.
+In the following, the comments of the Associate Editor and of the Referees are reported, together with our point-by-point replies.
+}
+
+
+\subsection*{Reply to the Associate Editor}
+
+{\it
+I have received two reviews for this manuscript, and while there is consensus that the library makes an important contribution, one of the reviewers in particular had significant concerns with the library and the manuscript describing it. The most significant concern, which I share, is that the paper is significantly longer than it needs to be. In particular, I did not see a great need to review the solution methods as is done in Section 2.3. Mentioning the current solvers, and which classes of problems they can solve according to your taxonomy is perhaps useful for a reader's reference. But attempting to describe the algorithms themselves is somewhat futile, as it takes significant space and yet is still an inadequate description. For that, it would be better to simply provide some references for the benefit of readers who are interested in understanding the algorithms in the solvers. I also agree with the reviewer's concern that some of the instance classes have only a single instance in them. If I am a researcher designing a method for solving instances in that class, I will be pretty disappointed to find that QPLIB only has a single relevant test instance. 
+}
+
+\rep{[\dots] }
+
+
+{\it
+I recommend the authors be given a chance to revise the manuscript (and library) to address the concerns raised by the reviewers, or otherwise provide justification for comments they choose not to address in their revision. I think that if the library and manuscript can be improved along these lines, this cab be a substantial and important contribution to the computational optimization field. 
+}
+
+
+\rep{We would like to thank the Editor-in-Chief for having given us the possibility to perform a revision of our manuscript. In the following we present the improvements we made in accordance with the comments of the referees. [\dots] }
+
+
+
+
+\subsection*{Point-by-point reply to the Referee 1}
+
+{\it
+This paper presents a very thoughtfully constructed library of Quadratic Programming problems. I am not sure if there is a clear MPC policy on library
+papers. I think it my merit a discussion at some time. Personally, I think libraries are very important so thoughtfully constructed ones such as this should
+be encouraged and supported by MPC. However, I worry a bit about the over-
+proliferation of such libraries, hence the reason for a possible discussion. Fortunately, I do not believe this is an issue with the library proposed in this
+manuscript. The closest library to it I can think of is the CBLIB library I
+mention bellow and the conceptual overlap is rather minimal. Furthermore, as
+I believe the collection and selection of instances was very thorough and well
+reasoned. Finally, I believe the brief survey and taxonomy of QP problems has
+its own value beyond the library. I do have some comments bellow, but I believe
+they can be easily addressed without the need for an additional detailed review.
+Hence, my recommendation is the paper be accepted after a minor revision.
+}
+
+\rep{[\dots] }
+
+{\it
+Minor Comments:
+\begin{enumerate}
+
+\item I think it would be interesting to mention the Conic library CBLIB \url{http://cblib.zib.de} and its relation to the library described in the manuscript.
+
+\rep{[\dots] }
+
+
+\item Page 7, line -4. You say that convex means that the feasible region is
+convex, but in page 19 you discuss the fact that SOCP problems that have
+a convex feasible region could be considered nonconvex. Hence, maybe it
+is more accurate to say that what you mean is that the constraint can be
+converted to $f (x) \le c$ with $f$ convex by rearranging terms.
+
+\rep{[\dots] }
+
+\item Page 17. Doesn't CPLEX support some binary non-convex quadratic
+problems.
+
+\rep{[\dots] }
+
+\item Page 19. I think it would be interesting to give a bit more details about the conic constraints and relate it with the issue of what is a convex
+constraint I discuss in point 2. I think the argument is that problems with
+non-convex quadratic constraints (i.e. $f (x) \le 0$ with $f$ non-convex) may
+have a convex feasible region. I imagine that detecting this in general may
+be NP-hard even though the conic case (1 negative eigenvalue) is relatively
+easy (e.g. if the problem includes an inequality of the form $a \cdot x \ge$ where
+a is the eigenvector associated to the negative eigenvalue). It would then
+be interesting to mark the problems with non-convex constraints, but for
+which it is known how to show the convexity of the complete feasible
+region (because they are conic or another ad-hoc reason).
+
+\rep{[\dots] }
+
+
+\item Page 20. ``second similar instance filter''. It would be interesting to provide a reference to the similar instances that were filtered out in case
+someone wants to test on them. For that matter I am not sure I saw if
+the instances have a link/reference to their source.
+
+\rep{[\dots] }
+
+
+\item Page 36. I am not sure if the reasoning for the name of the instances was mentioned. Is the non-consecutive order because of the filtering? (e.g.
+was there a ``0017'' instance that was excluded?)
+
+\rep{[\dots] }
+
+
+
+\end{enumerate}
+}
+
+
+
+\subsection*{Point-by-point reply to the Referee 2}
+
+
+{\it
+The paper presents a library of quadratic programming (QP) instances, where QP is broadly interpreted
+to include quadratically constrained, and integer programs too. While I appreciate the overall goal of
+the project, the paper is poorly written. It is often long-winded, and contains numerous factual errors,
+and some omissions that must be corrected. Overall, the paper can easily be cut by 5-10 pages.
+}
+
+\rep{[\dots] }
+
+{\it
+\begin{enumerate}
+
+\item There are two classes of important missing application domains of QPs in Table 1: (1) trust-region subproblems, and (2) PDE-constrained optimization problems. In fact, there exist a number of PDE-constrained instances in CUTEr, which would be useful additions to the library. The authors should add at least a few such examples. the lack of these problems is worrying, because
+it (implicitly) assumes that direct solvers are used, which means that this library is less relevant for matrix-free solvers.
+
+\rep{[\dots] }
+
+
+\item The taxonomy in Section 2.2.1 seems to be unaware of the fact that an indefinite Hessian does not mean that a problem is difficult. For example, saddle-point problems such as
+
+$$ \begin{bmatrix}
+G & A^T\\
+A & 0
+\end{bmatrix}
+\begin{pmatrix}
+x \\
+z 
+\end{pmatrix}
+=
+\begin{pmatrix}
+-g \\
+b 
+\end{pmatrix}
+$$
+
+
+can be solved to global optimality as long as the matrix is second-order sufficient. This means
+that even some QPs with indefinite Hessians can easily be solved to global optimality.
+
+\rep{[\dots] }
+
+
+\item The discussion on p.9 recounts some textbook facts, and is largely superfluous. Delete it.
+
+\rep{[\dots] }
+
+
+\item What do you mean by ``exact solution of the instances'' (p.10, l.-18)? I don’t believe we can even
+solve $Ax = b$ ``exactly'', except in some special cases. Please clarify this statement.
+
+\rep{[\dots] }
+
+
+\item The description of NLP solvers in Section 2.3.2 is at somewhat misleading. For example, KNI-
+TRO is also a primal-dual interior-point method, not just a barrier code (in fact primal-dual
+methods are preferred). The description of the “active-set” methods is wrong, unless you refer
+to the inner method, namely the active-set QP solves. Otherwise, SNOPT and KNITRO are
+SQP methods, while CONOPT is a gradient-projection method, and MINOS is an augmented
+Lagrangian method. You must correct this section
+
+\rep{[\dots] }
+
+
+\item Some classes of problems in Table 4 do not seem to have many instances. Please create more.
+
+\rep{[\dots] }
+
+
+\item The y-axis labels are missing on most figures.
+
+\rep{[\dots] }
+
+
+\item Reword the sentence ``percentage of ``hard'' eigenvalues'', p.23, l.-6. The notion of hard has a
+special meaning in trust-region problems. Also, this is not a measure of hardness, as explained
+above. Instead, you should consider the number of negative eigenvalues of the reduced Hessian
+(wrt equality constraints). Fig. 4 is meaningless, unless you replace the definition of hardness.
+
+\rep{[\dots] }
+
+
+\item Improve Fig.5: (1) What do the colors mean? (2) The plot on the right is not a sparsity pattern
+of any Hessian, but at best the upper triangular sparsity pattern.
+
+\rep{[\dots] }
+
+
+\item I am concerned that problems are only available in GAMS, and tested on GAMS solvers. It would make the paper stronger if the authors also released AMPL model, for example, or made use of
+JuMP.
+
+\rep{[\dots] }
+
+\end{enumerate}
+
+}
+
+\end{document}
+
+%%% Local Variables: 
+%%% mode: latex
+%%% TeX-master: t
+%%% End: 
