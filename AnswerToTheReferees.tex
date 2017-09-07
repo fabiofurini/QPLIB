@@ -11,6 +11,7 @@
 \newcommand{\todo}[1]{{\textcolor{acred}{#1}}}
 
 \usepackage{amsmath}
+\usepackage{amsfonts}
 
 \newcommand{\eg}{e.g.,\xspace}
 \newcommand{\ie}{i.e.,\xspace}
@@ -18,6 +19,12 @@
 \parindent0pt
 \parskip.8ex
 
+
+\newcommand{\leo}[1]{{\color{red}#1}}
+\newcommand{\fabio}[1]{{\color{cyan}#1}}
+\newcommand{\emiliano}[1]{{\color{blue}#1}}   
+\newcommand{\antonio}[1]{{\color{ForestGreen}#1}}     
+\newcommand{\andrea}[1]{{\color{blue}{\bf #1}}}   
 
 \begin{document}
 
@@ -36,10 +43,16 @@ In the following, the comments of the Associate Editor and of the Referees are r
 \subsection*{Reply to the Associate Editor}
 
 {\it
-I have received two reviews for this manuscript, and while there is consensus that the library makes an important contribution, one of the reviewers in particular had significant concerns with the library and the manuscript describing it. The most significant concern, which I share, is that the paper is significantly longer than it needs to be. In particular, I did not see a great need to review the solution methods as is done in Section 2.3. Mentioning the current solvers, and which classes of problems they can solve according to your taxonomy is perhaps useful for a reader's reference. But attempting to describe the algorithms themselves is somewhat futile, as it takes significant space and yet is still an inadequate description. For that, it would be better to simply provide some references for the benefit of readers who are interested in understanding the algorithms in the solvers. I also agree with the reviewer's concern that some of the instance classes have only a single instance in them. If I am a researcher designing a method for solving instances in that class, I will be pretty disappointed to find that QPLIB only has a single relevant test instance. 
+I have received two reviews for this manuscript, and while there is consensus that the library makes an important contribution, one of the reviewers in particular had significant concerns with the library and the manuscript describing it. The most significant concern, which I share, is that the paper is significantly longer than it needs to be. In particular, I did not see a great need to review the solution methods as is done in Section 2.3. Mentioning the current solvers, and which classes of problems they can solve according to your taxonomy is perhaps useful for a reader's reference. But attempting to describe the algorithms themselves is somewhat futile, as it takes significant space and yet is still an inadequate description. For that, it would be better to simply provide some references for the benefit of readers who are interested in understanding the algorithms in the solvers. 
 }
 
-\rep{[\dots] }
+\rep{\leo{We removed 3 whole pages of algorithmic explanations.}}
+
+{\it
+I also agree with the reviewer's concern that some of the instance classes have only a single instance in them. If I am a researcher designing a method for solving instances in that class, I will be pretty disappointed to find that QPLIB only has a single relevant test instance. 
+}
+
+\rep{\leo{Sono d'accordo, ma come/dove troviamo le istanze supplementari? Sono le categorie con  $<10$ istanze nelle tavole 4 e 5, giusto? Dire che ce ne sono parecchie. 15 categorie su 23 hanno meno di 10 istanze (il numero 10 e` magico perche' le nostre mani hanno dieci dita, ovviamente).} }
 
 
 {\it
@@ -76,7 +89,7 @@ Minor Comments:
 
 \item I think it would be interesting to mention the Conic library CBLIB \url{http://cblib.zib.de} and its relation to the library described in the manuscript.
 
-\rep{[\dots] }
+\rep{\leo{sono d'accordo, menzioniamo la libreria conica} }
 
 
 \item Page 7, line -4. You say that convex means that the feasible region is
@@ -85,12 +98,12 @@ a convex feasible region could be considered nonconvex. Hence, maybe it
 is more accurate to say that what you mean is that the constraint can be
 converted to $f (x) \le c$ with $f$ convex by rearranging terms.
 
-\rep{[\dots] }
+\rep{ \leo{secondo me il secondo commento si riferisce a pagina 19... a pagina 7 riga -4 non trovo niente su SOCP. Pero` sono d'accordo che a pagina 19 l'ultimo paragrafo della sezione 3.1 potrebbe essere migliorato. Cosi` e` un po' criptico. Perche' non inserire un bell'esempio di una forma bilineare nonconvessa (scrivendola esplicitamente come xQx e dando esplicitamente lo spettro di Q con la parte definita negativa) inserita in un vincolo che definisce una regione convessa? E poi io direi che facciamo la scelta di mettere queste istanze come "nonconvesse" perche' dimostrare convessita` in generale e` difficile (a questo proposito, io conosco i risultati del PhD di Amir Ali Ahmadi sulla difficolta` di riconoscere la convessita` in polinomi di grado $>= 4$, ma non ho mai visto una dimostrazione di difficolta` di riconoscere la convessita` della feasible region in vincoli quadratici; spero che qualcuno dei nostri co-autori ne sia al corrente)... Il referee ricorda che riconoscere i casi di forme quadratiche con una negative eigenvalue inserite in un vincolo convesso e` facile e  da` un metodo, di cui sarebbe bene ritrovare il primo caso in cui viene menzionato, oppure darne una breve dimostrazione... io non ne ero a conoscenza (e nemmeno mi viene in mente sui due piedi come dimostrarlo).} }
 
 \item Page 17. Doesn't CPLEX support some binary non-convex quadratic
 problems.
 
-\rep{[\dots] }
+\rep{\leo{rispondiamo al referee che CPLEX e` classificato 'C' (complete) in tavola 2 rispetto a QGC e ricordiamogli che pero` CPLEX non risolve (a mia conoscenza e per il momento) QGQ. Tra l'altro, c'e` a p. 17 una menzione di "Table 2 below", tranne che la table 2 appare above. Diciamo solo "Table 2" senza il below e l'above, dato che la posizione di tavole e figure puo` comunque essere modificata sia da LaTeX sia dal typesetting finale.} }
 
 \item Page 19. I think it would be interesting to give a bit more details about the conic constraints and relate it with the issue of what is a convex
 constraint I discuss in point 2. I think the argument is that problems with
@@ -103,7 +116,7 @@ be interesting to mark the problems with non-convex constraints, but for
 which it is known how to show the convexity of the complete feasible
 region (because they are conic or another ad-hoc reason).
 
-\rep{[\dots] }
+\rep{ \leo{sono d'accordo col referee (ovvero: massi`, facciamolo contento)} \fabio{va qui? o e' un commento al punto di sotto?}}
 
 
 \item Page 20. ``second similar instance filter''. It would be interesting to provide a reference to the similar instances that were filtered out in case
@@ -116,7 +129,7 @@ the instances have a link/reference to their source.
 \item Page 36. I am not sure if the reasoning for the name of the instances was mentioned. Is the non-consecutive order because of the filtering? (e.g.
 was there a ``0017'' instance that was excluded?)
 
-\rep{[\dots] }
+\rep{\leo{ basta dargli una risposta secondo me} }
 
 
 
@@ -143,7 +156,7 @@ and some omissions that must be corrected. Overall, the paper can easily be cut 
 \item There are two classes of important missing application domains of QPs in Table 1: (1) trust-region subproblems, and (2) PDE-constrained optimization problems. In fact, there exist a number of PDE-constrained instances in CUTEr, which would be useful additions to the library. The authors should add at least a few such examples. the lack of these problems is worrying, because
 it (implicitly) assumes that direct solvers are used, which means that this library is less relevant for matrix-free solvers.
 
-\rep{[\dots] }
+\rep{ \leo{sono d'accordo, dovremmo aggiungere delle istanze da trust-region subproblem e delle istanze da problemi PDE-constrained. Chiediamo a Gould per le istanze trust-region e a Gould, Mittelmann e Sahinidis per PDE-constrained. Specifichiamo che vorremmo istanze NON gia` in CUTE.} }
 
 
 \item The taxonomy in Section 2.2.1 seems to be unaware of the fact that an indefinite Hessian does not mean that a problem is difficult. For example, saddle-point problems such as
@@ -167,18 +180,18 @@ $$
 can be solved to global optimality as long as the matrix is second-order sufficient. This means
 that even some QPs with indefinite Hessians can easily be solved to global optimality.
 
-\rep{[\dots] }
+\rep{\leo{It is well known that every hard problem, seen as an infinite class of instances, contains efficiently solvable subclasses. We feel it is outside of the scope of this paper to characterize all known polytime solvable subclasses, and we do not really see how we can convincingly discuss the specific one you point out without further (long) digressions.}}
 
 
 \item The discussion on p.9 recounts some textbook facts, and is largely superfluous. Delete it.
 
-\rep{[\dots] }
+\rep{\leo{cancelliamo tutto!} }
 
 
-\item What do you mean by ``exact solution of the instances'' (p.10, l.-18)? I don’t believe we can even
+\item What do you mean by ``exact solution of the instances'' (p.10, l.-18)? I don't believe we can even
 solve $Ax = b$ ``exactly'', except in some special cases. Please clarify this statement.
 
-\rep{[\dots] }
+\rep{ \leo{We mean exactly the text given in the first paragraph of Sect.~2.2.4 in the submitted manuscript, which has now been revised (and hopefully made clearer) as shown in the first two paragraphs of Sect.~2.3.3 ``Complete Methods'': in short, the difference between computational models such as TM and RRAM.} }
 
 
 \item The description of NLP solvers in Section 2.3.2 is at somewhat misleading. For example, KNI-
@@ -188,17 +201,17 @@ to the inner method, namely the active-set QP solves. Otherwise, SNOPT and KNITR
 SQP methods, while CONOPT is a gradient-projection method, and MINOS is an augmented
 Lagrangian method. You must correct this section
 
-\rep{[\dots] }
+\rep{\leo{correggiamo gli errori e ringraziamo il referee} }
 
 
 \item Some classes of problems in Table 4 do not seem to have many instances. Please create more.
 
-\rep{[\dots] }
+\rep{\leo{stesso commento dell'AE -- dobbiamo mettere piu` istanze} }
 
 
 \item The y-axis labels are missing on most figures.
 
-\rep{[\dots] }
+\rep{\leo{mettiamo la label al y axis  (duh)} }
 
 
 \item Reword the sentence ``percentage of ``hard'' eigenvalues'', p.23, l.-6. The notion of hard has a
@@ -206,7 +219,7 @@ special meaning in trust-region problems. Also, this is not a measure of hardnes
 above. Instead, you should consider the number of negative eigenvalues of the reduced Hessian
 (wrt equality constraints). Fig. 4 is meaningless, unless you replace the definition of hardness.
 
-\rep{[\dots] }
+\rep{ \leo{non so nulla di "hard eigenvalues" nel senso del trust region; chiediamo agli esperti} }
 
 
 \item Improve Fig.5: (1) What do the colors mean? (2) The plot on the right is not a sparsity pattern
@@ -218,7 +231,7 @@ of any Hessian, but at best the upper triangular sparsity pattern.
 \item I am concerned that problems are only available in GAMS, and tested on GAMS solvers. It would make the paper stronger if the authors also released AMPL model, for example, or made use of
 JuMP.
 
-\rep{[\dots] }
+\rep{\leo{Possiamo spiegare che proporre NOI le istanze in formati multipli darebbe la responsabilita` del traduttore a noi, che invece non vogliamo accettarla. D'altro canto penso che, sebbene sia stata una scelta discussa e effettuata democraticamente, non sia necessariamente la scelta giusta per ogni criterio. Per esempio, se il nostro criterio fosse la visibilita` della QPLIB (il numero di gente che la cita), dovremmo ASSOLUTAMENTE tradurre le istanze nel maggior numero possibile di formati. E se qualcuno ci fara` una correzione in futuro chi se ne frega, ringrazieremo e correggeremo. Francamente, se io fossi il dittatore della QPLIB, sceglierei di tradurre le istanze in quanti piu` formati sia possibile (almeno AMPL e SIF), e poi distribuirle con un warning.} \fabio{Adesso abbiamo anche aggiunto il formato AMPL, secondo me con questo il referee si mette tranquillo!} }
 
 \end{enumerate}
 
