@@ -200,7 +200,7 @@ a cascade.
 %
 In Table~\ref{tab:filters} we summarize the two filter steps, which
 allowed us to identify the final set of $251$ discrete instances and
-$116$ continuous instances.
+$116$ continuous instances.\todo{needs update due to newly added instances ($\to$ 319 discrete 134 cont.)}
 
 \begin{table}
  \centering
@@ -255,8 +255,8 @@ Obj. Fun. & Variables & Constraints & \#\\
                     & Quadratic &   9 \\[1.2 ex]
 \cmidrule(lr){2-4}
           & \multirow{2}*{Mixed}
-                    & Convex    &   2\\[1.2 ex]
-          &         & Quadratic &    118\\[1.2 ex]
+                    & Convex    &   \textcolor{red}{15}\\[1.2 ex]
+          &         & Quadratic &  \textcolor{red}{151}\\[1.2 ex]
 \cmidrule(lr){2-4}
           & \multirow{1}*{Integer}
 %                    & Linear    &    \\
@@ -277,13 +277,13 @@ Obj. Fun. & Variables & Constraints & \#\\
 %          & {General} & Quadratic &   3 \\
 %\hline
 \multirow{1}*{Convex (if min)}
-          & Binary  & Linear    &  2 \\[1.2 ex]
+          & Binary  & Linear    &  \textcolor{red}{4} \\[1.2 ex]
 \cmidrule(lr){2-4}
 \multirow{1}*{or}
           & \multirow{2}*{Mixed}
                     & Linear    &   12\\[1.2 ex]
 \multirow{1}*{Concave (if max)}
-          &         & Quadratic &    1\\[1.2 ex]
+          &         & Quadratic &    \textcolor{red}{6}\\[1.2 ex]
 %          & General & Linear    &    \\
 %\cmidrule(lr){2-4}
 %          & \multirow{1}*{Integer}
@@ -293,7 +293,7 @@ Obj. Fun. & Variables & Constraints & \#\\
 \multirow{6}*{Quadratic}
           & \multirow{3}*{Binary}
                     & None      &   23\\[1.2 ex]
-          &         & Linear    &  59\\[1.2 ex]
+          &         & Linear    &  \textcolor{red}{74}\\[1.2 ex]
           &         & Quadratic &   5 \\[1.2 ex]
 \cmidrule(lr){2-4}
           & \multirow{2}*{Mixed}
@@ -306,7 +306,7 @@ Obj. Fun. & Variables & Constraints & \#\\
                     & Quadratic    &    1\\[1.2 ex]
 %          &         & Quadratic &    \\
 \hline
-Total     &         &           & 251\\
+Total     &         &           & \textcolor{red}{319}\\
 %
 \bottomrule
 \end{tabular}
@@ -325,22 +325,22 @@ Obj. Fun. & Constraints & \#\\
 \cmidrule(lr){1-3}
 %
 \multirow{2}*{Linear}    & Convex    &   13\\[1.2 ex]
-                         & Quadratic &   48\\[1.2 ex]
+                         & Quadratic &   \textcolor{red}{52}\\[1.2 ex]
 \cmidrule(lr){1-3}
 \multirow{1}*{Convex (if min)}
                          & Box       &   3 \\[1.2 ex]
 \multirow{1}*{or}
-                         & Linear    &   11\\[1.2 ex]
+                         & Linear    &   \textcolor{red}{16}\\[1.2 ex]
                         % & Convex    &    2\\[1.2 ex]
 \multirow{1}*{Concave (if max)}
-                         & Quadratic &    6\\[1.2 ex]
+                         & Quadratic &    \textcolor{red}{11}\\[1.2 ex]
 \cmidrule(lr){1-3}
 \multirow{3}*{Quadratic}
                          & Linear    &   6\\[1.2 ex]
-                         & Convex    &   1\\[1.2 ex]
-                         & Quadratic &   28\\[1.2 ex]
+                         & Convex    &   \textcolor{red}{3}\\[1.2 ex]
+                         & Quadratic &   \textcolor{red}{30}\\[1.2 ex]
 \hline
-Total                    &           & 116 \\
+Total                    &           & \textcolor{red}{134} \\
 %
 \bottomrule
 \end{tabular}
