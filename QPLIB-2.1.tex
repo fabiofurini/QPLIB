@@ -59,6 +59,22 @@ Due to the presence of integrality requirements on the variables and of quadrati
 
 The relative flexibility offered by quadratic functions, as opposed e.g.~to linear ones, allows several reformulation techniques to be applicable to this family of problems in order to emphasize different properties of the various components. Some of these reformulation techniques will be commented later on; here we remark that, for instance, integrality requirements, in particular in the form of binary variables could always be ``hidden'' by introducing (nonconvex) quadratic constraints utilizing the celebrated relationship $x_j \in \{0, 1\} \iff x_j^2 = x_j$. Therefore, when discussing these problems some effort has to be made to distinguish between features that come from the original model, and those that can be introduced by reformulation techniques in order to extract (and algorithmically exploit) specific properties.
 
+\textcolor{red}{In the rest of this paper, we shall sometimes refer to {\it exact solutions} of quadratic programs. In view of the fact that their solutions may be irrational, this notation deserves a comment. If the decision version of the problem being referred to is in NP (e.g.~LP, MILP, QP \cite{vavasis90a}), then the assumption is that all rational numbers can be represented exactly by a Turing Machine (TM). 
+%This assumption has the same limitation as the assumption that TMs defined on integers are a faithful abstraction of a real computer, namely that the range of integers needing a representation is bounded. 
+If there is no known proof that the problem being solved (or its decision version) is in NP, then there are four main approaches:
+\begin{enumerate}
+\item finding a representable solution $x'$ such that $\|x'-x^\ast\|_\infty\le\varepsilon$, where $x^\ast$ is the true solution, $\varepsilon>0$ is given, and representable means having a polynomially sized description length
+% ``
+(in function of the instance size) \cite{hochbaum2};
+\item using the {\it Thom encoding} of an algebraic number \cite[Prop.~2.28]{pollack} (limited to problems involving polynomials);
+\item using the optimality gap: finding a representable solution $x'$ such that $|f(x')-f(x^\ast)|\le\varepsilon$, where $f$ is the objective function, $x^\ast$ is the true solution, $\varepsilon>0$ is given
+%, and representable is as above 
+(limited to optimization problems);\label{optgap}
+\item using a computational model according to which every elementary computation on the reals takes $O(1)$ and returns a precise result \cite[p.~24]{blum}.
+\end{enumerate}
+Approach \ref{optgap} in the list above is the one most often used in computational papers, including the present one.}
+
+
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 %  End QPLIB-2.1.tex
