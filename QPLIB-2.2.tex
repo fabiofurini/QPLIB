@@ -22,7 +22,7 @@ Our taxonomy is based on a three-fields code of the form ``\textit{OVC}'', where
  \item variables: (\textit{C})ontinuous only, (\textit{B})inary only, (\textit{M})ixed binary and continuous, (\textit{I})nteger (including binary) only, (\textit{G})eneral (all other cases);
  %
  \item constraints: (\textit{N})one, (\textit{B})ox, (\textit{L})inear, (\textit{D})iagonal convex quadratic, (\textit{C})on\-vex quadratic, nonconvex (\textit{Q})uadratic.
-  Note that (\textit{D}) and (\textit{C}) are intended to mean that the feasible set of the constraint is convex, i.e., that either $Q^i$ is positive semidefinite and $c_l^i = -\infty$, or $Q^i$ is negative semidefinite and $c_u^i = \infty$. 
+  Note that (\textit{D}) and (\textit{C}) are intended to mean that either $Q^i$ is positive semidefinite and $c_l^i = -\infty$, or $Q^i$ is negative semidefinite and $c_u^i = \infty$. 
     \textcolor{red}{Note that (positive or negative) definiteness of $Q^i$ is a sufficient, but not in general necessary, condition for convexity. As detailed in \S\ref{subsec:final set}, in our taxonomy we mark the constraints ``$C$'' based on the sufficient condition alone, the rationale of this choice being discussed in \S\ref{ssec:reform}.}
   Quadratic constraints with both finite bounds cannot ever be convex (unless $Q^i = 0$, i.e., they are not ``truly'' quadratic constraints).
 \end{itemize}
