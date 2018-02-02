@@ -343,7 +343,9 @@ that even some QPs with indefinite Hessians can easily be solved to global optim
 
 \item The discussion on p.9 recounts some textbook facts, and is largely superfluous. Delete it.
 
-\rep{TODO: Antonio.
+\rep{
+Although all the facts recalled in §2.2.2 are in fact well known, we still feel they need be discussed in this context because they illustrate how the taxonomy (as almost all of them) has some grey areas whereby the same underlying problem can be described by instances that would be classified differently. This is, as the header of the section recalls, strongly tied to the concept of reformulation. One relevant example is the relationship between definiteness of the Hessians and convexity, correctly pointed out by the referee, which is naturally discussed in §2.2.2. One of the nontrivial choices in our library is that we made no effort to reformulate the instances (although of course we could have), and inserted them in the library in the very same format they have been provided to us by the original contributors. Section 2.2.2 is crucial in justifying this choice, as it shows that there are several degrees of freedom to move the instances from one class to another. Doing so, however, is typically justified by the fact that this makes one specific solver more efficient in solving them, a bias that we don't want to add. Hence, we have chosen to keep the instances in their ``natural'' format, this being the one in which the original contributor initially wrote them.
+%TODO: Antonio.
 %\leo{cancelliamo tutto!} 
 %As requested, aliminated the discussion from the manuscript
 }
