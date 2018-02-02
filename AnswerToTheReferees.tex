@@ -309,7 +309,35 @@ and some omissions that must be corrected. Overall, the paper can easily be cut 
 it (implicitly) assumes that direct solvers are used, which means that this library is less relevant for matrix-free solvers.
 
 \rep{
-TODO:Nick G. 
+Thank you for pointing out the missing categories. As requested, we updated Table 1 with the two required Applications.
+We also included PDE-constrained instances in the updated version of the library.
+We have deliberately excluded the highly-specialized class of trust-region subproblems, since there are dedicated, very fast solvers for this class. See for example:
+\begin{itemize}
+\item
+Minimizing a quadratic over a sphere. \\
+W. W. Hager. 
+SIAM Journal on Optimization,12(1):188-208, 2001.
+\item
+Solving the trust-region subproblem using the Lanczos method. \\
+N. I. M. Gould, S. Lucidi, M. Roma, and Ph. L. Toint. 
+SIAM Journal on Optimization, 9(2):504-525, 1999.
+\item
+A semidefinite framework for trust region subproblems with applications to large scale minimization.\\
+F Rendl, H Wolkowicz.
+Mathematical Programming 77 (1), 273-299
+\item
+A Subspace Minimization Method for the Trust-Region Step.\\
+J. B. Erway and P. E. Gill.
+SIAM J. Optim. 20-3 (2010), pp. 1439-1461
+\item
+Solving the Trust-Region Subproblem By a Generalized Eigenvalue Problem.\\
+S. Adachi, S. Iwata, Y. Nakatsukasa and A Takeda.
+SIAM Journal on Optimization 27 (1), 269-291
+\item
+On solving trust-region and other regularised subproblems in optimization.\\
+N.I.M. Gould, D.P. Robinson and H.S. Thorne.
+Mathematical Programming Computation 2 (1), 21-57
+\end{itemize}
 %\leo{sono d'accordo, dovremmo aggiungere delle istanze da trust-region subproblem e delle istanze da problemi PDE-constrained. Chiediamo a Gould per le istanze trust-region e a Gould, Mittelmann e Sahinidis per PDE-constrained. Specifichiamo che vorremmo istanze NON gia` in CUTE.} 
 }
 
