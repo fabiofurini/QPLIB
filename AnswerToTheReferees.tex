@@ -34,8 +34,7 @@
 
 \rep{
  Following the Area Editor suggestions, we 
- performed a deep revision of our manuscript. We carefully took into account all the comments made by the Referees and the Associate Editor.
- [\dots]
+ performed a revision of our manuscript. We carefully took into account all the comments made by the Referees and the Associate Editor.
  The new submitted document highlights in red the text that has been
 added or changed.
 In the following, the comments of the Associate Editor and of the Referees are reported, together with our point-by-point replies.
@@ -61,103 +60,10 @@ I also agree with the reviewer's concern that some of the instance classes have 
 
 \rep{
 We performed an internal call for instances among the members of the committee. 
-Thanks to this new research, we gathered $86$ new instances and we added them to the library. The updated division of the instances is as follows:\\
-\begin{tabular}{lllr}
-\toprule
-Obj. Fun. & Variables & Constraints & \#\\
-\cmidrule(lr){1-4}
-%
-\multirow{6}*{Linear}
-          & \multirow{2}*{Binary}
-%                    & None      &   \\
-%          &         & Linear    &  \\
-                    & Convex    &   0 +\textcolor{red}{xx}\\[1.2 ex]
-           &         & Quadratic &   9 \\[1.2 ex]
-\cmidrule(lr){2-4}
-          & \multirow{2}*{Mixed}
-                    & Convex    &   2 +\textcolor{red}{xx}\\[1.2 ex]
-          &         & Quadratic &    118\\[1.2 ex]
-\cmidrule(lr){2-4}
-          & \multirow{1}*{Integer}
-%                    & Linear    &    \\
-                   & Quadratic &    2\\[1.2 ex]
-\cmidrule(lr){2-4}
-          & \multirow{1}*{General}
-%                    & Linear    &    \\
-                   & Quadratic &    3\\[1.2 ex]
-\cmidrule(lr){1-4}
-%\multirow{5}*{Linear}
-%          & Binary  & Quadratic &   9\\
-%          & \multirow{2}*{Mixed}
-%                    & Convex    &   2\\
-%          &         & Quadratic &  118\\
-%%          & \multirow{2}*{Integer}
-%%                    & Convex    &  15 \\
-%%          &         & Quadratic &   5 \\
-%          & {General} & Quadratic &   3 \\
-%\hline
-\multirow{1}*{Convex (if min)}
-          & Binary  & Linear    &  2  +\textcolor{red}{xx}\\[1.2 ex]
-\cmidrule(lr){2-4}
-\multirow{1}*{or}
-          & \multirow{2}*{Mixed}
-                    & Linear    &   12\\[1.2 ex]
-\multirow{1}*{Concave (if max)}
-          &         & Quadratic &    1 +\textcolor{red}{xx}\\[1.2 ex]
-%          & General & Linear    &    \\
-%\cmidrule(lr){2-4}
-%          & \multirow{1}*{Integer}
-%                    & Linear    &   1\\[1.2 ex]
-%\hline
-\cmidrule(lr){1-4}
-\multirow{6}*{Quadratic}
-          & \multirow{3}*{Binary}
-                    & None      &   23\\[1.2 ex]
-          &         & Linear    &  59\\[1.2 ex]
-          &         & Quadratic &   5 \\[1.2 ex]
-\cmidrule(lr){2-4}
-          & \multirow{2}*{Mixed}
-                    & Linear    &   11\\[1.2 ex]
-          &         & Quadratic &    1\\[1.2 ex]
-\cmidrule(lr){2-4}
-          & Integer & Linear    &    2\\[1.2 ex]
-\cmidrule(lr){2-4}
-          & \multirow{1}*{General}
-                    & Quadratic    &    1\\[1.2 ex]
-%          &         & Quadratic &    \\
-\hline
-Total Discrete     &         &           & 251 +\textcolor{red}{xx}\\
-%
-\bottomrule
-\end{tabular}\\\\
-%
-%
-\begin{tabular}{llr}
-\toprule
-Obj. Fun. & Constraints & \#\\
-\cmidrule(lr){1-3}
-%
-\multirow{2}*{Linear}    & Convex    &   13\\[1.2 ex]
-                         & Quadratic &   48\\[1.2 ex]
-\cmidrule(lr){1-3}
-\multirow{1}*{Convex (if min)}
-                         & Box       &   3 \\[1.2 ex]
-\multirow{1}*{or}
-                         & Linear    &   11\\[1.2 ex]
-                        % & Convex    &    2\\[1.2 ex]
-\multirow{1}*{Concave (if max)}
-                         & Quadratic &    6\\[1.2 ex]
-\cmidrule(lr){1-3}
-\multirow{3}*{Quadratic}
-                         & Linear    &   6\\[1.2 ex]
-                         & Convex    &   1\\[1.2 ex]
-                         & Quadratic &   28\\[1.2 ex]
-\hline
-Total Continuous                   &           & 116 +\textcolor{red}{18} \\
-%
-\bottomrule
-\end{tabular}\\
-All the new instances 
+We gathered $86$ new instances (belonging to the categories less that were not well represented) and we added them to the library. We added a macro classification of the instances, based on convexity and nature of the variables.
+We believe that the majority of the algorithms used in the literature falls in one of these category.
+This macro classification shows that the library is now well-balanced.
+We kept also the detailed classification since it allows a fine grained analysis of the instances.
 %%
 %\leo{Sono d'accordo, ma come/dove troviamo le istanze supplementari? Sono le categorie con  $<10$ istanze nelle tavole 4 e 5, giusto? Dire che ce ne sono parecchie. 15 categorie su 23 hanno meno di 10 istanze (il numero 10 e` magico perche' le nostre mani hanno dieci dita, ovviamente).} 
 }
@@ -168,28 +74,30 @@ All the new instances
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\begin{table}
- \centering
- %\scriptsize
- \setlength{\tabcolsep}{18pt}
- \renewcommand \arraystretch{1.1}
-\begin{tabular}{llr}
-\toprule
-Variables & Convexity & \#\\
-\cmidrule(lr){1-3}
-%
- Continuous	& Convex		&  27+\textcolor{red}{yy} \\[1.2 ex]
- Continuous	& Non Convex	&  89+\textcolor{red}{yy} \\[1.2 ex]
- Discrete	& Convex		&  16+\textcolor{red}{63} \\[1.2 ex]
- Discrete	& Non Convex	&  235+\textcolor{red}{5} \\[1.2 ex]
-\cmidrule(lr){1-3}
-Total		&				& 367+\textcolor{red}{86}\\
-%
-\bottomrule
-\end{tabular}
-\caption{Classification of the final set of discrete instances}
-\label{tab:DD}
-\end{table}
+%\begin{table}[h1]
+%{
+% \centering
+% %\scriptsize
+% \setlength{\tabcolsep}{18pt}
+% \renewcommand \arraystretch{1.1}
+%\begin{tabular}{llr}
+%\toprule
+%Variables & Convexity & \#\\
+%\cmidrule(lr){1-3}
+%%
+% \textit{continuous}	& \textit{convex}		&  32 \\[1.2 ex]
+% \textit{continuous}	& \textit{non-convex} 	&  102 \\[1.2 ex]
+% \textit{discrete}	& \textit{convex}		&  31 \\[1.2 ex]
+% \textit{discrete}	& \textit{non-convex}	&  288 \\[1.2 ex]
+%\cmidrule(lr){1-3}
+%Total		&				& 453\\
+%%
+%\bottomrule
+%\end{tabular}
+%\caption{Macro classification of the final set of instances}
+%\label{tab:DDDDD}
+%}
+%\end{table}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -203,7 +111,7 @@ I recommend the authors be given a chance to revise the manuscript (and library)
 }
 
 
-\rep{We would like to thank the Editor-in-Chief for having given us the possibility to perform a revision of our manuscript. In the following we present the improvements we made in accordance with the comments of the referees. [\dots] }
+\rep{We would like to thank the Editor-in-Chief for having given us the possibility to perform a revision of our manuscript. In the following we present the improvements we made in accordance with the comments of the referees. }
 
 
 
@@ -224,7 +132,7 @@ they can be easily addressed without the need for an additional detailed review.
 Hence, my recommendation is the paper be accepted after a minor revision.
 }
 
-\rep{[\dots] }
+\rep{We thank the referee for his/her positive opinion on our manuscript. We hope that the new library will serve our scientific community.}
 
 {\it
 Minor Comments:
@@ -232,7 +140,7 @@ Minor Comments:
 
 \item I think it would be interesting to mention the Conic library CBLIB \url{http://cblib.zib.de} and its relation to the library described in the manuscript.
 
-\rep{We updated the manuscript by adding the suggest link to the Conic library.}
+\rep{We updated the manuscript by adding the suggest link.}
 
 
 \item Page 7, line -4. You say that convex means that the feasible region is
@@ -241,7 +149,7 @@ a convex feasible region could be considered nonconvex. Hence, maybe it
 is more accurate to say that what you mean is that the constraint can be
 converted to $f (x) \le c$ with $f$ convex by rearranging terms.
 
-\rep{We removed a sentence from this paragraph to address this concern
+\rep{We removed a sentence from this paragraph to address this concern and we added a paragraph on this issue.
 %TODO: Leo 
 %\leo{secondo me il secondo commento si riferisce a pagina 19... a pagina 7 riga -4 non trovo niente su SOCP. Pero` sono d'accordo che a pagina 19 l'ultimo paragrafo della sezione 3.1 potrebbe essere migliorato. Cosi` e` un po' criptico. Perche' non inserire un bell'esempio di una forma bilineare nonconvessa (scrivendola esplicitamente come xQx e dando esplicitamente lo spettro di Q con la parte definita negativa) inserita in un vincolo che definisce una regione convessa? E poi io direi che facciamo la scelta di mettere queste istanze come "nonconvesse" perche' dimostrare convessita` in generale e` difficile (a questo proposito, io conosco i risultati del PhD di Amir Ali Ahmadi sulla difficolta` di riconoscere la convessita` in polinomi di grado $>= 4$, ma non ho mai visto una dimostrazione di difficolta` di riconoscere la convessita` della feasible region in vincoli quadratici; spero che qualcuno dei nostri co-autori ne sia al corrente)... Il referee ricorda che riconoscere i casi di forme quadratiche con una negative eigenvalue inserite in un vincolo convesso e` facile e  da` un metodo, di cui sarebbe bene ritrovare il primo caso in cui viene menzionato, oppure darne una breve dimostrazione... io non ne ero a conoscenza (e nemmeno mi viene in mente sui due piedi come dimostrarlo).} 
 }
@@ -249,7 +157,8 @@ converted to $f (x) \le c$ with $f$ convex by rearranging terms.
 \item Page 17. Doesn't CPLEX support some binary non-convex quadratic
 problems.
 
-\rep{ TODO:Fabio and Emiliano
+\rep{We wrote an email to the development team of Cplex and they confirmed that their solver is able to tackle QGL and CGC 
+% TODO:Fabio and Emiliano
 %\leo{rispondiamo al referee che CPLEX e` classificato 'C' (complete) in tavola 2 rispetto a QGC e ricordiamogli che pero` CPLEX non risolve (a mia conoscenza e per il momento) QGQ. Tra l'altro, c'e` a p. 17 una menzione di "Table 2 below", tranne che la table 2 appare above. Diciamo solo "Table 2" senza il below e l'above, dato che la posizione di tavole e figure puo` comunque essere modificata sia da LaTeX sia dal typesetting finale.} 
 }
 
@@ -300,7 +209,7 @@ the project, the paper is poorly written. It is often long-winded, and contains 
 and some omissions that must be corrected. Overall, the paper can easily be cut by 5-10 pages.
 }
 
-\rep{[\dots] }
+\rep{We followed the suggestion of the referee ad the AI and we have shortened unnecessary sections of the paper.}
 
 {\it
 \begin{enumerate}
@@ -392,14 +301,13 @@ solve $Ax = b$ ``exactly'', except in some special cases. Please clarify this st
 }
 
 
-\item The description of NLP solvers in Section 2.3.2 is at somewhat misleading. For example, KNI-
-TRO is also a primal-dual interior-point method, not just a barrier code (in fact primal-dual
+\item The description of NLP solvers in Section 2.3.2 is at somewhat misleading. For example, KNITRO is also a primal-dual interior-point method, not just a barrier code (in fact primal-dual
 methods are preferred). The description of the “active-set” methods is wrong, unless you refer
 to the inner method, namely the active-set QP solves. Otherwise, SNOPT and KNITRO are
 SQP methods, while CONOPT is a gradient-projection method, and MINOS is an augmented
 Lagrangian method. You must correct this section
 
-\rep{TODO: Stefan and Ambros
+\rep{The complete description of the solver goes beyond the scope of the paper. For this reason we have streamlined the related Section.
 %\leo{correggiamo gli errori e ringraziamo il referee} 
 }
 
@@ -411,7 +319,7 @@ Lagrangian method. You must correct this section
 \item The y-axis labels are missing on most figures.
 
 \rep{
-TODO: Stefan and Ambros
+Added.
 %\leo{mettiamo la label al y axis  (duh)} 
 }
 
@@ -431,14 +339,14 @@ We renamed ``hard" to ``problematic". However, as explained in \S 2.2.1 and 2.2.
 \item Improve Fig.5: (1) What do the colors mean? (2) The plot on the right is not a sparsity pattern
 of any Hessian, but at best the upper triangular sparsity pattern.
 
-\rep{TODO: Stefan and Ambros}
+\rep{Corrected, thanks.}
 
 
 \item I am concerned that problems are only available in GAMS, and tested on GAMS solvers. It would make the paper stronger if the authors also released AMPL model, for example, or made use of
 JuMP.
 
 \rep{
-We thank the refereee for having raised this delicate point. We definetly agree that formats are an issue.
+We thank the referee for having raised this delicate point. We definitely agree that formats are an issue.
 For this reason we have translated all the instances also into the AMPL format and we have uploaded them on the website.
 %\leo{Possiamo spiegare che proporre NOI le istanze in formati multipli darebbe la responsabilita` del traduttore a noi, che invece non vogliamo accettarla. D'altro canto penso che, sebbene sia stata una scelta discussa e effettuata democraticamente, non sia necessariamente la scelta giusta per ogni criterio. Per esempio, se il nostro criterio fosse la visibilita` della QPLIB (il numero di gente che la cita), dovremmo ASSOLUTAMENTE tradurre le istanze nel maggior numero possibile di formati. E se qualcuno ci fara` una correzione in futuro chi se ne frega, ringrazieremo e correggeremo. Francamente, se io fossi il dittatore della QPLIB, sceglierei di tradurre le istanze in quanti piu` formati sia possibile (almeno AMPL e SIF), e poi distribuirle con un warning.} \fabio{Adesso abbiamo anche aggiunto il formato AMPL, secondo me con questo il referee si mette tranquillo!} 
 }
