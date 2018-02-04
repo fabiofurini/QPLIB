@@ -23,14 +23,15 @@ In this section we describe the procedure we adopted to gather the
 instances. In January $2014$, we issued an online call for instances
 using the main international mailing lists of the mathematical
 optimization and numerical analysis communities, reaching in this way
-the largest possible set of interested researchers and practitioners.
-The call remained open for 10 months, during which we received a large
+the largest\todo{AG: a large?} possible set of interested researchers and practitioners.
+The call remained open for ten months, during which we received a large
 number of contributions of different nature. The instances we gathered
 come both from theoretical studies as well as from real-world
 applications.
 
-In addition to spontaneous contribution we analysed the other generic
-libraries of instances available  on internet and containing QP
+
+In addition to spontaneous contribution we analyzed the other generic
+libraries of instances available  on the internet and containing QP
 instances. Namely, the libraries from which we gathered instances are
 %
 \begin{itemize}
@@ -146,7 +147,7 @@ and non-positive eigenvalues (when $c_l^i > - \infty$)
 are classified as convex constraints; thus, a quadratic constraint with
 two sided, finite bounds is non-convex.
 Note that this might occasionally lead us to classify some instances that have conic constraints as non-convex ones, although their feasible region is in fact convex---fortunately, only some solvers are capable of properly exploiting this property.
- All this information allowed us to analyse the gathered instances and to perform the
+ All this information allowed us to analyze the gathered instances and to perform the
 filters described in the the next paragraph.
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
@@ -190,7 +191,7 @@ a cascade.
  %
  \item \emph{Second Instances Filter.}\\
        The goal of the second filter was to eliminate ``similar'' instances.
-       We carefully analysed the instances one by one, and we clustered them
+       We carefully analyzed the instances one by one, and we clustered them
        according to their features; for each cluster we kept only a few
        representatives (e.g., very similar size, same donor,\ldots). Finally, in order to only
        keep computationally challenging instances we ran a a complete solver for QGQ with a time limit of 120 seconds; all the
@@ -223,7 +224,7 @@ Second Filter & $\Downarrow$  & $\Downarrow$  & \\
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Analysis of the final set of instances}\label{subsec:final set}
 
-\textcolor{red}{We now analyse the features of the instances selected to be part of the
+\textcolor{red}{We now analyze the features of the instances selected to be part of the
  library. In Table \ref{tab:DDDDD}, we provide a global overview. The instances have been divided in \textit{continuous} vs \textit{discrete} and \textit{convex} vs \textit{non-convex}, forming in this way, a  classification of 4 macro categories. As previously mentioned, an instance is classified \textit{discrete} if it contains at least a binary or integer variable, and \textit{continuous} otherwise. On the other hand, an instance is classified as \textit{non-convex} if the objective function is non-convex and/or at least one of the constraints is  non-convex, and \textit{convex} otherwise. }
 
 
@@ -453,7 +454,7 @@ It can be seen that the majority of instances only have nonconvex constraints. %
 
 On the theme of nonconvexity, Figure~\ref{fig:pic_neg_eig} (left) focuses on
 the instances with a quadratic objective function, ordered by 
- percentage of ``problematic'' \textcolor{red}{(defined using a tollerance of XXX)} \todo{please define the tolerance used to identify the ``Problematic'' eigenvalues and change the label of the plot}\ eigenvalues in the Hessian $Q^0$ (vertical axis), by which
+ percentage of ``problematic'' \textcolor{red}{(defined using a tolerance of XXX)} \todo{please define the tolerance used to identify the ``Problematic'' eigenvalues and change the label of the plot}\ eigenvalues in the Hessian $Q^0$ (vertical axis), by which
 we mean negative eigenvalues in case of a minimization problem and positive eigenvalues in case of a maximization problem.
 The instances are mostly clustered around two values. About 25\% of the instances have a convex (if minimization) or concave (if maximization) objective function,
 i.e., they have 0\% of ``problematic'' eigenvalues. Among the others, a vast
