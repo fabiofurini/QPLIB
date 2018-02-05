@@ -145,7 +145,7 @@ Hessians have only non-negative eigenvalues (when $c_u^i < \infty$) and
 and non-positive eigenvalues (when $c_l^i > - \infty$)
 are classified as convex constraints; thus, a quadratic constraint with
 two sided, finite bounds is non-convex.
-Note that this might occasionally lead us to classify some instances that have conic constraints as non-convex ones, although their feasible region is in fact convex---fortunately, only some solvers are capable of properly exploiting this property.
+Note that this might occasionally lead us to classify some instances that have conic constraints as non-convex ones, although their feasible region is in fact convex; however, only some solvers are capable of properly exploiting this property.
  All this information allowed us to analyse the gathered instances and to perform the
 filters described in the the next paragraph.
 
@@ -192,7 +192,7 @@ a cascade.
        The goal of the second filter was to eliminate ``similar'' instances.
        We carefully analysed the instances one by one, and we clustered them
        according to their features; for each cluster we kept only a few
-       representatives (e.g., very similar size, same donor,\ldots). Finally, in order to only
+       representatives, e.g. by eliminating all but a few of those with very similar size and coming from the same donor. Finally, in order to only
        keep computationally challenging instances we ran a a complete solver for QGQ with a time limit of 120 seconds; all the
        instances which have been solved to proven optimality within this time limit
        were discarded.
