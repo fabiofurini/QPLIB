@@ -453,8 +453,8 @@ It can be seen that the majority of instances only have nonconvex constraints. %
 
 On the theme of nonconvexity, Figure~\ref{fig:pic_neg_eig} (left) focuses on
 the instances with a quadratic objective function, ordered by 
- percentage of ``problematic'' \textcolor{red}{(defined using a tollerance of XXX)} \todo{please define the tolerance used to identify the ``Problematic'' eigenvalues and change the label of the plot}\ eigenvalues in the Hessian $Q^0$ (vertical axis), by which
-we mean negative eigenvalues in case of a minimization problem and positive eigenvalues in case of a maximization problem.
+ percentage of ``problematic'' eigenvalues in the Hessian $Q^0$ (vertical axis), by which
+we mean \textcolor{red}{eigenvalues below $-10^{-12}$} in case of a minimization problem and \textcolor{red}{eigenvalues above $10^{-12}$} in case of a maximization problem.
 The instances are mostly clustered around two values. About 25\% of the instances have a convex (if minimization) or concave (if maximization) objective function,
 i.e., they have 0\% of ``problematic'' eigenvalues. Among the others, a vast
 majority has around 50\% of ``problematic'' eigenvalues. However, instances
