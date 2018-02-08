@@ -155,7 +155,7 @@ filters described in the next paragraph.
 
 During the development of the library, a discussion ensued about
 the expected goals that we wished to achieve. The following four goals
-where finally identified:
+were finally identified:
 %
 \begin{enumerate}
  \item to represent as far as possible all the different categories of QP
@@ -194,7 +194,7 @@ a cascade.
        We carefully analyzed the instances one by one, and we clustered them
        according to their features; for each cluster we kept only a few
        representatives, e.g. by eliminating all but a few of those with very similar size and coming from the same donor. Finally, in order to only
-       keep computationally challenging instances we ran a a complete solver for QGQ with a time limit of 120 seconds; all the
+       keep computationally challenging instances we ran a complete solver for QGQ with a time limit of 120 seconds; all the
        instances which have been solved to proven optimality within this time limit
        were discarded.
 \end{itemize}
@@ -225,7 +225,7 @@ Second Filter & $\Downarrow$  & $\Downarrow$  & \\
 \subsection{Analysis of the Final Set of Instances}\label{subsec:final set}
 
 \textcolor{red}{We now analyze the features of the instances selected to be part of the
- library. In Table \ref{tab:DDDDD}, we provide a global overview. The instances have been divided in \textit{continuous} vs \textit{discrete} and \textit{convex} vs \textit{nonconvex}, forming in this way, a  classification of 4 macro categories. As previously mentioned, an instance is classified \textit{discrete} if it contains at least a binary or integer variable, and \textit{continuous} otherwise. On the other hand, an instance is classified as \textit{nonconvex} if the objective function is nonconvex and/or at least one of the constraints is nonconvex, and \textit{convex} otherwise. }
+ library. In Table \ref{tab:DDDDD}, we provide a global overview. The instances have been divided in \textit{continuous} vs \textit{discrete} and \textit{convex} vs \textit{nonconvex}, forming in this way, a  classification of 4 macro categories. As previously mentioned, an instance is classified \textit{discrete} if it contains at least a binary or integer variable, and \textit{continuous} otherwise. On the other hand, an instance is classified as \textit{nonconvex} if the objective function is nonconvex (if minimization) or nonconcave (if maximization) and/or at least one of the constraints is nonconvex, and \textit{convex} otherwise. }
 
 
 \begin{table}
@@ -261,10 +261,10 @@ For each category, the tables
 report in column ``$\#$'' the corresponding number of instances. It can be seen
 that the final set well respects the original distribution of the gathered
 instances among the different categories. Indeed, the discrete categories
-(\textit{LMQ}) or (\textit{QBL}) are well represented by $118$ and $59$
+\textit{LMQ} and \textit{QBL} are well represented by \textcolor{red}{134} and \textcolor{red}{91}
 instances, respectively. Similarly, the continuous categories
-(\textit{LCQ}) and (\textit{QCQ}) are well
-represented by $50$ and $17$ instances, respectively. Moreover, the library
+\textit{LCQ} and \textit{QCQ} are well
+represented by \textcolor{red}{52} and \textcolor{red}{30} instances, respectively. Moreover, the library
 actually covers the large majority of all possible categories of instances.
 
 \begin{table}
