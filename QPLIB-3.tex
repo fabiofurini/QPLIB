@@ -490,19 +490,20 @@ We provide all instances in GAMS (\texttt{.gms}), AMPL (\texttt{.mod}), CPLEX (\
 specifically for QP instances. In comparison to more \emph{high level}
 formats such as \texttt{.gms} and \texttt{.lp}, the new
 format offers three main advantages: it is easier to read by a stand-alone
-parser (provided), it typically produces smaller files, and it permits the
+parser (provided)\todo{SV: what is meant by ``(provided)''?}, it typically produces smaller files, and it permits the
 inclusion of two-sided inequalities without needless repetition of data.
 %the order of variables and constraints is fixed.
 See Appendix~\ref{sec:format} for more details.
 
 Beyond the instances, the website provides a rich set of metadata for
-each instance: the three letter problem classification (as described in \S\ref{subsec:final set}), basic properties such as the number of variables and constraints of
+each instance: the three letter problem classification (as described in \S\ref{subsec:final set}), \textcolor{red}{the contributor of the instance}, basic properties such as the number of variables and constraints of
 different types, the sense and convexity/concavity of the objective function, and information on the nonzero structure of the
 problem.
 %
 In addition, we display a visualization of the sparsity patterns of the Jacobian and the Hessian matrix of the
-Lagrangian function.  In the plots of the Jacobian nonzero pattern, the linear and nonlinear entries are distinguished
+Lagrangian function, \textcolor{red}{if the instance size allows}.  In the plots of the Jacobian nonzero pattern, the linear and nonlinear entries are distinguished
 by color.  Figure \ref{fig:sparsitypattern} shows an example for instance QPLIB\_2967.
+\textcolor{red}{Finally, feasible solution points are provided for most instances.}
 
 \begin{figure}
 \centering
@@ -516,7 +517,7 @@ by color.  Figure \ref{fig:sparsitypattern} shows an example for instance QPLIB\
 \end{figure}
 
 The entire set of instances can be explored in a searchable and sortable table of selected instance features: problem
-classification, convexity of the continuous relaxation, number of (all, binary, integer) variables, (all, quadratic) constraints, nonzeros, hard eigenvalues in~$Q^0$, and density of~$Q^0$.
+classification, convexity of the continuous relaxation, number of (all, binary, integer) variables, (all, quadratic) constraints, nonzeros, \textcolor{red}{problematic} eigenvalues in~$Q^0$, and density of~$Q^0$.
 %
 Finally, a statistics page displays diagrams on the composition of the library according to different criteria: the
 number of instances according to problem type, variable and constraint types, convexity, problem size, and density.
@@ -526,7 +527,7 @@ so that researchers can easily compile their own subset of instances according t
 
 The complete library can be downloaded as one archive, which contains the website for offline browsing and exploration.
 %
-In the future, we plan to extend the website by the addition of contributor information and references to the literature.
+In the future, we plan to extend the website by references to the literature.
 
 
 
