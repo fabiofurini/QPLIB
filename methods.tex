@@ -22,7 +22,7 @@ In this section we provide a quick overview of existing solution methods for QP,
 
 \input{solvers.tex}
 
-\subsubsection{Incomplete methods}
+\subsubsection{Incomplete Methods}
 
 Incomplete methods are usually realized as local search algorithms, asymptotically complete methods are usually realized by meta-heuristic methods such as multi-start or simulated annealing, and complete methods for $\mathcal{NP}$-hard problems such as QP are typically realized as implicit exhaustive exploration algorithms. However, these three categories may exhibit some overlap. For example, any deterministic method for solving \textit{QCQ} locally is incomplete in general, but becomes complete for \textit{CCC}, since any local optimum of a convex QP is also global. Therefore, when we state that a given algorithm is incomplete or (asymptotically) complete we mean that it is so the largest problem class that the solver naturally targets, although it may be complete on specific sub-classes. For example, interior point algorithms naturally target NLPs and are incomplete on NLPs, and therefore on \textit{QCQ}, but become complete for \textit{CCC}. In general, all complete methods for a problem class $P$ must be complete for any problem class $Q \subseteq P$, while a complete method for $P$ might be incomplete for a class $R \supset P$.
 
@@ -39,7 +39,7 @@ for convex problems, and
 for nonconvex ones.
 
 % -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-\subsubsection{Asymptotically complete methods}\label{sss:asymc}
+\subsubsection{Asymptotically Complete Methods}\label{sss:asymc}
 
 Asymptotically complete methods do not usually require a starting point, and, if given sufficient time (infinite in the worst case) will identify a globally optimal solution with probability one. Most often, these methods are meta-heuristics, involving an element of random choice, which exploit a given (heuristic) local search procedure.
 
@@ -47,7 +47,7 @@ The solvers in Table \ref{t:solvers} which implement asymptotically complete met
 
 
 % -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
-\subsubsection{Complete methods}\label{s:complete}
+\subsubsection{Complete Methods}\label{s:complete}
 
 Complete methods are often referred to as \emph{exact} in a large part of the mathematical optimization community. This term has to be used with care, as it implicitly makes assumptions on the underlying computational model that may not be acceptable in all cases. For example, the decision version of \textit{QCL} is known to be in the complexity class \textbf{NP} \cite{vavasis90a}, whereas the same is not known about \textit{LCQ}, even with zero objective. On the other hand, there exists a method for deciding feasibility of systems of polynomial equations and inequalities \cite{tarski-reals}, including the solution of \textit{LCQ} with zero objective function.
 
