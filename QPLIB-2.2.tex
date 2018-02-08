@@ -26,8 +26,6 @@ Our taxonomy is based on a three-fields code of the form ``\textit{OVC}'', where
     \textcolor{red}{Note that (positive or negative) definiteness of $Q^i$ is a sufficient, but not in general necessary, condition for convexity. As detailed in \S\ref{subsec:final set}, in our taxonomy we mark the constraints ``$C$'' based on the sufficient condition alone, the rationale of this choice being discussed in \S\ref{ssec:reform}.}
   Quadratic constraints with both finite bounds cannot ever be convex (unless $Q^i = 0$, i.e., they are not ``truly'' quadratic constraints).
 \end{itemize}
-%
-The wildcard ``*'' will be used below to indicate any possible choice, and lists of the form ``\{\textit{X}, \textit{Y}, \textit{Z}\}'' will indicate that the value of the given field can freely attain any of the specified values.
 
 The ordering of the values in the previous lists is not irrelevant; in general, problems become ``harder'' when going from left to right. More specifically, for the \textit{O} and \textit{C} fields the order is that of \emph{strict} containment between problem classes: for instance, linear objective functions are strictly a special case of diagonal convex quadratic ones (by allowing the diagonal elements all to be zero), the latter are a strict subset of general convex quadratic objectives (by allowing the off-diagonal elements all to be zero), and these are strictly subsets of general nonconvex quadratic ones (since these permit any symmetric Hessian including positive semidefinite ones). The only field for which the containment relationship is not a total order is \textit{V}, for which only the partial orderings
 \[
@@ -40,6 +38,8 @@ The ordering of the values in the previous lists is not irrelevant; in general, 
  \mbox{\textit{B}} \subset \mbox{\textit{I}} \subset \mbox{\textit{G}}
 \]
 hold. In the following discussion we will repeatedly exploit this by assuming that, unless otherwise mentioned, when a method can be applied to a given problem, it can be applied as well to all simpler problems where the value of each field is arbitrarily replaced with a value denoting a less-general class.
+
+The wildcard ``*'' will be used below to indicate any possible choice, and lists of the form ``\{\textit{X}, \textit{Y}, \textit{Z}\}'' will indicate that the value of the given field can freely attain any of the specified values.
 
 
 
