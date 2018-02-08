@@ -157,7 +157,7 @@ converted to $f (x) \le c$ with $f$ convex by rearranging terms.
 \item Page 17. Doesn't CPLEX support some binary non-convex quadratic
 problems.
 
-\rep{We wrote an email to the development team of Cplex and they confirmed that their solver is able to tackle QGL and CGC 
+\rep{We wrote an email to the development team of Cplex and they confirmed that their solver is able to tackle QGL (which contains QBL) and CGC. This is now mentioned in Section 2.3.4, additionally to QBC support for Gurobi and Xpress.
 % TODO:Fabio and Emiliano
 %\leo{rispondiamo al referee che CPLEX e` classificato 'C' (complete) in tavola 2 rispetto a QGC e ricordiamogli che pero` CPLEX non risolve (a mia conoscenza e per il momento) QGQ. Tra l'altro, c'e` a p. 17 una menzione di "Table 2 below", tranne che la table 2 appare above. Diciamo solo "Table 2" senza il below e l'above, dato che la posizione di tavole e figure puo` comunque essere modificata sia da LaTeX sia dal typesetting finale.} 
 }
@@ -283,7 +283,7 @@ that even some QPs with indefinite Hessians can easily be solved to global optim
 \item The discussion on p.9 recounts some textbook facts, and is largely superfluous. Delete it.
 
 \rep{
-Although all the facts recalled in \S 2.2.2 are in fact well known, we still feel they need to be discussed in this context because they illustrate how the taxonomy (as almost all of them) has some grey areas whereby the same underlying problem can be described by instances that would be classified differently. This is, as the header of the section recalls, strongly tied to the concept of reformulation. One relevant example is the relationship between definiteness of the Hessians and convexity, correctly pointed out by the referee, which is naturally discussed in \S 2.2.2. One of the nontrivial choices in our library is that we made no effort to reformulate the instances (although of course we could have), and inserted them in the library in the very same format they have been provided to us by the original contributors. Section 2.2.2 is crucial in justifying this choice, as it shows that there are several degrees of freedom to move the instances from one class to another. Doing so, however, is typically justified by the fact that this makes one specific solver more efficient in solving them, a bias that we don't want to add. Hence, we have chosen to keep the instances in their ``natural'' format, this being the one in which the original contributor initially wrote them.
+Although all the facts recalled in \S 2.2.2 are in fact well known, we still feel they need to be discussed in this context because they illustrate how the taxonomy (as almost all of them) has some grey areas whereby the same underlying problem can be described by instances that would be classified differently. This is, as the header of the section recalls, strongly tied to the concept of reformulation. One relevant example is the relationship between definiteness of the Hessians and convexity, correctly pointed out by the referee, which is naturally discussed in \S 2.2.2. One of the nontrivial choices in our library is that we made no effort to reformulate the instances (although of course we could have), and inserted them in the library in the very same form as they have been provided to us by the original contributors. Section 2.2.2 is crucial in justifying this choice, as it shows that there are several degrees of freedom to move the instances from one class to another. Doing so, however, is typically justified by the fact that this makes one specific solver more efficient in solving them, a bias that we don't want to add. Hence, we have chosen to keep the instances in their ``natural'' form, this being the one in which the original contributor initially wrote them.
 %TODO: Antonio.
 %\leo{cancelliamo tutto!} 
 %As requested, aliminated the discussion from the manuscript
@@ -330,7 +330,9 @@ above. Instead, you should consider the number of negative eigenvalues of the re
 (wrt equality constraints). Fig. 4 is meaningless, unless you replace the definition of hardness.
 
 \rep{
-We renamed ``hard" to ``problematic". However, as explained in \S 2.2.1 and 2.2.2, we refrain from reformulating the instance, and we do not tailor problems to specific solvers (moreover, not all QP solvers would resort to reduced Hessians). In the same vein, our analysis can only be based on the given instance structure.
+We renamed ``hard" to ``problematic".
+However, as explained in \S 2.2.1 and 2.2.2, the analysis of our instances has some limitations. Similar as with nonconvex quadratic constraints that could be reformulated as SOC, also resorting to a reduced Hessian for the objective function is a technique that is applied only by a subset of current QP solvers. It might be interesting, though, to extend our analysis in these directions in the future.
+%However, as explained in \S 2.2.1 and 2.2.2, we refrain from reformulating the instance, and we do not tailor problems to specific solvers (moreover, not all QP solvers would resort to reduced Hessians). In the same vein, our analysis can only be based on the given instance structure.
 %TODO: Stefan and Ambros.
 % \leo{non so nulla di "hard eigenvalues" nel senso del trust region; chiediamo agli esperti} 
  }
@@ -348,6 +350,7 @@ JuMP.
 \rep{
 We thank the referee for having raised this delicate point. We definitely agree that formats are an issue.
 For this reason we have translated all the instances also into the AMPL format and we have uploaded them on the website.
+Further, also the additionally available LP format is understood by a number of solvers and is relatively easy to parse.
 %\leo{Possiamo spiegare che proporre NOI le istanze in formati multipli darebbe la responsabilita` del traduttore a noi, che invece non vogliamo accettarla. D'altro canto penso che, sebbene sia stata una scelta discussa e effettuata democraticamente, non sia necessariamente la scelta giusta per ogni criterio. Per esempio, se il nostro criterio fosse la visibilita` della QPLIB (il numero di gente che la cita), dovremmo ASSOLUTAMENTE tradurre le istanze nel maggior numero possibile di formati. E se qualcuno ci fara` una correzione in futuro chi se ne frega, ringrazieremo e correggeremo. Francamente, se io fossi il dittatore della QPLIB, sceglierei di tradurre le istanze in quanti piu` formati sia possibile (almeno AMPL e SIF), e poi distribuirle con un warning.} \fabio{Adesso abbiamo anche aggiunto il formato AMPL, secondo me con questo il referee si mette tranquillo!} 
 }
 
