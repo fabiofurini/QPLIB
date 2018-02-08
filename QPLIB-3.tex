@@ -145,8 +145,8 @@ a quadratic term (if present). Among the quadratic constraints, the ones whose
 Hessians have only non-negative eigenvalues (when $c_u^i < \infty$) and
 non-positive eigenvalues (when $c_l^i > - \infty$)
 are classified as convex constraints; thus, a quadratic constraint with
-two sided, finite bounds is non-convex.
-Note that this might occasionally lead us to classify some instances that have conic constraints as non-convex ones, although their feasible region is in fact convex---fortunately, only some solvers are capable of properly exploiting this property.
+two sided, finite bounds is nonconvex.
+Note that this might occasionally lead us to classify some instances that have conic constraints as nonconvex ones, although their feasible region is in fact convex---fortunately, only some solvers are capable of properly exploiting this property.
  All this information allowed us to analyse the gathered instances and to perform the
 filters described in the next paragraph.
 
@@ -225,7 +225,7 @@ Second Filter & $\Downarrow$  & $\Downarrow$  & \\
 \subsection{Analysis of the Final Set of Instances}\label{subsec:final set}
 
 \textcolor{red}{We now analyze the features of the instances selected to be part of the
- library. In Table \ref{tab:DDDDD}, we provide a global overview. The instances have been divided in \textit{continuous} vs \textit{discrete} and \textit{convex} vs \textit{non-convex}, forming in this way, a  classification of 4 macro categories. As previously mentioned, an instance is classified \textit{discrete} if it contains at least a binary or integer variable, and \textit{continuous} otherwise. On the other hand, an instance is classified as \textit{non-convex} if the objective function is non-convex and/or at least one of the constraints is  non-convex, and \textit{convex} otherwise. }
+ library. In Table \ref{tab:DDDDD}, we provide a global overview. The instances have been divided in \textit{continuous} vs \textit{discrete} and \textit{convex} vs \textit{nonconvex}, forming in this way, a  classification of 4 macro categories. As previously mentioned, an instance is classified \textit{discrete} if it contains at least a binary or integer variable, and \textit{continuous} otherwise. On the other hand, an instance is classified as \textit{nonconvex} if the objective function is nonconvex and/or at least one of the constraints is nonconvex, and \textit{convex} otherwise. }
 
 
 \begin{table}
@@ -240,9 +240,9 @@ Variables & Convexity & \#\\
 \cmidrule(lr){1-3}
 %
  \textit{continuous}	& \textit{convex}		&  32 \\[1.2 ex]
- \textit{continuous}	& \textit{non-convex} 	&  102 \\[1.2 ex]
+ \textit{continuous}	& \textit{nonconvex} 	&  102 \\[1.2 ex]
  \textit{discrete}	& \textit{convex}		&  31 \\[1.2 ex]
- \textit{discrete}	& \textit{non-convex}	&  288 \\[1.2 ex]
+ \textit{discrete}	& \textit{nonconvex}	&  288 \\[1.2 ex]
 \cmidrule(lr){1-3}
 Total		&				& 453\\
 %
