@@ -143,12 +143,12 @@ are concerned, we collected the following information:
 A constraint is considered quadratic if it contains at least one nonzero in
 a quadratic term (if present). Among the quadratic constraints, the ones whose
 Hessians have only non-negative eigenvalues (when $c_u^i < \infty$) and
-and non-positive eigenvalues (when $c_l^i > - \infty$)
+non-positive eigenvalues (when $c_l^i > - \infty$)
 are classified as convex constraints; thus, a quadratic constraint with
 two sided, finite bounds is non-convex.
 Note that this might occasionally lead us to classify some instances that have conic constraints as non-convex ones, although their feasible region is in fact convex---fortunately, only some solvers are capable of properly exploiting this property.
  All this information allowed us to analyse the gathered instances and to perform the
-filters described in the the next paragraph.
+filters described in the next paragraph.
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Instance Selection}\label{subsec:selection}
