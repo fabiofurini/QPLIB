@@ -118,10 +118,10 @@ The proposed taxonomy can then be used to describe the main classes of QP accord
   \item \emph{Nonconvex Integer Quadratic Programs} \textit{QGQ} is the most general, and therefore is the most difficult, class. Due to the lack of convexity even when integrality requirements are removed, solution methods must typically combine several algorithmic ideas, such as enumeration (distinguishing the role of integral variables from that of continuous ones involved in nonconvex terms) and techniques that allow the efficient computation of bounds (e.g., outer approximation, semidefinite programming relaxation, \ldots). As in the convex case, \textit{QBQ}, \textit{QMQ}, and \textit{QIQ} can benefit from more specific properties of the variables \cite{Buchheim2013,Dong2016}.
 \end{itemize}
 %
-This description is deliberately coarse; each of these classes can be subdivided into several others on the grounds of more detailed information about structures present in their constraints/objective function. These can have a significant algorithmic impact, and therefore can be of interest to researchers. Common structures are, e.g., network flows \cite{FrFG16,FrGaSc14,FrGaSt16a,FGGP11,tadayon-smith:2013} or knapsack-type linear constraints \cite{FrFG16,FrGo13b,FGGP11}, and semi-continuous variables \cite{FrFG16,FrGaSc14,FrGaSt16a,FrGe06a,FrGe07a,FrGe09a,FGGP11},
-%\todo{SV: do we really need 7 Frangioni et.al citations for semi-continuous variables?}
-or the fact that a nonconvex quadratic objective function/constraint can be reformulated as a second-order cone (hence, convex) one \cite{FrFG16,FrGaSc14,FrGaSt16a,FrGe09a,FGGP11}.
-%\todo{SV: 5 Frangioni et.al citations for SOC?}. 
+This description is deliberately coarse; each of these classes can be subdivided into several others on the grounds of more detailed information about structures present in their constraints/objective function. These can have a significant algorithmic impact, and therefore can be of interest to researchers. Common structures are, e.g., network flows \cite{FrFG16,FrGaSc14,FrGaSt16a,FGGP11,tadayon-smith:2013} or knapsack-type linear constraints \cite{FrFG16,FrGo13b,FGGP11}, and semi-continuous variables \cite{FrFG16,FrGaSc14,FrGaSt16a,FrGe06a,FrGe07a,FrGe09a,FGGP11}
+\todo{SV: reduce to 1-3 citations here},
+or the fact that a nonconvex quadratic objective function/constraint can be reformulated as a second-order cone (hence, convex) one \cite{FrFG16,FrGaSc14,FrGaSt16a,FrGe09a,FGGP11}
+\todo{SV: reduce to 1-3 citations here}.
 It would be very hard to collect a comprehensive list of all types of structures that might be of interest to any individual researcher, since these are as varied as the different possible approaches for specialized sub-classes of QP. For this reason we do not attempt such a more refined classification, and limit ourselves to the coarser one described in this section.
 
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
