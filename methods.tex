@@ -11,7 +11,7 @@ In this section we provide a quick overview of existing solution methods for QP,
   Solution methods for QP can be broadly organized in four categories \cite{neumaier}: \emph{incomplete}, \emph{asymptotically complete}, \emph{complete}, and \emph{rigorous}.
   \begin{itemize}
   \item \textit{Incomplete} methods are only able to identify solutions, often locally optimal according to a suitable notion, and may even fail to find one even when one exists; in particular, they are typically unable to determine that an instance has no solution.
-  \item \textit{Asymptotically complete} methods can find a globally optimal solution with probability one in infinite time, but  they cannot prove that a given instance is infeasible \textcolor{green}{(see \S\ref{sss:asymc} below))}.
+  \item \textit{Asymptotically complete} methods can find a globally optimal solution with probability one in infinite time, but  they cannot prove that a given instance is infeasible \textcolor{green}{(see \S\ref{sss:asymc} below)}.
   \item \textit{Complete} methods find an approximate globally optimal solution within a prescribed optimality tolerance within finite time, or prove that none such exists (but see \S\ref{s:complete} below); they are often referred to as \emph{exact} methods in the computational optimization community.
   \item \textit{Rigorous} methods find globally optimal solutions within given tolerances even in the presence of rounding errors, except for ``near-degenerate cases''. Since none of the solvers we are using can be classified as rigorous, we limit ourselves to declaring solvers complete.
   \end{itemize}
