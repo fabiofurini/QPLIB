@@ -195,10 +195,12 @@ a cascade.
  %
  \item \emph{Second Instances Filter.}\\
        The goal of the second filter was to eliminate ``similar'' instances.
-       We carefully analyzed the instances one by one, and we clustered them
-       according to their features; for each cluster we kept only a few
-       representatives, e.g. by eliminating all but a few of those with very similar size and coming from the same donor.
-       \textcolor{green}{The instances discarded by this second filter are instances of the same specific problem, e.g., we gathered many Max Cut Problem instances and we kept in the library only a representative small set of them. The selected representative instances are the larger and computationally harder ones.}
+       \textcolor{green}{We carefully analyzed the instances one by one,
+       %, and we clustered them
+       %according to their features; for each cluster we kept only a few
+       %representatives, e.g. 
+        eliminating all but a few of those with very similar size and coming from the same donor.
+       The instances discarded by this second filter are instances of the same specific problem, e.g., we gathered many Max Cut Problem instances and we kept in the library only a representative small set of them. The selected representative instances are the larger and computationally harder ones.}
        Finally, in order to only
        keep computationally challenging instances we ran a complete solver for \textit{QGQ} with a time limit of 120 seconds; all the
        instances which have been solved to proven optimality within this time limit
