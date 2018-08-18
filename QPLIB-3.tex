@@ -5,7 +5,7 @@
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \section{Library Construction}\label{sec:lib}
 
-In this section we present all the steps we performed in order to build
+This section presents all the steps we performed to build
 the new instance library. In \S\ref{subsec:instColl}, we describe the set
 of gathered instances, and
 in \S\ref{subsec:selection} we present the features used to
@@ -19,7 +19,7 @@ we provide information on how to access the test collection.
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Instance Collection}\label{subsec:instColl}
 
-In this section we describe the procedure we adopted to gather the
+This section describes the procedure we adopted to gather the
 instances. In January $2014$, we issued an online call for instances
 using main international mailing lists of the mathematical
 optimization and numerical analysis communities, reaching in this way
@@ -30,9 +30,9 @@ come both from theoretical studies as well as from real-world
 applications.
 
 
-In addition to these spontaneous contributions we analyzed existing generic
-libraries of instances available  on the internet that contain QP
-instances. Namely, the libraries from which we gathered instances are
+In addition to these spontaneous contributions, we analyzed existing generic
+instance libraries available  containing QP
+instances. The libraries from which we gathered instances are
 %
 \begin{itemize}
  \item the \texttt{BARON} library
@@ -64,7 +64,7 @@ that other generic libraries exist, e.g.,
 Conic library CBLIB (\url{http://cblib.zib.de}) and 
 MIPLIB~2010 (\url{http://miplib.zib.de/}), to mention just a few.}
 
-At the end of this process we had gathered more than eight thousand
+At the end of this process, we had gathered more than eight thousand
 instances. Three quarters of them contained discrete variables, while
 the remainder contained only continuous variables. In more detail,
 we gathered $\approx 1800$ Quadratic Binary Linear (\textit{QBL}) instances,
@@ -233,7 +233,7 @@ Second Filter & $\Downarrow$  & $\Downarrow$  & \\
 \subsection{Analysis of the Final Set of Instances}\label{subsec:final set}
 
 {We now analyze the features of the instances selected to be part of the
- library. In Table \ref{tab:DDDDD}, we provide a global overview. The instances have been divided in \textit{continuous} vs \textit{discrete} and \textit{convex} vs \textit{nonconvex}, forming in this way, a  classification of 4 macro categories. As previously mentioned, an instance is classified \textit{discrete} if it contains at least a binary or integer variable, and \textit{continuous} otherwise. On the other hand, an instance is classified as \textit{nonconvex} if the objective function is nonconvex (if minimization) or nonconcave (if maximization) and/or at least one of the constraints is nonconvex, and \textit{convex} otherwise. }
+ library. Table \ref{tab:DDDDD} provides a global overview. The instances have been divided in \textit{continuous} vs \textit{discrete} and \textit{convex} vs \textit{nonconvex}, forming in this way, a  classification of 4 macro categories. As previously mentioned, an instance is classified \textit{discrete} if it contains at least a binary or integer variable, and \textit{continuous} otherwise. On the other hand, an instance is classified as \textit{nonconvex} if the objective function is nonconvex (if minimization) or nonconcave (if maximization) and/or at least one of the constraints is nonconvex, and \textit{convex} otherwise. }
 
 
 \begin{table}

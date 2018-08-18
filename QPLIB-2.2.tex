@@ -8,7 +8,7 @@
 %- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 \subsection{Classification}\label{sec:classification}
 
-Despite the apparent simplicity of the definition given in \S\ref{subsec:notation}, Quadratic Programming instances can be of several rather different ``types'' in practice, depending on fine details of the data. In particular, many algorithmic approaches can only be applied to QP when the data of the problem has specific properties. A taxonomy of QP instances should thus strive to identify the set of properties that an instance should have in order to apply the most relevant computational methods. However, the sheer number of different existing approaches, and the fact that new ones are frequently proposed, makes it hard to provide a taxonomy that is both simple and covers all possible special cases. This is why, in this paper, we propose an approach that aims at finding a good balance between simplicity and coverage of the main families of computational methods.
+Despite the apparent simplicity of the \S\ref{subsec:notation} definition, Quadratic Programming instances can be of several rather different ``types'' in practice, depending on fine details of the data. In particular, many algorithmic approaches can only be applied to QP when the problem data has specific properties. A taxonomy of QP instances should thus strive to identify a set of properties that an instance should have in order to apply the most relevant computational methods. However, the sheer number of different existing approaches, and the fact that new ones are frequently proposed, makes it hard to provide a taxonomy that is both simple and covers all possible special cases. This is why, in this paper, we propose an approach that aims at finding a good balance between simplicity and coverage of the main families of computational methods.
 
 % -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 \subsubsection{Taxonomy}\label{ssec:taxonomy}
@@ -27,7 +27,7 @@ Our taxonomy is based on a three-fields code of the form ``\textit{OVC}'', where
   Quadratic constraints with both finite bounds cannot ever be convex (unless $Q^i = 0$, i.e., they are not ``truly'' quadratic constraints).
 \end{itemize}
 
-The ordering of the values in the previous lists is not irrelevant; in general, problems become ``harder'' when going from left to right. More specifically, for the \textit{O} and \textit{C} fields the order is that of \emph{strict} containment between problem classes: for instance, linear objective functions are strictly a special case of diagonal convex quadratic ones (by allowing the diagonal elements all to be zero), the latter are a strict subset of general convex quadratic objectives (by allowing the off-diagonal elements all to be zero), and these are strictly subsets of general nonconvex quadratic ones (since these permit any symmetric Hessian including positive semidefinite ones). The only field for which the containment relationship is not a total order is \textit{V}, for which only the partial orderings
+The ordering in the preceding lists is relevant; in general, problems become ``harder'' when going from left to right. More specifically, for the \textit{O} and \textit{C} fields the order is that of \emph{strict} containment between problem classes: for instance, linear objective functions are strictly a special case of diagonal convex quadratic ones (by allowing the diagonal elements all to be zero), the latter are a strict subset of general convex quadratic objectives (by allowing the off-diagonal elements all to be zero), and these are strictly subsets of general nonconvex quadratic ones (since these permit any symmetric Hessian including positive semidefinite ones). The only field for which the containment relationship is not a total order is \textit{V}, for which only the partial orderings
 \[
  \mbox{\textit{C}} \subset \mbox{\textit{M}} \subset \mbox{\textit{G}},
  \qquad
@@ -37,7 +37,7 @@ The ordering of the values in the previous lists is not irrelevant; in general, 
  \qquad
  \mbox{\textit{B}} \subset \mbox{\textit{I}} \subset \mbox{\textit{G}}
 \]
-hold. In the following discussion we will repeatedly exploit this by assuming that, unless otherwise mentioned, when a method can be applied to a given problem, it can be applied as well to all simpler problems where the value of each field is arbitrarily replaced with a value denoting a less-general class.
+hold. The following discussion repeatedly exploits this ordering by assuming that, unless otherwise mentioned, when a method can be applied to a given problem, it can also be applied to all simpler problems where the value of each field is arbitrarily replaced with a value denoting a less-general class.
 
 The wildcard ``*'' will be used below to indicate any possible choice, and lists of the form ``\{\textit{X}, \textit{Y}, \textit{Z}\}'' will indicate that the value of the given field can freely attain any of the specified values.
 
@@ -47,7 +47,7 @@ The wildcard ``*'' will be used below to indicate any possible choice, and lists
 \subsubsection{Examples and Reformulations}\label{ssec:reform}
 
 We now give a general discussion about the different problem classes that our proposed taxonomy defines.
-For simplicity, we will assume minimization problems for the remaining of this section.
+For simplicity, this section assumes minimization problems.
 Some problem classes are actually ``too simple'' to make sense in our context. For instance, \textit{D*B} problems have only diagonal quadratic (hence separable) objective function and bound constraints; as such, they read
 \[
  \textstyle
