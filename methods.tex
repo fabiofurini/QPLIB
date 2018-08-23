@@ -41,7 +41,12 @@ for nonconvex ones.
 % -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -  -
 \subsubsection{Asymptotically Complete Methods}\label{sss:asymc}
 
-Asymptotically complete methods do not usually require a starting point, and, if given sufficient time (infinite in the worst case) will identify a globally optimal solution with probability one. Most often, these methods are meta-heuristics, involving an element of random choice, which exploit a given (heuristic) local search procedure.
+\textcolor{green}{An asymptotically complete method reaches a global minimum with certainty or
+at least with probability one if allowed to run indefinitely long, but has no means to know when a global minimizer has been found (see \cite{neumaier}).}
+%
+%Asymptotically complete methods do not usually require a starting point, and, if given sufficient time (infinite in the worst case) will identify a globally optimal solution with probability one. 
+%
+Most often, these methods are meta-heuristics, involving an element of random choice, which exploit a given (heuristic) local search procedure.
 
 The solvers in Table \ref{t:solvers} which implement asymptotically complete methods are \oqnlp and \knitro (which apply to \textit{QGQ}) as well as \msnlp and certain sub-solvers of \lgo (which apply to \textit{QCQ}).
 
