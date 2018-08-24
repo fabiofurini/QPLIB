@@ -174,10 +174,10 @@ filters described in the next paragraph.
 \end{enumerate}
 %
 To achieve such goals, we performed the following two filters, applied in
-a cascade.
+a cascade:
 %
 \begin{itemize}
- \item \emph{First Instances Filter.}\\
+ \item \emph{First Instance Filter.}\\
        The first filter was designed to drastically reduce the number of
        instances by eliminating the ``easy'' ones. An empirical measure
        for the hardness of an instance is the CPU time needed by a
@@ -193,7 +193,7 @@ a cascade.
        %that are solved by at least 30\% of the complete solvers within a time
        %limit of 30 seconds.
  %
- \item \emph{Second Instances Filter.}\\
+ \item \emph{Second Instance Filter.}\\
        The goal of the second filter was to eliminate ``similar'' instances.
        \textcolor{green}{We carefully analyzed the instances one by one,
        %, and we clustered them
@@ -216,14 +216,14 @@ $134$ continuous instances.
  \setlength{\tabcolsep}{5pt}
 %  \arraystretch{1}
 \begin{tabular}{cccc}
-Starting set& \multicolumn{ 2}{c}{ $\approx$ 8500 Instances }& \\
-& \multicolumn{ 2}{c}{$\Downarrow$}& \\
-& $\approx$ 6000 Discr. Inst.  & $\approx$ 2500 Cont. Inst. & \\
-First Filter  & $\Downarrow$  & $\Downarrow$ & \\
- & $\approx$ 3000 Discr. Inst.  & $\approx$ 1000 Cont. Inst. & \\
-Second Filter & $\Downarrow$  & $\Downarrow$  & \\
+Starting set& \multicolumn{ 2}{c}{ $\approx$ 8500 instances }& \\
+& \multicolumn{ 2}{c}{\rotatebox{-45}{$\Downarrow$} \quad \raisebox{-1.2ex}{\rotatebox{45}{$\Downarrow$}}}& \\
+& $\approx$ 6000 discr. inst.  & $\approx$ 2500 cont. inst. & \\
+First filter  & $\Downarrow$  & $\Downarrow$ & \\
+ & $\approx$ 3000 discr. inst.  & $\approx$ 1000 cont. inst. & \\
+Second filter & $\Downarrow$  & $\Downarrow$  & \\
 % & 600 Discr. Inst.  & 250  Cont. inst. & \\
-  & 319 Discr. Inst.  & 134  Cont. inst. & \\
+  & 319 discr. inst.  & 134  cont. inst. & \\
 \end{tabular}
 %\begin{center}\end{center}
 \caption{Instance filter steps} \label{tab:filters}
@@ -233,7 +233,7 @@ Second Filter & $\Downarrow$  & $\Downarrow$  & \\
 \subsection{Analysis of the Final Set of Instances}\label{subsec:final set}
 
 {We now analyze the features of the instances selected to be part of the
- library. Table \ref{tab:DDDDD} provides a global overview. The instances have been divided in \textit{continuous} vs \textit{discrete} and \textit{convex} vs \textit{nonconvex}, forming in this way, a  classification of 4 macro categories. As previously mentioned, an instance is classified \textit{discrete} if it contains at least a binary or integer variable, and \textit{continuous} otherwise. On the other hand, an instance is classified as \textit{nonconvex} if the objective function is nonconvex (if minimization) or nonconcave (if maximization) and/or at least one of the constraints is nonconvex, and \textit{convex} otherwise. }
+ library. Table \ref{tab:DDDDD} provides a global overview. The instances have been divided in \textit{continuous} vs \textit{discrete} and \textit{convex} vs \textit{nonconvex}, forming in this way, a  classification of 4 macro categories. As previously mentioned, an instance is classified \textit{discrete} if it contains at least one binary or integer variable, and \textit{continuous} otherwise. On the other hand, an instance is classified as \textit{nonconvex} if the objective function is nonconvex (if minimization) or nonconcave (if maximization) and/or at least one of the constraints is nonconvex, and \textit{convex} otherwise. }
 
 
 \begin{table}
@@ -266,7 +266,7 @@ Total		&				& 453\\
 (\textit{*}\{\textit{B,M,I,G}\}\textit{*}) and in Table
 \ref{tab:CC} for \emph{continuous} ones (\textit{*C*}).
 For each category, the tables
-report in column ``$\#$'' the corresponding number of instances. It can be seen
+report the corresponding number of instances in column ``$\#$''. It can be seen
 that the final set well respects the original distribution of the gathered
 instances among the different categories. Indeed, the discrete categories
 \textit{LMQ} and \textit{QBL} are well represented by {134} and {91}
@@ -391,10 +391,14 @@ We now report some graphs that help in illustrating the main features
 of the instances. In Figure~\ref{fig:distribution}~(left) we plot the number
 of variables (horizontal axis) versus the number of constraints
 (vertical axis), both in logarithmic scale. Continuous instances are
-marked with ``$+$'', and discrete ones with ``$\times$''. The figure shows
+marked with ``$+$'' and discrete ones with ``$\times$''.
+\textcolor{green}{Box constraints are not counted as constraints.} \todo{Ambros: From text, tables, and Figure~1 did I correctly infer that variable bounds are not counted as constraints?  The 23 ``none'' in the discrete table seem to be the blue crosses on the x-axis, but then where do the 3 red ``+'' on the x-axis come from?  Are these continuous instances with box constraints and some boxes are infinite?  Should there be a ``none'' in the continuous table?}
+The figure shows
 that the library contains a quite diverse set of instances in
 terms of number of variables and constraints. {The record on the maximal number of variables and constraints (both $\approx 1,000,000$) is set by the instances QPLIB\_8547 and QPLIB\_9008.}
 Figure~\ref{fig:distribution}~(right) plots the number of nonzero elements in the gradient of the objective function and the Jacobian and the number of these nonzeros corresponding to nonlinear variables, that is, it counts the appearances of variables in objectives and constraints and how often such an appearance is in a quadratic term.
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \begin{figure}\centering
